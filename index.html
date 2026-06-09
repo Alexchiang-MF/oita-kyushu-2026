@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九州大分五天四夜・大分慢遊溫泉小旅</title>
+
+  <!-- Chill Travel Design System tokens -->
+  <style>/* ============================================================
+   TYPOGRAPHY
+   Display: Baloo 2 (rounded, friendly) — falls back to Noto Sans TC for CJK
+   Body:    Noto Sans TC (Traditional Chinese first-class)
+   Hand:    Caveat (handwritten accents only — times, Day labels, notes)
+   Fonts are served from Google Fonts (all three are freely available).
+   ============================================================ */
+/* devanagari */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* devanagari */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* devanagari */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+
+:root {
+  /* ---- Font families ---- */
+  --f-display: "Baloo 2", "Noto Sans TC", system-ui, sans-serif; /* @kind font */
+  --f-body:    "Noto Sans TC", system-ui, -apple-system, sans-serif; /* @kind font */
+  --f-hand:    "Caveat", cursive; /* @kind font */
+  --f-mono:    ui-monospace, "SF Mono", Menlo, monospace; /* @kind font */
+
+  /* ---- Type scale (mobile-first) ---- */
+  --fs-hero:   clamp(2rem, 7vw, 2.9rem);  /* @kind font */
+  --fs-h1:     1.5rem;     /* @kind font */
+  --fs-h2:     1.25rem;    /* @kind font */
+  --fs-title:  1.08rem;    /* @kind font */
+  --fs-body:   0.95rem;    /* @kind font */
+  --fs-sm:     0.86rem;    /* @kind font */
+  --fs-xs:     0.74rem;    /* @kind font */
+  --fs-hand:   1.8rem;     /* @kind font */
+
+  /* ---- Weights ---- */
+  --fw-regular: 400;   /* @kind font */
+  --fw-medium:  500;   /* @kind font */
+  --fw-semibold: 600;  /* @kind font */
+  --fw-bold:    700;   /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.1;  /* @kind other */
+  --lh-snug:  1.3;  /* @kind other */
+  --lh-body:  1.6;  /* @kind other */
+
+  /* ---- Semantic type aliases ---- */
+  --text-display: var(--f-display);
+  --text-body-font: var(--f-body);
+  --text-hand: var(--f-hand);
+}
+</style>
+  <style>/* ============================================================
+   COLORS  ·  "傍晚的溫泉小鎮 / Evening Onsen Town"
+   Dual-temperature signature: warm (sunset / lantern)
+   × cool (hot-spring steam / dusk). Low-chroma warm paper base.
+   ============================================================ */
+:root {
+  /* ---- Paper & Ink (warm neutrals) ---- */
+  --tg-paper:    #FDF7EF;   /* warm white page background */
+  --tg-panel:    #F7EEE1;   /* slightly deeper panel / card inset */
+  --tg-card:     #FFFFFF;   /* card white */
+  --tg-ink:      #33291F;   /* warm coffee body text (not pure black) */
+  --tg-ink-soft: #786A58;   /* secondary text */
+  --tg-line:     #E7DBC8;   /* hairline divider */
+  --tg-route:    #D8C8AE;   /* timeline route / dashed rail */
+
+  /* ---- Dual-temperature brand colors (signature) ---- */
+  --tg-sunset:   #F26A47;   /* persimmon sunset — primary action / accent */
+  --tg-sunset-d: #D44A28;   /* sunset deepened — text on light / hover */
+  --tg-steam:    #2F9E94;   /* onsen lake green — secondary */
+  --tg-amber:    #F2A93C;   /* lantern amber — highlight / reminders */
+  --tg-dusk:     #7177CB;   /* dusk violet — small accents / focus */
+
+  /* ---- Itinerary category colors (badges / nodes) ---- */
+  --tg-c-sight:  #2F9E94;   /* 景點 sights */
+  --tg-c-food:   #F26A47;   /* 美食 food */
+  --tg-c-onsen:  #E08A3C;   /* 溫泉 hot spring */
+  --tg-c-shop:   #B5577E;   /* 購物 shopping */
+  --tg-c-move:   #5C7CB5;   /* 交通 transit */
+  --tg-c-stay:   #7177CB;   /* 住宿 stay */
+
+  /* ---- Hero / sky gradient stops ---- */
+  --tg-sky-1:    #FFD9A3;   /* warm dawn top */
+  --tg-sky-2:    #F58E63;   /* persimmon mid */
+  --tg-sky-3:    #7C9BC0;   /* cool dusk base */
+}
+</style>
+  <style>/* ============================================================
+   SPACING  ·  8px base rhythm
+   ============================================================ */
+:root {
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+
+  /* layout */
+  --app-max: 640px;   /* mobile-first content column max-width */
+}
+</style>
+  <style>/* ============================================================
+   RADII  ·  chill = generous rounding
+   ============================================================ */
+:root {
+  --r-sm:   10px;   /* tips, small inputs, checklist rows */
+  --r:      16px;   /* default card */
+  --r-lg:   22px;   /* hero, large panels */
+  --r-pill: 999px;  /* badges, chips, buttons */
+}
+</style>
+  <style>/* ============================================================
+   SHADOWS  ·  warm, low-saturation (brown-tinted, never grey/black)
+   ============================================================ */
+:root {
+  --sh-1: 0 2px 8px rgba(94, 66, 38, 0.07);    /* resting card */
+  --sh-2: 0 8px 22px rgba(94, 66, 38, 0.12);   /* hover / hero lift */
+}
+</style>
+  <style>/* ============================================================
+   SEMANTIC ALIASES
+   Map raw brand tokens to role-based names. Build UI against
+   these so a re-theme only touches colors.css.
+   ============================================================ */
+:root {
+  /* ---- Text ---- */
+  --text-primary:   var(--tg-ink);
+  --text-secondary: var(--tg-ink-soft);
+  --text-on-accent: #ffffff;
+  --text-link:      var(--tg-steam);
+
+  /* ---- Surfaces ---- */
+  --surface-page:   var(--tg-paper);
+  --surface-panel:  var(--tg-panel);
+  --surface-card:   var(--tg-card);
+
+  /* ---- Borders ---- */
+  --border-line:    var(--tg-line);
+  --border-route:   var(--tg-route);
+
+  /* ---- Accents ---- */
+  --accent-primary:        var(--tg-sunset);
+  --accent-primary-strong: var(--tg-sunset-d);
+  --accent-secondary:      var(--tg-steam);
+  --accent-highlight:      var(--tg-amber);
+  --accent-focus:          var(--tg-dusk);
+
+  /* ---- Elevation ---- */
+  --elevation-rest:  var(--sh-1);
+  --elevation-lift:  var(--sh-2);
+}
+</style>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--tg-paper); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    ul, ol { padding-left: 1.4em; }
+    li { margin-bottom: 4px; }
+    strong { color: inherit; font-weight: 700; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    @media print {
+      nav[style*="sticky"] { display: none; }
+      .day-card { page-break-inside: avoid; }
+    }
+  </style>
+  <!-- Bundler splash thumbnail -->
+  
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React 18 (Babel removed — JSX pre-compiled) -->
+  <script src="58f4a62b-664f-46c0-93eb-d26232c725be.js"></script>
+  <script src="c8e910eb-964f-40b7-8ccf-a2187a17c4b6.js"></script>
+
+  <!-- Design System bundle -->
+  <script src="72808b9b-d283-45d9-927f-8d08255eb406.js"></script>
+
+  <!-- Handbook modules (load order matters) -->
+  <script src="75d00acb-12ac-46df-a6ec-2d147f96627c.js"></script>
+  <script src="05ac81cb-2d2b-4583-88e2-aad4ed1a1679.compiled.js"></script>
+  <script src="924c3654-6bc1-43f6-bd95-0a0efd194569.compiled.js"></script>
+  <script src="2ca7be69-e396-436c-863b-d390b7c6b571.compiled.js"></script>
+  <script src="9ee18f95-5bc7-4b5f-8427-77978860f5bc.compiled.js"></script>
+
+
+</body></html>
