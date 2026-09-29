@@ -1,559 +1,429 @@
 <!DOCTYPE html>
-<html lang="zh-TW"><head>
-  <meta charset="UTF-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>九州大分五天四夜・大分慢遊溫泉小旅</title>
-
-  <!-- Chill Travel Design System tokens -->
-  <style>/* ============================================================
-   TYPOGRAPHY
-   Display: Baloo 2 (rounded, friendly) — falls back to Noto Sans TC for CJK
-   Body:    Noto Sans TC (Traditional Chinese first-class)
-   Hand:    Caveat (handwritten accents only — times, Day labels, notes)
-   Fonts are served from Google Fonts (all three are freely available).
-   ============================================================ */
-/* devanagari */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-/* devanagari */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-/* devanagari */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-/* cyrillic-ext */
-
-/* cyrillic */
-
-/* latin-ext */
-
-/* latin */
-
-/* cyrillic-ext */
-
-/* cyrillic */
-
-/* latin-ext */
-
-/* latin */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* cyrillic */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* cyrillic */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* cyrillic */
-
-/* vietnamese */
-
-/* latin-ext */
-
-/* latin */
-
-
-
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>九州大分五天四夜自駕行程手冊（定案版）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  /* ---- Font families ---- */
-  --f-display: "Baloo 2", "Noto Sans TC", system-ui, sans-serif; /* @kind font */
-  --f-body:    "Noto Sans TC", system-ui, -apple-system, sans-serif; /* @kind font */
-  --f-hand:    "Caveat", cursive; /* @kind font */
-  --f-mono:    ui-monospace, "SF Mono", Menlo, monospace; /* @kind font */
-
-  /* ---- Type scale (mobile-first) ---- */
-  --fs-hero:   clamp(2rem, 7vw, 2.9rem);  /* @kind font */
-  --fs-h1:     1.5rem;     /* @kind font */
-  --fs-h2:     1.25rem;    /* @kind font */
-  --fs-title:  1.08rem;    /* @kind font */
-  --fs-body:   0.95rem;    /* @kind font */
-  --fs-sm:     0.86rem;    /* @kind font */
-  --fs-xs:     0.74rem;    /* @kind font */
-  --fs-hand:   1.8rem;     /* @kind font */
-
-  /* ---- Weights ---- */
-  --fw-regular: 400;   /* @kind font */
-  --fw-medium:  500;   /* @kind font */
-  --fw-semibold: 600;  /* @kind font */
-  --fw-bold:    700;   /* @kind font */
-
-  /* ---- Line heights ---- */
-  --lh-tight: 1.1;  /* @kind other */
-  --lh-snug:  1.3;  /* @kind other */
-  --lh-body:  1.6;  /* @kind other */
-
-  /* ---- Semantic type aliases ---- */
-  --text-display: var(--f-display);
-  --text-body-font: var(--f-body);
-  --text-hand: var(--f-hand);
+  --primary: #185FA5; --primary-light: #E6F1FB; --secondary: #BA7517;
+  --accent: #0F6E56; --warn: #A32D2D; --warn-light: #FCEBEB;
+  --bg: #FAF8F2; --paper: #FFFFFF; --text: #2C2C2A; --text-mute: #5F5E5A;
+  --line: #D3D1C7; --highlight: #FAEEDA; --recommend: #E1F5EE;
 }
+body { font-family: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; padding: 20px; }
+.container { max-width: 1100px; margin: 0 auto; background: var(--paper); padding: 40px 50px; border-radius: 8px; }
+header { text-align: center; padding: 24px 0 30px; border-bottom: 3px double var(--primary); margin-bottom: 30px; }
+header h1 { font-size: 30px; color: var(--primary); font-weight: 600; letter-spacing: 1px; }
+header .subtitle { color: var(--text-mute); margin-top: 8px; font-size: 14px; }
+header .badge { display: inline-block; background: var(--accent); color: white; padding: 5px 16px; border-radius: 20px; font-size: 13px; margin-top: 14px; }
+nav.toc { background: var(--primary-light); padding: 20px 30px; border-radius: 6px; margin-bottom: 35px; }
+nav.toc h3 { color: var(--primary); margin-bottom: 12px; font-size: 17px; }
+nav.toc ol { padding-left: 20px; columns: 2; column-gap: 30px; }
+nav.toc li { margin-bottom: 6px; font-size: 14px; }
+section { margin: 42px 0; padding-top: 10px; }
+h2 { font-size: 22px; color: var(--primary); border-left: 5px solid var(--primary); padding: 8px 16px; background: linear-gradient(to right, var(--primary-light) 0%, transparent 80%); margin-bottom: 20px; }
+h3 { font-size: 18px; color: var(--accent); margin: 25px 0 12px; padding-bottom: 6px; border-bottom: 1px dashed var(--line); }
+h4 { font-size: 16px; color: var(--secondary); margin: 18px 0 8px; }
+p { margin-bottom: 10px; }
+ul, ol { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 4px; }
+strong { color: var(--primary); }
+.box { background: var(--highlight); border-left: 4px solid var(--secondary); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
+.box-warn { background: var(--warn-light); border-left: 4px solid var(--warn); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
+.box-info { background: var(--recommend); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; font-weight: 500; border: 1px solid var(--primary); }
+td { padding: 10px 12px; border: 1px solid var(--line); vertical-align: top; }
+tr:nth-child(even) td { background: #FAF8F2; }
+.day-card { background: white; border: 1px solid var(--line); border-radius: 8px; margin: 16px 0; overflow: hidden; }
+.day-header { background: linear-gradient(135deg, var(--primary), #378ADD); color: white; padding: 14px 20px; }
+.day-header .day-num { font-size: 13px; opacity: 0.9; }
+.day-header .day-title { font-size: 18px; font-weight: 600; margin-top: 2px; }
+.day-header .day-route { font-size: 12px; margin-top: 6px; opacity: 0.9; }
+.day-body { padding: 18px 22px; }
+.flight-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: var(--primary-light); padding: 16px 20px; border-radius: 6px; margin: 14px 0; }
+.flight-info > div { font-size: 14px; }
+.flight-info .label { font-size: 12px; color: var(--text-mute); }
+.flight-info .value { font-size: 15px; font-weight: 600; color: var(--primary); }
+.summary-row { display: grid; grid-template-columns: 80px 1.4fr 1fr 1fr; gap: 8px; padding: 10px; border-bottom: 1px solid var(--line); font-size: 13px; align-items: center; }
+.summary-row.header { background: var(--primary); color: white; font-weight: 600; border-radius: 4px 4px 0 0; }
+.summary-row .day-tag { background: var(--secondary); color: white; padding: 4px 8px; border-radius: 4px; text-align: center; font-weight: 600; font-size: 12px; }
+.flow-diagram { background: var(--primary-light); padding: 16px 20px; border-radius: 8px; font-size: 14px; line-height: 2.2; text-align: center; margin: 12px 0; }
+footer { margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--line); color: var(--text-mute); font-size: 13px; text-align: center; }
+@media print { body { padding: 0; background: white; } .container { padding: 20px; } .day-card { page-break-inside: avoid; } section { page-break-inside: avoid; } }
+nav.toc a { color: var(--primary); text-decoration: none; }
+.links { list-style: none; padding-left: 0; }
+.links li { padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.links a { color: var(--primary); font-weight: 600; text-decoration: none; word-break: break-all; }
+.links .src { color: var(--text-mute); font-size: 12px; }
+@media (max-width: 640px) { body { padding: 8px; } .container { padding: 20px 16px; } .flight-info { grid-template-columns: 1fr; } .summary-row { grid-template-columns: 70px 1fr; } .summary-row > div:nth-child(3), .summary-row > div:nth-child(4) { grid-column: 2; } nav.toc ol { columns: 1; } table { font-size: 13px; } th, td { padding: 8px; } }
 </style>
-  <style>/* ============================================================
-   COLORS  ·  "傍晚的溫泉小鎮 / Evening Onsen Town"
-   Dual-temperature signature: warm (sunset / lantern)
-   × cool (hot-spring steam / dusk). Low-chroma warm paper base.
-   ============================================================ */
-:root {
-  /* ---- Paper & Ink (warm neutrals) ---- */
-  --tg-paper:    #FDF7EF;   /* warm white page background */
-  --tg-panel:    #F7EEE1;   /* slightly deeper panel / card inset */
-  --tg-card:     #FFFFFF;   /* card white */
-  --tg-ink:      #33291F;   /* warm coffee body text (not pure black) */
-  --tg-ink-soft: #786A58;   /* secondary text */
-  --tg-line:     #E7DBC8;   /* hairline divider */
-  --tg-route:    #D8C8AE;   /* timeline route / dashed rail */
-
-  /* ---- Dual-temperature brand colors (signature) ---- */
-  --tg-sunset:   #F26A47;   /* persimmon sunset — primary action / accent */
-  --tg-sunset-d: #D44A28;   /* sunset deepened — text on light / hover */
-  --tg-steam:    #2F9E94;   /* onsen lake green — secondary */
-  --tg-amber:    #F2A93C;   /* lantern amber — highlight / reminders */
-  --tg-dusk:     #7177CB;   /* dusk violet — small accents / focus */
-
-  /* ---- Itinerary category colors (badges / nodes) ---- */
-  --tg-c-sight:  #2F9E94;   /* 景點 sights */
-  --tg-c-food:   #F26A47;   /* 美食 food */
-  --tg-c-onsen:  #E08A3C;   /* 溫泉 hot spring */
-  --tg-c-shop:   #B5577E;   /* 購物 shopping */
-  --tg-c-move:   #5C7CB5;   /* 交通 transit */
-  --tg-c-stay:   #7177CB;   /* 住宿 stay */
-
-  /* ---- Hero / sky gradient stops ---- */
-  --tg-sky-1:    #FFD9A3;   /* warm dawn top */
-  --tg-sky-2:    #F58E63;   /* persimmon mid */
-  --tg-sky-3:    #7C9BC0;   /* cool dusk base */
-}
-</style>
-  <style>/* ============================================================
-   SPACING  ·  8px base rhythm
-   ============================================================ */
-:root {
-  --s1: 4px;
-  --s2: 8px;
-  --s3: 12px;
-  --s4: 16px;
-  --s5: 24px;
-  --s6: 32px;
-  --s7: 48px;
-
-  /* layout */
-  --app-max: 640px;   /* mobile-first content column max-width */
-}
-</style>
-  <style>/* ============================================================
-   RADII  ·  chill = generous rounding
-   ============================================================ */
-:root {
-  --r-sm:   10px;   /* tips, small inputs, checklist rows */
-  --r:      16px;   /* default card */
-  --r-lg:   22px;   /* hero, large panels */
-  --r-pill: 999px;  /* badges, chips, buttons */
-}
-</style>
-  <style>/* ============================================================
-   SHADOWS  ·  warm, low-saturation (brown-tinted, never grey/black)
-   ============================================================ */
-:root {
-  --sh-1: 0 2px 8px rgba(94, 66, 38, 0.07);    /* resting card */
-  --sh-2: 0 8px 22px rgba(94, 66, 38, 0.12);   /* hover / hero lift */
-}
-</style>
-  <style>/* ============================================================
-   SEMANTIC ALIASES
-   Map raw brand tokens to role-based names. Build UI against
-   these so a re-theme only touches colors.css.
-   ============================================================ */
-:root {
-  /* ---- Text ---- */
-  --text-primary:   var(--tg-ink);
-  --text-secondary: var(--tg-ink-soft);
-  --text-on-accent: #ffffff;
-  --text-link:      var(--tg-steam);
-
-  /* ---- Surfaces ---- */
-  --surface-page:   var(--tg-paper);
-  --surface-panel:  var(--tg-panel);
-  --surface-card:   var(--tg-card);
-
-  /* ---- Borders ---- */
-  --border-line:    var(--tg-line);
-  --border-route:   var(--tg-route);
-
-  /* ---- Accents ---- */
-  --accent-primary:        var(--tg-sunset);
-  --accent-primary-strong: var(--tg-sunset-d);
-  --accent-secondary:      var(--tg-steam);
-  --accent-highlight:      var(--tg-amber);
-  --accent-focus:          var(--tg-dusk);
-
-  /* ---- Elevation ---- */
-  --elevation-rest:  var(--sh-1);
-  --elevation-lift:  var(--sh-2);
-}
-</style>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--tg-paper); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    ul, ol { padding-left: 1.4em; }
-    li { margin-bottom: 4px; }
-    strong { color: inherit; font-weight: 700; }
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
-    @media print {
-      nav[style*="sticky"] { display: none; }
-      .day-card { page-break-inside: avoid; }
-    }
-  </style>
-  <!-- Bundler splash thumbnail -->
-  
 </head>
 <body>
-  <div id="root"></div>
+<div class="container">
 
-  <!-- React 18 (Babel removed — JSX pre-compiled) -->
-  <script src="58f4a62b-664f-46c0-93eb-d26232c725be.js"></script>
-  <script src="c8e910eb-964f-40b7-8ccf-a2187a17c4b6.js"></script>
+<header>
+  <h1>九州大分五天四夜自駕行程手冊</h1>
+  <div class="subtitle">5 人團 · 7 人座自駕 · 2026.10.17 (六) → 10.21 (三)</div>
+  <div class="badge">✅ 最終定案版</div>
+</header>
 
-  <!-- Design System bundle -->
-  <script src="72808b9b-d283-45d9-927f-8d08255eb406.js"></script>
+<nav class="toc">
+  <h3>📑 目錄</h3>
+  <ol>
+    <li><a href="#s1">基本資訊</a></li>
+    <li><a href="#s2">行程總覽</a></li>
+    <li><a href="#s3">逐日行程</a></li>
+    <li><a href="#s4">住宿總表</a></li>
+    <li><a href="#s5">實用資訊</a></li>
+    <li><a href="#s6">導航地址速查表</a></li>
+    <li><a href="#s7">參考遊記連結</a></li>
+  </ol>
+</nav>
 
-  <!-- Handbook modules (load order matters) -->
-  <script src="75d00acb-12ac-46df-a6ec-2d147f96627c.js"></script>
-  <script src="05ac81cb-2d2b-4583-88e2-aad4ed1a1679.compiled.js"></script>
-  <script src="924c3654-6bc1-43f6-bd95-0a0efd194569.compiled.js"></script>
-  <script src="2ca7be69-e396-436c-863b-d390b7c6b571.compiled.js"></script>
-  <script src="9ee18f95-5bc7-4b5f-8427-77978860f5bc.compiled.js"></script>
+<section id="s1">
+<h2>1. 基本資訊</h2>
+<div class="flight-info">
+  <div><div class="label">去程班機</div><div class="value">IT750 10/17(六) 桃園 12:00 → 大分 15:00</div></div>
+  <div><div class="label">回程班機</div><div class="value">IT751 10/21(三) 大分 16:30 → 桃園 17:55</div></div>
+  <div><div class="label">同行人數</div><div class="value">5 位成人</div></div>
+  <div><div class="label">同行組成</div><div class="value">夫妻 A、夫妻 B + 成年女兒(一家三口)</div></div>
+  <div><div class="label">租車</div><div class="value">Toyota Alphard(預約號 00010486642)</div></div>
+  <div><div class="label">行李</div><div class="value">26 吋 ×4 + 隨身</div></div>
+</div>
 
+<div class="box-info">
+<strong>行程主軸</strong>：中津唐揚 → 耶馬溪奇岩 → 日田小京都 → 九重夢大吊橋 → 由布院 → 別府纜車賞楓 → 大分採買 → 皮克敏聖地。動線為弧線，每個住宿點都是當天行程終點，無回頭路。
+</div>
+</section>
 
-</body></html>
+<section id="s2">
+<h2>2. 行程總覽</h2>
+<div class="summary-row header"><div>日期</div><div>主軸</div><div>住宿</div><div>晚餐</div></div>
+<div class="summary-row">
+  <div class="day-tag">Day 1<br>10/17 六</div>
+  <div>機場取車 → 中津<br><span style="color:var(--text-mute);font-size:12px">唐揚 + 商店街喝一杯</span></div>
+  <div>中津 Toyoko Inn</div>
+  <div>中津唐揚 / 居酒屋</div>
+</div>
+<div class="summary-row">
+  <div class="day-tag">Day 2<br>10/18 日</div>
+  <div>中津 → 耶馬溪 → 日田<br><span style="color:var(--text-mute);font-size:12px">奇岩 + 小京都豆田町</span></div>
+  <div>日田 Route Inn</div>
+  <div>日田市區自理</div>
+</div>
+<div class="summary-row">
+  <div class="day-tag">Day 3<br>10/19 一</div>
+  <div>日田 → 九重夢大吊橋 → 由布院<br><span style="color:var(--text-mute);font-size:12px">吊橋 + 九醉溪 + 湯之坪街道</span></div>
+  <div>由布院 金鱗湖豐國</div>
+  <div>由布院自理</div>
+</div>
+<div class="summary-row">
+  <div class="day-tag">Day 4<br>10/20 二</div>
+  <div>金鱗湖晨霧 → 別府纜車 → 大分採買<br><span style="color:var(--text-mute);font-size:12px">★ 賞楓 + 主購物日</span></div>
+  <div>大分 Toyoko Inn</div>
+  <div>大分市區自理</div>
+</div>
+<div class="summary-row">
+  <div class="day-tag">Day 5<br>10/21 三</div>
+  <div>Park Place 皮克敏 + AEON 購物 → 還車<br><span style="color:var(--text-mute);font-size:12px">⭐ 任天堂專區、悠閒收尾</span></div>
+  <div>—</div>
+  <div>—</div>
+</div>
+</section>
+
+<section id="s3">
+<h2>3. 逐日行程</h2>
+
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-num">DAY 1 · 2026/10/17 (週六)</div>
+    <div class="day-title">抵達中津 · 唐揚之夜 + 商店街喝一杯</div>
+    <div class="day-route">大分機場 → 中津市(約 60 分鐘 / 50 km)</div>
+  </div>
+  <div class="day-body">
+    <table>
+      <tr><th style="width:18%">時間</th><th>行程</th></tr>
+      <tr><td>15:00</td><td>抵達大分機場、領行李、取車(實際約 15:30–16:00 上路)</td></tr>
+      <tr><td>16:00–17:00</td><td>大分機場 → 中津市(大分自動車道 / 東九州道)</td></tr>
+      <tr><td>17:00–18:00</td><td>中津站前飯店 Check-in、休息</td></tr>
+      <tr><td>18:00–20:00</td><td>步行去中津唐揚名店晚餐</td></tr>
+      <tr><td>20:00–22:00</td><td>中津站前商店街居酒屋喝一杯</td></tr>
+      <tr><td>22:00</td><td>步行回飯店</td></tr>
+    </table>
+    <div class="box-warn">
+      <strong>⚠ 取車時必辦</strong>：當面向大分機場店櫃台確認 Day 5 還車可否延到 15:00、是否加費(詳見 Day 5)。
+    </div>
+    <p style="font-size:13px;color:var(--text-mute);">📌 中津是雞肉唐揚發源地，站前商店街有唐揚店和居酒屋，走路就能解決吃喝，晚上不必開車。</p>
+  </div>
+</div>
+
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-num">DAY 2 · 2026/10/18 (週日) · 奇岩 + 小京都</div>
+    <div class="day-title">中津 → 耶馬溪 → 日田</div>
+    <div class="day-route">中津 → 青の洞門(30min) → 一目八景(25min) → 日田(45min)</div>
+  </div>
+  <div class="day-body">
+    <table>
+      <tr><th style="width:18%">時間</th><th>行程</th></tr>
+      <tr><td>09:00–10:00</td><td>飯店早餐、退房(出發前在中津市區加滿油)</td></tr>
+      <tr><td>10:00–10:40</td><td>中津 → 青の洞門停車場(國道 212 號)</td></tr>
+      <tr><td>10:40–12:00</td><td>青の洞門<strong>步行參觀</strong> + 競秀峰岩壁(時間夠再順訪羅漢寺)</td></tr>
+      <tr><td>12:00–12:30</td><td>本耶馬溪 → 深耶馬溪</td></tr>
+      <tr><td>12:30–13:30</td><td>一目八景周邊午餐(蕎麥店為主，多為不定休，現場挑)</td></tr>
+      <tr><td>13:30–14:30</td><td>一目八景展望台(停車場步行約 5 分，奇岩環繞)</td></tr>
+      <tr><td>14:30–15:15</td><td>深耶馬溪 → 日田(國道 212 號，約 45 分)</td></tr>
+      <tr><td>15:15–15:40</td><td>Route Inn 日田駅前 Check-in、放行李</td></tr>
+      <tr><td>15:40–17:00</td><td><strong>豆田町散策</strong>(車程約 5 分 / 步行約 20 分；多數店家約 17:00 打烊)</td></tr>
+      <tr><td>18:00–</td><td>日田市區自理晚餐(日田炒麵、居酒屋等)</td></tr>
+    </table>
+    <div class="box-warn">
+      <strong>⚠ 青の洞門 2026 現況</strong>：2024 年 11 月岩盤崩落後封閉，2026 年 4 月起<strong>步行已解禁、車輛仍禁止通行</strong>。車停青の洞門公共停車場(免費，限高 3.6m，Alphard 沒問題)再用走的，來回抓 40 分–1 小時。狀態可能變動，出發前再查中津市公告。
+    </div>
+    <div class="box">
+      <strong>🏯 日田豆田町</strong>：江戶時代幕府直轄的「天領」，有九州小京都之稱，白牆黑瓦老街保存完整。抵達日田後先衝豆田町，趕在店家 17:00 打烊前逛。晚上回站前一帶覓食。
+    </div>
+    <div class="box-warn">
+      <strong>⚠ 山路駕駛</strong>：中津 → 耶馬溪 → 日田一路多彎，十月可能有山霧，控制車速、注意對向來車。
+    </div>
+  </div>
+</div>
+
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-num">DAY 3 · 2026/10/19 (週一) · 吊橋 + 由布院散策</div>
+    <div class="day-title">日田 → 九重夢大吊橋 → 由布院</div>
+    <div class="day-route">日田 → 九重夢大吊橋(60min) → 峠の茶屋(5–10min) → 由布院(60min)</div>
+  </div>
+  <div class="day-body">
+    <table>
+      <tr><th style="width:18%">時間</th><th>行程</th></tr>
+      <tr><td>08:00–09:00</td><td>飯店早餐、退房(出發前加滿油，山區加油站少)</td></tr>
+      <tr><td>09:00–10:00</td><td>日田 → 九重夢大吊橋(大分道 日田 IC → 九重 IC → 縣道 40 號)</td></tr>
+      <tr><td>10:00–11:30</td><td><strong>九重夢大吊橋</strong>(週一平日，人潮少)</td></tr>
+      <tr><td>11:30–11:45</td><td>吊橋 → 峠の茶屋(往九醉溪方向)</td></tr>
+      <tr style="background:var(--recommend)"><td><strong>11:45–13:00</strong></td><td><strong>午餐：峠の茶屋</strong>(炭火烤雞定食)</td></tr>
+      <tr><td>13:00–14:00</td><td>九醉溪 → 國道 210 號 → 水分峠 → 由布院</td></tr>
+      <tr><td><strong>14:00–16:30</strong></td><td><strong>湯之坪街道散策 + 採買</strong>(多數店家 17:00–17:30 打烊)</td></tr>
+      <tr><td>16:30–</td><td>金鱗湖豐國 Check-in(15:00 起)、泡湯</td></tr>
+      <tr><td>18:30–</td><td>由布院自理晚餐</td></tr>
+    </table>
+    <div class="box-info">
+      <strong>🌉 九重夢大吊橋</strong>：高 173m、長 390m，日本最高的人行吊橋，可俯瞰九醉溪谷與震動瀑布。門票大人 500 日圓，營業 8:30–17:00，兩端皆有大型停車場。橋上風大偏冷，強風時可能限制入橋；怕高的同行者先講。
+    </div>
+    <div class="box">
+      <strong>🍗 峠の茶屋</strong>：九重町田野 975-2，營業 10:30–14:30，週一有營業。老夫婦經營、炭火烤雞，店小，5 人建議 11:45 前進店。炭火煙味重，外套可先留車上。<strong>客滿備案</strong>：隔壁約 300m 的桂茶屋(8:00–17:00，雞天、山女魚鹽烤)，不用改路線。
+    </div>
+    <div class="box-warn">
+      <strong>⚠ 由布院停車</strong>：14:00 到由布院時旅館還不能入住，事先問金鱗湖豐國能否先停車、寄放行李，再步行逛湯之坪街道。九醉溪為彎道山路，駕駛放慢。
+    </div>
+  </div>
+</div>
+
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-num">DAY 4 · 2026/10/20 (週二) · ★ 賞楓 + 主購物日</div>
+    <div class="day-title">金鱗湖晨霧 → 別府纜車 → 大分採買</div>
+    <div class="day-route">由布院 → 別府纜車(25min) → 大分市區(45min)</div>
+  </div>
+  <div class="day-body">
+    <table>
+      <tr><th style="width:18%">時間</th><th>行程</th></tr>
+      <tr><td>07:00–08:00</td><td>金鱗湖晨霧散步(旅館就在湖邊)</td></tr>
+      <tr><td>08:00–09:00</td><td>回旅館早餐、退房</td></tr>
+      <tr><td>09:00–09:25</td><td>由布院 → 別府纜車(九州橫斷道路)</td></tr>
+      <tr><td>09:25–11:45</td><td><strong>別府纜車(鶴見岳)上下山 + 山上賞楓散步</strong></td></tr>
+      <tr><td>11:45–12:30</td><td>別府 → 大分市區</td></tr>
+      <tr><td>12:30–13:30</td><td>大分站前午餐</td></tr>
+      <tr><td>13:30–17:30</td><td><strong>大分市區主購物 4 小時</strong></td></tr>
+      <tr><td>17:30–18:30</td><td>飯店 Check-in、整理戰利品</td></tr>
+      <tr><td>19:00–</td><td>大分市區自理晚餐</td></tr>
+    </table>
+    <div class="box-info">
+      <strong>🚠 別府纜車(鶴見岳)</strong>：約 10 分鐘上到標高 1,300m。鶴見岳紅葉 10 月中旬起從山頂往下轉色，是本趟賞楓重點。山上步道走一圈約 40 分–1 小時，天晴可眺望別府灣。營業 9:00 起，來回票大人約 1,800 日圓(以現場為準)。
+    </div>
+    <div class="box-warn">
+      <strong>⚠ 保暖</strong>：山上站比別府市街低約 10 度，10 月下旬可能 5 度以下，務必帶厚外套。
+    </div>
+    <p style="font-size:13px;color:var(--text-mute);">📌 今天是週二，百貨、商場照常營業；商店街部分個人小店可能週二公休。</p>
+  </div>
+</div>
+
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-num">DAY 5 · 2026/10/21 (週三) · ⭐ 皮克敏聖地</div>
+    <div class="day-title">Park Place 任天堂專區 + AEON 購物 → 機場</div>
+    <div class="day-route">大分市區 → Park Place(30min) → 大分機場(30min)</div>
+  </div>
+  <div class="day-body">
+    <table>
+      <tr><th style="width:18%">時間</th><th>行程</th></tr>
+      <tr><td>08:00–10:00</td><td>飯店早餐、悠閒整裝、10:00 退房</td></tr>
+      <tr><td>10:00–10:30</td><td>大分飯店 → Park Place 大分</td></tr>
+      <tr style="background:var(--recommend)"><td><strong>10:30–12:00</strong></td><td><strong>🎮 任天堂專區 + 採買(皮克敏周邊慢慢挑)</strong></td></tr>
+      <tr><td>12:00–13:00</td><td>AEON 永旺逛街(伴手禮、藥妝、雜貨補貨)</td></tr>
+      <tr><td>13:00–14:00</td><td>Park Place 美食街 / 餐廳午餐</td></tr>
+      <tr><td>14:00–14:30</td><td>Park Place → 機場周邊加油</td></tr>
+      <tr><td>14:45</td><td>抵達租車營業所</td></tr>
+      <tr style="background:var(--warn-light)"><td><strong>15:00 前</strong></td><td><strong>還車(依櫃台確認的時間)</strong></td></tr>
+      <tr><td>15:00–16:00</td><td>機場報到 → 出境 → 退稅</td></tr>
+      <tr><td>16:30</td><td>IT751 起飛、17:55 抵達桃園</td></tr>
+    </table>
+    <div class="box-warn">
+      <strong>⚠ 還車時間</strong>：預約還車時點原為 <strong>14:00</strong>(預約號 00010486642)。本日安排約 15:00 前還車，<strong>需在 Day 1 取車時向櫃台確認可延後、是否加費</strong>。若只能 14:00 還車：購物提前到 12:30 結束，午餐改在機場吃。
+    </div>
+    <div class="box-info">
+      <strong>📍 Park Place 大分</strong>：大分市公園通り西 2-1，營業 10:00–21:00，停車免費。<strong>AEON 2F「Kids Republic」內的任天堂專區(ニンテンドーコーナー)</strong>：大分縣內唯一常設點，有 Switch 2 試玩、瑪利歐 / 星之卡比 / 皮克敏等周邊。同棟 AEON 可一站買齊伴手禮，館內有美食街。
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="s4">
+<h2>4. 住宿總表</h2>
+<div class="box-info">
+分房模式：四晚皆為 <strong>2/2/1</strong>(夫妻 A、夫妻 B 各一間，女兒一間)。四晚<strong>皆附早餐</strong>，晚餐自理。
+</div>
+<table>
+  <tr><th style="width:7%">晚</th><th style="width:11%">日期</th><th>旅館</th><th style="width:20%">分房配置</th><th style="width:12%">早餐</th><th style="width:11%">狀態</th></tr>
+  <tr><td>1</td><td>10/17 六</td><td><strong>Toyoko Inn 大分中津駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">中津站步行 1 分鐘</span></td><td>雙床房 ×2 + 單人房 ×1<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
+  <tr><td>2</td><td>10/18 日</td><td><strong>Hotel Route-Inn 日田駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">日田站旁、免費停車、館內大浴場</span></td><td>3 間房<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
+  <tr><td>3</td><td>10/19 一</td><td><strong>金鱗湖豐國度假村</strong><br><span style="font-size:12px;color:var(--text-mute);">湯布院川上、金鱗湖畔</span></td><td>雙人房 ×3<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
+  <tr><td>4</td><td>10/20 二</td><td><strong>Toyoko Inn 大分駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">大分市金池町、近 JR 大分站</span></td><td>雙床房 ×2 + 單人房 ×1<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
+</table>
+
+</section>
+
+<section id="s5">
+<h2>5. 實用資訊</h2>
+
+<h3>購物地點(Day 4 下午 4 小時：大分市區)</h3>
+<table>
+  <tr><th style="width:28%">商場</th><th>主打</th></tr>
+  <tr><td>中央町商店街 + Galleria 竹町</td><td>拱頂連通商店街、雨天不撐傘</td></tr>
+  <tr><td>大分 OPA · Forus</td><td>女性服飾品牌</td></tr>
+  <tr><td>TOKIWA 百貨大分店</td><td>化妝品、日系品牌伴手禮</td></tr>
+  <tr><td>唐吉訶德大分中央町店</td><td>藥妝、零食、家電</td></tr>
+  <tr><td>JR 大分站 AMU PLAZA</td><td>地酒、柚子胡椒、伴手禮</td></tr>
+</table>
+
+<h3>租車重點</h3>
+<ul>
+  <li>Toyota Rent-a-Car 大分機場店，車型 <strong>Toyota Alphard</strong>(預約號 00010486642)</li>
+  <li>必備：日本駕照譯本 + 台灣駕照 + 護照 + 信用卡；ETC 卡</li>
+  <li>建議加購全險(CDW + NOC)，還車前加滿油並保留單據</li>
+  <li><strong>大車提醒</strong>：車長約 5m。由布院街區巷弄較窄，停車多留意；青の洞門停車場限高 3.6m 可停；機場、日田站前、大分市區、Park Place 停車場都寬敞</li>
+</ul>
+
+<h3>季節與星期注意(10 月下旬)</h3>
+<ul>
+  <li>平地氣溫約 10–18 度，日夜溫差大，洋蔥式穿搭</li>
+  <li><strong>別府纜車山上約 5 度以下、金鱗湖清晨 7 度以下、九重夢大吊橋風大</strong>，帶厚外套 + 圍巾</li>
+  <li>Day 2–3 山區路段可能起霧，市區先加滿油</li>
+  <li>10/19、10/20 為<strong>週一、週二平日</strong>，景點人潮少；部分個人商店週二公休</li>
+</ul>
+
+<h3>退稅</h3>
+<ul>
+  <li>單筆滿 5,500 日圓(含稅)可退稅，需護照本人</li>
+  <li>2026 新制：退稅商品於離境時在機場海關核驗，預留 30 分鐘</li>
+</ul>
+
+<h3>緊急聯絡 & App</h3>
+<table>
+  <tr><th style="width:35%">項目</th><th>內容</th></tr>
+  <tr><td>警察 / 救護車</td><td>110 / 119</td></tr>
+  <tr><td>台北駐福岡辦事處</td><td>+81 92-734-2810(急難 +81 90-1922-9740)</td></tr>
+  <tr><td>外交部緊急聯絡中心</td><td>+886 800-085-095</td></tr>
+  <tr><td>JAF 道路救援</td><td>#8139</td></tr>
+  <tr><td>必備 App</td><td>Google Maps、Yahoo! カーナビ、NAVITIME、食べログ、LINE</td></tr>
+</table>
+</section>
+
+<section id="s6">
+<h2>6. 導航地址速查表 🚗</h2>
+<div class="box-info">
+給主要司機：日本 Google Map 用<strong>日文名稱或電話號碼</strong>搜尋定位最準，優先複製日文欄。
+</div>
+
+<h3>住宿(4 晚)</h3>
+<table>
+  <tr><th style="width:16%">地點</th><th style="width:38%">日文名稱 / 地址</th><th style="width:22%">電話</th><th>備註</th></tr>
+  <tr><td>Day1 中津</td><td>東横INN大分中津駅前<br><span style="font-size:12px;color:var(--text-mute);">大分県中津市豊田町10-11</span></td><td>+81 979-25-1045</td><td>中津站旁</td></tr>
+  <tr><td>Day2 日田</td><td>ホテルルートイン日田駅前<br><span style="font-size:12px;color:var(--text-mute);">大分県日田市元町21-14</span></td><td>+81 50-5847-7411</td><td>日田站旁</td></tr>
+  <tr><td>Day3 由布院</td><td>金鱗湖豊国リゾート<br><span style="font-size:12px;color:var(--text-mute);">大分県由布市湯布院町川上1561</span></td><td>—</td><td>金鱗湖畔</td></tr>
+  <tr><td>Day4 大分</td><td>東横INN大分駅前<br><span style="font-size:12px;color:var(--text-mute);">大分県大分市金池町2-2-5</span></td><td>+81 97-534-1045</td><td>近JR大分站</td></tr>
+</table>
+
+<h3>景點 & 重要地點</h3>
+<table>
+  <tr><th style="width:14%">日期</th><th style="width:38%">日文名稱 / 地址</th><th style="width:20%">電話</th><th>備註</th></tr>
+  <tr><td>取/還車</td><td>トヨタレンタカー 大分空港店<br><span style="font-size:12px;color:var(--text-mute);">大分県国東市武蔵町糸原</span></td><td>—</td><td>預約號 00010486642</td></tr>
+  <tr><td>Day2</td><td>青の洞門<br><span style="font-size:12px;color:var(--text-mute);">大分県中津市本耶馬渓町曽木</span></td><td>—</td><td>停公共停車場後步行</td></tr>
+  <tr><td>Day2</td><td>一目八景<br><span style="font-size:12px;color:var(--text-mute);">大分県中津市耶馬溪町大字深耶馬3152</span></td><td>—</td><td>免費停車場</td></tr>
+  <tr><td>Day2</td><td>豆田町<br><span style="font-size:12px;color:var(--text-mute);">大分県日田市豆田町</span></td><td>—</td><td>店家約17:00打烊</td></tr>
+  <tr><td>Day3</td><td>九重“夢”大吊橋<br><span style="font-size:12px;color:var(--text-mute);">大分県玖珠郡九重町田野1208</span></td><td>+81 973-73-3800</td><td>8:30–17:00</td></tr>
+  <tr><td>Day3</td><td>峠の茶屋<br><span style="font-size:12px;color:var(--text-mute);">大分県玖珠郡九重町田野975-2</span></td><td>+81 973-79-2707</td><td>午餐 10:30–14:30</td></tr>
+  <tr><td>Day3</td><td>桂茶屋(備案)<br><span style="font-size:12px;color:var(--text-mute);">大分県玖珠郡九重町田野953</span></td><td>+81 973-79-3744</td><td>8:00–17:00</td></tr>
+  <tr><td>Day3–4</td><td>金鱗湖<br><span style="font-size:12px;color:var(--text-mute);">大分県由布市湯布院町川上1561-1</span></td><td>—</td><td>Day4 晨霧散步</td></tr>
+  <tr><td>Day4</td><td>別府ロープウェイ<br><span style="font-size:12px;color:var(--text-mute);">大分県別府市南立石字寒原10-7</span></td><td>+81 977-22-2278</td><td>鶴見岳賞楓</td></tr>
+  <tr><td>Day5</td><td>パークプレイス大分<br><span style="font-size:12px;color:var(--text-mute);">大分県大分市公園通り西2丁目1</span></td><td>+81 97-520-7777</td><td>2F 任天堂專區 + AEON</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-mute);">💡 在 Google Map 搜尋欄貼上電話號碼即可定位；沒有電話的點用日文名稱搜尋。</p>
+</section>
+
+<section id="s7">
+<h2>7. 參考遊記連結 📖</h2>
+<div class="box-info">
+每天重點景點的遊記與官方資訊，出發前可先看照片、抓現場感。文章發表時間不一，<strong>營業時間、票價以現場及官方公告為準</strong>。
+</div>
+
+<h3>Day 1 · 中津唐揚</h3>
+<ul class="links">
+  <li><a href="https://www.kkgo.info/morikara/" target="_blank" rel="noopener">過期牛奶｜元祖中津炸雞「森山」</a><br><span class="src">名店實吃、外帶組合份量參考</span></li>
+  <li><a href="https://kywu.pixnet.net/blog/posts/2035361754" target="_blank" rel="noopener">嬉遊記｜炸雞聖地 中津·耶馬溪·宇佐</a><br><span class="src">中津炸雞文化與多家店整理</span></li>
+  <li><a href="https://oita-tourism.com/zh-TW/stories/detail_84.html" target="_blank" rel="noopener">Visit Oita 官方｜大分美食特輯</a><br><span class="src">大分縣官方觀光網，含中津炸雞介紹</span></li>
+</ul>
+
+<h3>Day 2 · 耶馬溪、日田豆田町</h3>
+<ul class="links">
+  <li><a href="https://watabi.org/articles/yabakei-guide" target="_blank" rel="noopener">和旅誌 WaTabi｜耶馬溪攻略 2026</a><br><span class="src">青の洞門步行解禁、車輛仍禁的最新現況，停車場與一目八景資訊</span></li>
+  <li><a href="https://blog.xinmedia.com/article/161640" target="_blank" rel="noopener">欣傳媒｜耶馬溪 青之洞門、競秀峰、一目八景</a><br><span class="src">自駕賞楓遊記，兩區重點走法</span></li>
+  <li><a href="https://kywu.pixnet.net/blog/post/34283925" target="_blank" rel="noopener">嬉遊記｜日田豆田町全攻略</a><br><span class="src">老街歷史、日田炒麵名店介紹</span></li>
+  <li><a href="https://travelchia.com/hita-mamedamachi/" target="_blank" rel="noopener">加點旅行｜豆田町商店街散策</a><br><span class="src">必逛店家、伴手禮推薦</span></li>
+</ul>
+
+<h3>Day 3 · 九重夢大吊橋、九醉溪、由布院</h3>
+<ul class="links">
+  <li><a href="https://watabi.org/articles/kokonoe-yume-bridge-guide" target="_blank" rel="noopener">和旅誌 WaTabi｜九重夢大吊橋攻略</a><br><span class="src">門票、強風入場限制等實用資訊</span></li>
+  <li><a href="https://16vlog.com/nine-drunk.html" target="_blank" rel="noopener">1620 夫妻生活｜九醉溪 + 九重夢大吊橋自駕</a><br><span class="src">和本趟同路線，含桂茶屋一帶實景</span></li>
+  <li><a href="https://twoslowbyron.com/yufuin/" target="_blank" rel="noopener">由布院一日遊 2026｜湯之坪街道散策地圖</a><br><span class="src">自駕停車後的逛街動線、吉卜力 / Snoopy 等店家</span></li>
+  <li><a href="https://twopigsfun.com/lake-kinrin/" target="_blank" rel="noopener">兩豬小妹｜湯之坪街道散步路線＋金鱗湖</a><br><span class="src">街道店家與湖畔一路逛</span></li>
+</ul>
+
+<h3>Day 4 · 金鱗湖晨霧、別府纜車</h3>
+<ul class="links">
+  <li><a href="https://boo2k.com/archives/81921" target="_blank" rel="noopener">小布少爺｜金鱗湖晨霧拍攝時間</a><br><span class="src">清晨與白天的湖景對照</span></li>
+  <li><a href="https://boo2k.com/beppu-ropeway/" target="_blank" rel="noopener">小布少爺｜別府纜車 鶴見岳展望台</a><br><span class="src">山頂步道、七福神、觀景點實拍</span></li>
+  <li><a href="https://journey.tw/beppu-ropeway/" target="_blank" rel="noopener">Journey｜別府鶴見岳空中纜車</a><br><span class="src">營運時間、票價、沿途風景</span></li>
+  <li><a href="https://oita-tourism.com/zh-TW/attractions/detail_1015.html" target="_blank" rel="noopener">Visit Oita 官方｜別府空中纜車</a><br><span class="src">官方景點介紹</span></li>
+</ul>
+
+<h3>Day 5 · Park Place 任天堂專區</h3>
+<ul class="links">
+  <li><a href="https://shop.parkplace-oita.com/information/detail/479" target="_blank" rel="noopener">Park Place 大分 官方｜ニンテンドーコーナー</a><br><span class="src">官方公告：位置在 AEON 2F Kids Republic 內(日文)</span></li>
+  <li><a href="https://ooita.goguynet.jp/2025/09/21/nintendo/" target="_blank" rel="noopener">號外NET 大分市｜任天堂專區實地報導</a><br><span class="src">現場照片、Switch 2 試玩區(日文)</span></li>
+</ul>
+</section>
+
+<footer>
+<p>九州大分五天四夜自駕行程手冊（最終定案版）· 5 人團 · 2026.10.17(六)–10.21(三)</p>
+<p>實際開放時間、票價與道路狀況請以各官方公告為準。</p>
+</footer>
+
+</div>
+</body>
+</html>
