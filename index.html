@@ -2,553 +2,637 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>V3 九州大分五天四夜自駕行程手冊（定案版）</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --primary: #185FA5; --primary-light: #E6F1FB; --secondary: #BA7517;
-  --accent: #0F6E56; --warn: #A32D2D; --warn-light: #FCEBEB;
-  --bg: #FAF8F2; --paper: #FFFFFF; --text: #2C2C2A; --text-mute: #5F5E5A;
-  --line: #D3D1C7; --highlight: #FAEEDA; --recommend: #E1F5EE;
-}
-body { font-family: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; padding: 20px; }
-.container { max-width: 1100px; margin: 0 auto; background: var(--paper); padding: 40px 50px; border-radius: 8px; }
-header { text-align: center; padding: 24px 0 30px; border-bottom: 3px double var(--primary); margin-bottom: 30px; }
-header h1 { font-size: 30px; color: var(--primary); font-weight: 600; letter-spacing: 1px; }
-header .subtitle { color: var(--text-mute); margin-top: 8px; font-size: 14px; }
-header .badge { display: inline-block; background: var(--accent); color: white; padding: 5px 16px; border-radius: 20px; font-size: 13px; margin-top: 14px; }
-nav.toc { background: var(--primary-light); padding: 20px 30px; border-radius: 6px; margin-bottom: 35px; }
-nav.toc h3 { color: var(--primary); margin-bottom: 12px; font-size: 17px; }
-nav.toc ol { padding-left: 20px; columns: 2; column-gap: 30px; }
-nav.toc li { margin-bottom: 6px; font-size: 14px; }
-section { margin: 42px 0; padding-top: 10px; }
-h2 { font-size: 22px; color: var(--primary); border-left: 5px solid var(--primary); padding: 8px 16px; background: linear-gradient(to right, var(--primary-light) 0%, transparent 80%); margin-bottom: 20px; }
-h3 { font-size: 18px; color: var(--accent); margin: 25px 0 12px; padding-bottom: 6px; border-bottom: 1px dashed var(--line); }
-h4 { font-size: 16px; color: var(--secondary); margin: 18px 0 8px; }
-p { margin-bottom: 10px; }
-ul, ol { padding-left: 24px; margin-bottom: 12px; }
-li { margin-bottom: 4px; }
-strong { color: var(--primary); }
-.box { background: var(--highlight); border-left: 4px solid var(--secondary); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
-.box-warn { background: var(--warn-light); border-left: 4px solid var(--warn); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
-.box-info { background: var(--recommend); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
-table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
-th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; font-weight: 500; border: 1px solid var(--primary); }
-td { padding: 10px 12px; border: 1px solid var(--line); vertical-align: top; }
-tr:nth-child(even) td { background: #FAF8F2; }
-.day-card { background: white; border: 1px solid var(--line); border-radius: 8px; margin: 16px 0; overflow: hidden; }
-.day-header { background: linear-gradient(135deg, var(--primary), #378ADD); color: white; padding: 14px 20px; }
-.day-header .day-num { font-size: 13px; opacity: 0.9; }
-.day-header .day-title { font-size: 18px; font-weight: 600; margin-top: 2px; }
-.day-header .day-route { font-size: 12px; margin-top: 6px; opacity: 0.9; }
-.day-body { padding: 18px 22px; }
-.flight-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: var(--primary-light); padding: 16px 20px; border-radius: 6px; margin: 14px 0; }
-.flight-info > div { font-size: 14px; }
-.flight-info .label { font-size: 12px; color: var(--text-mute); }
-.flight-info .value { font-size: 15px; font-weight: 600; color: var(--primary); }
-.summary-row { display: grid; grid-template-columns: 80px 1.4fr 1fr 1fr; gap: 8px; padding: 10px; border-bottom: 1px solid var(--line); font-size: 13px; align-items: center; }
-.summary-row.header { background: var(--primary); color: white; font-weight: 600; border-radius: 4px 4px 0 0; }
-.summary-row .day-tag { background: var(--secondary); color: white; padding: 4px 8px; border-radius: 4px; text-align: center; font-weight: 600; font-size: 12px; }
-.flow-diagram { background: var(--primary-light); padding: 16px 20px; border-radius: 8px; font-size: 14px; line-height: 2.2; text-align: center; margin: 12px 0; }
-footer { margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--line); color: var(--text-mute); font-size: 13px; text-align: center; }
-@media print { body { padding: 0; background: white; } .container { padding: 20px; } .day-card { page-break-inside: avoid; } section { page-break-inside: avoid; } }
-nav.toc a { color: var(--primary); text-decoration: none; }
-.links { list-style: none; padding-left: 0; }
-.links li { padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
-.links a { color: var(--primary); font-weight: 600; text-decoration: none; word-break: break-all; }
-.links .src { color: var(--text-mute); font-size: 12px; }
-@media (max-width: 640px) { body { padding: 8px; } .container { padding: 20px 16px; } .flight-info { grid-template-columns: 1fr; } .summary-row { grid-template-columns: 70px 1fr; } .summary-row > div:nth-child(3), .summary-row > div:nth-child(4) { grid-column: 2; } nav.toc ol { columns: 1; } table { font-size: 13px; } th, td { padding: 8px; } }
-.maplink { color: var(--primary); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--primary); }
-.tellink { color: var(--accent); text-decoration: none; white-space: nowrap; }
-.addr { font-size: 12px; color: var(--text-mute); }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>九州大分自駕手冊</title>
+<meta name="description" content="2026.10.17-10.21 九州大分五天四夜自駕行程手冊（定案版 V3）：班機、逐日行程、住宿、導航地址與取還車流程。">
+<meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1318" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="preload" as="image" href="img/kinrinko.jpg">
+<link rel="stylesheet" href="site.css?v=1791076782">
 </head>
 <body>
-<div class="container">
 
-<header>
-  <h1>九州大分五天四夜自駕行程手冊</h1>
-  <div class="subtitle">5 人團 · 7 人座自駕 · 2026.10.17 (六) → 10.21 (三)</div>
-  <div class="badge">✅ 最終定案版 V3</div>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="#top" aria-label="回到頁首"><i>分</i><span>大分 2026</span></a>
+    <nav class="daytabs" aria-label="逐日行程">
+      <a href="#d1"><b>D1</b>中津</a>
+      <a href="#d2"><b>D2</b>耶馬溪</a>
+      <a href="#d3"><b>D3</b>由布院</a>
+      <a href="#d4"><b>D4</b>大分</a>
+      <a href="#d5"><b>D5</b>回程</a>
+    </nav>
+    <a class="toplink" href="spots.html"><i class="ph ph-book-open"></i><span>景點手冊</span></a>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 
-<nav class="toc">
-  <h3>📑 目錄</h3>
-  <ol>
-    <li><a href="#s1">基本資訊</a></li>
-    <li><a href="#s2">行程總覽</a></li>
-    <li><a href="#s3">逐日行程</a></li>
-    <li><a href="#s4">住宿總表</a></li>
-    <li><a href="#s5">實用資訊</a></li>
-    <li><a href="#s6">導航地址速查表</a></li>
-    <li><a href="#s7">參考遊記連結</a></li>
-    <li><a href="#s8">取車與還車流程</a></li>
-    <li><a href="spots.html">景點手冊(另開頁面)</a></li>
-  </ol>
-</nav>
+<main id="top">
 
-<div class="box-info">
-<strong>📖 景點手冊</strong>：每個重點景點的來歷、看點、10 月下旬會看到的景色與賞楓預期，請看 <a href="spots.html" style="color:var(--primary);font-weight:600;">景點手冊 →</a>
-</div>
-
-<section id="s1">
-<h2>1. 基本資訊</h2>
-<div class="flight-info">
-  <div><div class="label">去程班機</div><div class="value">IT750 10/17(六) 桃園 12:00 → 大分 15:00</div></div>
-  <div><div class="label">回程班機</div><div class="value">IT751 10/21(三) 大分 16:30 → 桃園 17:55</div></div>
-  <div><div class="label">同行人數</div><div class="value">5 位成人</div></div>
-  <div><div class="label">同行組成</div><div class="value">夫妻 A、夫妻 B + 成年女兒(一家三口)</div></div>
-  <div><div class="label">租車</div><div class="value">Budget 大分空港店・Alphard(預約號 00010486642)</div></div>
-  <div><div class="label">行李</div><div class="value">26 吋 ×4 + 隨身</div></div>
-</div>
-
-<div class="box-info">
-<strong>行程主軸</strong>：中津唐揚 → 耶馬溪奇岩 → 日田小京都 → 九重夢大吊橋 → 由布院 → 別府纜車賞楓 → 大分採買 → 皮克敏聖地。動線為弧線，每個住宿點都是當天行程終點，無回頭路。
-</div>
+<section class="hero">
+  <img src="img/kinrinko.jpg" width="1600" height="1200" alt="清晨的金鱗湖，湖面升起白霧，遠方是由布院的山" fetchpriority="high">
+  <div class="wrap hero-in">
+    <h1><small>2026.10.17 → 10.21 · 定案版 V3</small>九州大分<br>五天四夜自駕</h1>
+    <p class="lede">5 位大人、一台 Alphard，從中津繞一圈到大分。每晚都住在當天的終點，沒有回頭路。</p>
+    <div class="hero-row">
+      <span class="chip-count" id="countdown" hidden></span>
+      <a class="btn btn-solid" id="cta-today" href="#d1"><i class="ph ph-signpost"></i>從 Day 1 開始</a>
+      <a class="btn btn-ghost" href="spots.html" style="color:#F4F6F7;border-color:rgb(255 255 255 / .45)"><i class="ph ph-book-open"></i>景點手冊</a>
+    </div>
+  </div>
+  <p class="credit-hero">照片：金鱗湖晨霧 · Tzu-hsun, Hsu · <a href="https://commons.wikimedia.org/wiki/File:Lake_Kinrin_with_Morning_fog.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
 </section>
 
-<section id="s2">
-<h2>2. 行程總覽</h2>
-<div class="summary-row header"><div>日期</div><div>主軸</div><div>住宿</div><div>晚餐</div></div>
-<div class="summary-row">
-  <div class="day-tag">Day 1<br>10/17 六</div>
-  <div>機場取車 → 中津<br><span style="color:var(--text-mute);font-size:12px">唐揚 + 商店街喝一杯</span></div>
-  <div>中津 Toyoko Inn</div>
-  <div>中津居酒屋(口袋名單，當天選)</div>
-</div>
-<div class="summary-row">
-  <div class="day-tag">Day 2<br>10/18 日</div>
-  <div>中津 → 耶馬溪 → 大山ダム → 日田<br><span style="color:var(--text-mute);font-size:12px">青の洞門 + 一目八景 + 進擊巨人銅像</span></div>
-  <div>日田 Route Inn</div>
-  <div>日田(車上討論、隨機應變)</div>
-</div>
-<div class="summary-row">
-  <div class="day-tag">Day 3<br>10/19 一</div>
-  <div>日田 → 九重夢大吊橋 → 由布院<br><span style="color:var(--text-mute);font-size:12px">吊橋 + 九醉溪 + 湯之坪街道</span></div>
-  <div>由布院 金鱗湖豐國</div>
-  <div>由布院(當天討論、隨機應變)</div>
-</div>
-<div class="summary-row">
-  <div class="day-tag">Day 4<br>10/20 二</div>
-  <div>金鱗湖晨霧 → 別府纜車 → 大分採買<br><span style="color:var(--text-mute);font-size:12px">★ 賞楓 + 主購物日</span></div>
-  <div>大分 Toyoko Inn</div>
-  <div>銀乃しゃり 燒肉 ✅ 已訂</div>
-</div>
-<div class="summary-row">
-  <div class="day-tag">Day 5<br>10/21 三</div>
-  <div>Park Place 皮克敏 + AEON 購物 → 還車<br><span style="color:var(--text-mute);font-size:12px">⭐ 任天堂專區、悠閒收尾</span></div>
-  <div>—</div>
-  <div>—</div>
-</div>
-<p style="font-size:13px;color:var(--text-mute);margin-top:10px;">🔄 參考：Day 4 下午(大分市區逛街)與 Day 5 上午(Park Place)可對調，見 Day 4 說明。</p>
+<!-- 1 基本資訊 -->
+<section class="sec wrap" id="s1">
+  <div class="sec-head rv"><span class="n">1</span><h2>基本資訊</h2></div>
+
+  <div class="passes rv">
+    <article class="pass">
+      <div class="pass-main">
+        <div class="pass-top"><span>去程 · 10/17 六</span><b>IT 750</b></div>
+        <div class="pass-legs">
+          <div class="city"><span class="code">TPE</span><small>桃園</small></div>
+          <div class="path"><i class="ph-fill ph-airplane-tilt"></i></div>
+          <div class="city"><span class="code">OIT</span><small>大分</small></div>
+        </div>
+        <div class="pass-times"><span>12:00</span><span>15:00</span></div>
+      </div>
+      <div class="pass-stub"><div><span>出發</span><b>10/17</b><span>週六</span></div></div>
+    </article>
+    <article class="pass">
+      <div class="pass-main">
+        <div class="pass-top"><span>回程 · 10/21 三</span><b>IT 751</b></div>
+        <div class="pass-legs">
+          <div class="city"><span class="code">OIT</span><small>大分</small></div>
+          <div class="path"><i class="ph-fill ph-airplane-tilt"></i></div>
+          <div class="city"><span class="code">TPE</span><small>桃園</small></div>
+        </div>
+        <div class="pass-times"><span>16:30</span><span>17:55</span></div>
+      </div>
+      <div class="pass-stub"><div><span>回程</span><b>10/21</b><span>週三</span></div></div>
+    </article>
+  </div>
+
+  <dl class="facts rv">
+    <div><dt><i class="ph ph-users-three"></i>同行人數</dt><dd>5 位成人</dd></div>
+    <div><dt><i class="ph ph-users-three"></i>同行組成</dt><dd>夫妻 A、夫妻 B + 成年女兒(一家三口)</dd></div>
+    <div><dt><i class="ph ph-car-profile"></i>租車</dt><dd>Budget 大分空港店・Alphard<br><span class="num">預約號 00010486642</span></dd></div>
+    <div><dt><i class="ph ph-suitcase-rolling"></i>行李</dt><dd>26 吋 ×4 + 隨身</dd></div>
+  </dl>
+
+  <p class="lead-box rv"><strong>行程主軸</strong>　中津唐揚 → 耶馬溪奇岩 → 日田小京都 → 九重夢大吊橋 → 由布院 → 別府纜車賞楓 → 大分採買 → 皮克敏聖地。動線為弧線，每個住宿點都是當天行程終點，無回頭路。</p>
 </section>
 
-<section id="s3">
-<h2>3. 逐日行程</h2>
+<!-- 2 行程總覽 -->
+<section class="sec wrap" id="s2">
+  <div class="sec-head rv"><span class="n">2</span><h2>行程總覽</h2><p>點站名可以直接跳到那一天。</p></div>
 
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY 1 · 2026/10/17 (週六)</div>
-    <div class="day-title">抵達中津 · 居酒屋之夜</div>
-    <div class="day-route">Budget 營業所 → 中津市(約 60 分鐘 / 50 km)</div>
-  </div>
-  <div class="day-body">
-    <table>
-      <tr><th style="width:18%">時間</th><th>行程</th></tr>
-      <tr><td>15:00</td><td>抵達大分機場、領行李 → 航廈內 <strong>Budget 櫃台</strong>報到 → 搭接駁車到營業所取車(實際約 16:00 上路)</td></tr>
-      <tr><td>16:00–17:00</td><td>Budget 營業所 → 中津市(東九州道)</td></tr>
-      <tr><td>17:00–18:00</td><td>停車(飯店露天車位，沒有就停<strong>中津駅南口駐車場</strong>) → 東橫 INN Check-in</td></tr>
-      <tr><td>18:00/18:30–20:00</td><td><strong>晚餐</strong>：口袋名單五選一，當天看心情決定(見下表)</td></tr>
-      <tr><td>20:00–22:00</td><td>站前商店街續攤喝一杯(自由)</td></tr>
-      <tr><td>22:00</td><td>步行回飯店</td></tr>
-    </table>
-    <div class="box-warn">
-      <strong>⚠ 取車時必辦</strong>：向 Budget 櫃台確認 Day 5 還車可否從預約的 14:00 延到 <strong>14:30</strong>、是否加費(詳見第 8 節)。
-    </div>
-    <div class="box-warn">
-      <strong>🅿 中津停車</strong>：東橫 INN 的停車場限高 1.8m、先到先停，Alphard 可能停不進去。沒有露天車位就停 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%8D%97%E5%8F%A3%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0058%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0219-2" target="_blank" rel="noopener">📍 中津駅南口駐車場</a>(島田 219-2，離飯店約 80m)。<br>
-      收費：20 分內免費、每 60 分 200 日圓、<strong>24 小時內最多 600 日圓(不重複累計)</strong>，停過夜約 600 日圓。停車場 <a class="tellink" href="tel:+81979250582">📞 +81 979-25-0582</a>；管理公司 JR 九州レンタカー＆パーキング <a class="tellink" href="tel:+81975008880">📞 +81 97-500-8880</a>(9:00–18:00)。
-    </div>
-    <h4>🍽 晚餐口袋名單(依離東橫 INN 由近到遠，10/17 週六皆營業)</h4>
-    <table>
-      <tr><th style="width:5%">#</th><th>店家(點開地圖)</th><th style="width:16%">步行</th><th style="width:14%">週六營業</th><th style="width:24%">電話／備註</th></tr>
-      <tr><td>1</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%96%87%E6%A5%BD%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA6-13" target="_blank" rel="noopener">📍 文楽</a><br><span class="addr">居酒屋(串炸、牛腸鍋)｜評價 4.4</span></td><td>約 3 分<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&destination=%E6%96%87%E6%A5%BD%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA6-13&travelmode=walking" target="_blank" rel="noopener">🚶 步行導航</a></td><td>17:30–22:00</td><td><a class="tellink" href="tel:+81979244755">📞 +81 979-24-4755</a><br><span class="addr">二樓可接團體；桌位可抽菸</span></td></tr><tr><td>2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%20%E5%B9%B3%E5%AE%89%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA4-8" target="_blank" rel="noopener">📍 焼肉 平安</a><br><span class="addr">燒肉(中津最老字號)｜評價 4.0</span></td><td>約 4–5 分<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&destination=%E7%84%BC%E8%82%89%20%E5%B9%B3%E5%AE%89%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA4-8&travelmode=walking" target="_blank" rel="noopener">🚶 步行導航</a></td><td>11:00–22:00</td><td><a class="tellink" href="tel:+81979234089">📞 +81 979-23-4089</a><br><span class="addr">厚切鹽牛舌、內臟</span></td></tr><tr><td>3</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E3%81%86%E3%81%A9%E3%82%93%E3%81%86%E3%81%A1%E3%81%A0%E5%B1%8B%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA3-12" target="_blank" rel="noopener">📍 博多うどんうちだ屋 中津店</a><br><span class="addr">烏龍麵、豬排丼｜評價 3.6</span></td><td>約 6 分<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&destination=%E5%8D%9A%E5%A4%9A%E3%81%86%E3%81%A9%E3%82%93%E3%81%86%E3%81%A1%E3%81%A0%E5%B1%8B%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA3-12&travelmode=walking" target="_blank" rel="noopener">🚶 步行導航</a></td><td>11:00–23:30</td><td><a class="tellink" href="tel:+81979238311">📞 +81 979-23-8311</a><br><span class="addr">免訂位，適合備案、宵夜</span></td></tr><tr><td>4</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%8C%A6%E9%9B%B2%E8%B1%9A%E5%B0%82%E9%96%80%E5%BA%97%20%E3%81%B5%E3%81%8F%E3%81%A8%E3%82%93%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0578-4" target="_blank" rel="noopener">📍 錦雲豚専門店 ふくとん</a><br><span class="addr">炸豬排(耶馬溪錦雲豚)｜評價 4.2</span></td><td>約 7–8 分<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&destination=%E9%8C%A6%E9%9B%B2%E8%B1%9A%E5%B0%82%E9%96%80%E5%BA%97%20%E3%81%B5%E3%81%8F%E3%81%A8%E3%82%93%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0578-4&travelmode=walking" target="_blank" rel="noopener">🚶 步行導航</a></td><td>17:00–20:00</td><td><a class="tellink" href="tel:+81979232922">📞 +81 979-23-2922</a><br><span class="addr">20:00 打烊；Tabelog 可預約</span></td></tr><tr><td>5</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E4%B8%80%E5%96%84%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0555-3" target="_blank" rel="noopener">📍 焼肉一善 中津店</a><br><span class="addr">燒肉｜評價 4.5</span></td><td>約 7–8 分<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&destination=%E7%84%BC%E8%82%89%E4%B8%80%E5%96%84%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0555-3&travelmode=walking" target="_blank" rel="noopener">🚶 步行導航</a></td><td>17:00–23:00</td><td><a class="tellink" href="tel:+81979270233">📞 +81 979-27-0233</a><br><span class="addr">入口在 2F、像後門</span></td></tr>
-    </table>
-    <p style="font-size:13px;color:var(--text-mute);">📌 想喝酒聊天選文楽，想吃肉選平安，兩家都在步行 5 分鐘內。5 人週六晚上建議先電話訂位。</p>
-  </div>
-</div>
+  <nav class="route" aria-label="路線圖">
+    <ol>
+      <li><a href="#d1"><span class="stop"></span><b>大分空港</b><span class="d">10/17</span><small>取車</small></a></li>
+      <li class="night"><a href="#d1"><span class="stop"></span><b>中津</b><span class="d">DAY 1</span><small>東橫 INN</small></a></li>
+      <li class="night"><a href="#d2"><span class="stop"></span><b>日田</b><span class="d">DAY 2</span><small>Route Inn</small></a></li>
+      <li class="night"><a href="#d3"><span class="stop"></span><b>由布院</b><span class="d">DAY 3</span><small>金鱗湖豐國</small></a></li>
+      <li class="night"><a href="#d4"><span class="stop"></span><b>大分</b><span class="d">DAY 4</span><small>東橫 INN</small></a></li>
+      <li><a href="#d5"><span class="stop"></span><b>大分空港</b><span class="d">10/21</span><small>還車・回程</small></a></li>
+    </ol>
+  </nav>
 
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY 2 · 2026/10/18 (週日) · 耶馬溪 + 進擊巨人</div>
-    <div class="day-title">中津 → 青の洞門 → 一目八景 → 大山ダム → 日田</div>
-    <div class="day-route">開車合計約 3 小時 20 分，多為山路；16:00 前後到日田，天黑前收工</div>
+  <div class="board rv" style="margin-top:16px">
+    <div class="board-row board-head"><span>日期</span><span>主軸</span><span>住宿</span><span>晚餐</span></div>
+    <a class="board-row" href="#d1"><span class="when"><b>D1</b><small>10/17 六</small></span><span class="what">機場取車 → 中津<small>唐揚 + 商店街喝一杯</small></span><span class="meta"><span class="lbl">住</span>中津 Toyoko Inn</span><span class="meta"><span class="lbl">晚餐</span>中津居酒屋(口袋名單，當天選)</span></a>
+    <a class="board-row" href="#d2"><span class="when"><b>D2</b><small>10/18 日</small></span><span class="what">中津 → 耶馬溪 → 大山ダム → 日田<small>青の洞門 + 一目八景 + 進擊巨人銅像</small></span><span class="meta"><span class="lbl">住</span>日田 Route Inn</span><span class="meta"><span class="lbl">晚餐</span>日田(車上討論、隨機應變)</span></a>
+    <a class="board-row" href="#d3"><span class="when"><b>D3</b><small>10/19 一</small></span><span class="what">日田 → 九重夢大吊橋 → 由布院<small>吊橋 + 九醉溪 + 湯之坪街道</small></span><span class="meta"><span class="lbl">住</span>由布院 金鱗湖豐國</span><span class="meta"><span class="lbl">晚餐</span>由布院(當天討論、隨機應變)</span></a>
+    <a class="board-row" href="#d4"><span class="when"><b>D4</b><small>10/20 二</small></span><span class="what">金鱗湖晨霧 → 別府纜車 → 大分採買<small>賞楓 + 主購物日</small></span><span class="meta"><span class="lbl">住</span>大分 Toyoko Inn</span><span class="meta"><span class="lbl">晚餐</span><span class="ok">銀乃しゃり 燒肉 已訂</span></span></a>
+    <a class="board-row" href="#d5"><span class="when"><b>D5</b><small>10/21 三</small></span><span class="what">Park Place 皮克敏 + AEON 購物 → 還車<small>任天堂專區、悠閒收尾</small></span><span class="meta"><span class="lbl">住</span>-</span><span class="meta"><span class="lbl">晚餐</span>-</span></a>
   </div>
-  <div class="day-body">
-    <table>
-      <tr><th style="width:18%">時間</th><th>行程</th><th style="width:16%">停留／移動</th></tr>
-      <tr><td>09:30</td><td>退房、取車(早餐依個人需求，退房前自理)</td><td></td></tr>
-      <tr><td>09:30–10:00</td><td>中津 → <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%20%E8%87%A8%E6%99%82%E9%A7%90%E8%BB%8A%E5%A0%B4%20PK-02%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener">📍 青の洞門 臨時駐車場(PK-02)</a></td><td>🚗 約 25–30 分</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>10:00–11:15</strong></td><td><strong>青の洞門周邊散策</strong>：青の禅海橋 → 對岸眺望競秀峰 → 禅海和尚像 → 禅海和尚の手掘り洞窟 → 青の洞門、耶馬溪新三景之碑</td><td>🚶 約 75 分</td></tr>
-      <tr><td>11:15–11:25</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%BA%97%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A81866-1" target="_blank" rel="noopener">📍 ローソン 本耶馬溪町店</a> 買水、補給</td><td>10 分</td></tr>
-      <tr><td>11:25–11:50</td><td>→ 午餐</td><td>🚗 15–25 分</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>11:40–12:50</strong></td><td><strong>午餐三選一</strong>(見下方說明)</td><td>50–70 分</td></tr>
-      <tr><td>12:50–13:10</td><td>→ <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener">📍 バス専用駐車場(深耶馬 3102-2)</a></td><td>🚗 10–30 分</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>13:10–14:00</strong></td><td><strong>散步到一目八景展望台</strong></td><td>🚶 約 50 分</td></tr>
-      <tr><td>14:00–14:50</td><td>深耶馬溪 → <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%97%A5%E7%94%B0%E5%A4%A9%E7%80%AC%E7%94%BA%E5%BA%97%20%E3%80%92879-4123%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A9%E7%80%AC%E7%94%BA%E5%A5%B3%E5%AD%90%E7%95%911790-1" target="_blank" rel="noopener">📍 ローソン 日田天瀬町店</a></td><td>🚗 約 45–50 分</td></tr>
-      <tr><td>14:50–15:05</td><td>買水、上廁所、司機休息</td><td>15 分</td></tr>
-      <tr><td>15:05–15:20</td><td>→ <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0201%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A7%E5%B1%B1%E7%94%BA%E8%A5%BF%E5%A4%A7%E5%B1%B12008-1" target="_blank" rel="noopener">📍 大山ダム銅像下方停車場</a></td><td>🚗 約 15 分</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>15:20–15:35</strong></td><td><strong>進撃の巨人 大山ダム銅像 拍照打卡</strong></td><td>約 15 分</td></tr>
-      <tr><td>15:35–15:55</td><td>→ Route Inn 日田駅前 第 1 停車場</td><td>🚗 約 20 分</td></tr>
-      <tr><td><strong>16:00</strong></td><td><strong>Check-in</strong></td><td></td></tr>
-      <tr><td>18:00–</td><td>日田晚餐(<strong>車上討論、隨機應變</strong>)</td><td></td></tr>
-      <tr><td>晚餐後</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%89%E3%83%A9%E3%83%83%E3%82%B0%E3%82%B9%E3%83%88%E3%82%A2%E3%83%A2%E3%83%AA%20%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%E5%BA%97%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA14-14-8" target="_blank" rel="noopener">📍 ドラッグストアモリ 日田駅前店</a> 買藥妝(營業到 24:00，走路可到)；想再逛可步行到 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E6%97%A5%E7%94%B0%E5%BA%97%20%E3%80%92877-0024%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%8D%97%E5%85%83%E7%94%BA14-22" target="_blank" rel="noopener">📍 イオン日田店</a>(到 22:00)</td><td></td></tr>
-    </table>
-
-    <div class="box">
-      <strong>🅿 青の洞門停車順序</strong>：① <strong>臨時駐車場 PK-02</strong>(對岸，免費；可能只在楓葉季等活動期間開放) → ② 沒開就停 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener">📍 青の洞門公共停車場</a>(免費、有廁所、限高 3.6m，走過禅海橋接上原路線) → ローソン 本耶馬溪町店<strong>只在離開時補給停約 10 分</strong>，不當長時間停車場。<br>
-      <span class="addr">萬一兩個停車場都滿、只能停超商：先進店消費，並問店員「車を1時間ほど停めてもいいですか？」，照店門口告示辦理。</span>
-    </div>
-    <div class="box-info">
-      <strong>🏞 青の洞門一帶</strong>：約 250 年前禪海和尚為了旅人安全，用鑿子和槌子花 30 年挖成的隧道，隧道內還留有部分手掘鑿痕，附近河川公園有禪海手持鑿槌的雕像。從<strong>青の禅海橋</strong>(人行橋)走到對岸，可以看到競秀峰全景。手掘洞窟分南北兩處：北側留有禪海最早開的採光窗；南側曾因 2024 年 11 月落石封閉，以現場告示為準。
-    </div>
-    <div class="box-warn">
-      <strong>⚠ 青の洞門 2026 現況</strong>：2024 年 11 月岩盤崩落後封閉，2026 年 4 月起<strong>步行已解禁、車輛仍禁止通行</strong>。狀態可能變動，出發前再查中津市公告。
-    </div>
-    <div class="box">
-      <strong>🍽 午餐三選一(10/18 週日都有營業)</strong>
-      <table style="margin-top:8px;">
-        <tr><th style="width:22%">店家</th><th>特色</th><th style="width:20%">營業／電話</th></tr>
-        <tr><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E9%9B%B2%E9%BE%8D%20%E3%80%92871-0405%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%9F%BF%E5%9D%82745-1" target="_blank" rel="noopener">📍 天雲龍</a></td><td>1977 年創業的耶馬溪野味料理(野豬、鹿)，窗邊座位看得到耶馬溪水壩與山國川；野豬熔岩燒定食約 3,850 日圓。評價 4.3。<strong>順路</strong></td><td>11:00–17:00(週四休)<br><a class="tellink" href="tel:+81979542552">📞 +81 979-54-2552</a></td></tr>
-        <tr><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%89%8B%E6%89%93%E3%81%A1%E3%81%9D%E3%81%B0%20%E7%AD%8D%20%E3%80%92871-0431%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%A4%A7%E5%B3%B6174-1" target="_blank" rel="noopener">📍 手打ちそば 筍</a></td><td>國道 212 旁的手打蕎麥麵，用在地蕎麥，黑豚豬排丼也受好評，停車場大。評價 3.9。<strong>偏離路線</strong>，去一目八景要折返約 10 分</td><td>11:00–14:00<br><a class="tellink" href="tel:+819047756093">📞 +81 90-4775-6093</a></td></tr>
-        <tr><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%81%BB%E3%81%AE%E3%81%BC%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92871-0421%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%B1%B1%E7%A7%BB3802" target="_blank" rel="noopener">📍 ほのぼの茶屋</a></td><td>在地阿姨經營的鄉土定食，只有一種套餐、約 700 日圓，份量大；忙時出菜慢。評價 4.3。<strong>最順路</strong></td><td>11:00–14:00<br><a class="tellink" href="tel:+81979552214">📞 +81 979-55-2214</a></td></tr>
-      </table>
-      <span class="addr">決定時機：逛青の洞門時看時間，<strong>11:00 前逛完 → 天雲龍</strong>(需要慢慢吃，想吃可先打電話訂窗邊座位)；<strong>拖到 11:15 以後 → ほのぼの茶屋</strong>。</span>
-    </div>
-    <div class="box">
-      <strong>🅿 一目八景停車</strong>：導航設 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener">📍 バス専用駐車場 3102-2</a>(有門牌，定位準)，到了實際停隔壁的 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%B7%B1%E8%80%B6%E9%A6%AC%E6%B8%93%E5%85%AC%E5%85%B1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC" target="_blank" rel="noopener">📍 深耶馬渓公共駐車場</a>，步行約 5 分到展望台。バス専用為巴士專用，以現場告示為準。
-    </div>
-    <div class="box-info">
-      <strong>🗿 進撃の巨人 大山ダム銅像</strong>：艾連、米卡莎、阿爾敏少年時期的銅像，抬頭望著水壩牆面，重現第 1 集開頭的場景。<strong>導航設下方停車場</strong>(免費、約 30 台)，走約 3 分到銅像；上方管理所停車場走不下去。<strong>銅像旁沒有廁所</strong>，在天瀬那家ローソン先上。
-    </div>
-    <div class="box-warn">
-      <strong>🧭 導航提醒</strong>：一目八景出發時，<strong>先把目的地設成ローソン 日田天瀬町店</strong>，到了再改設大山ダム停車場，否則 Google Map 可能選不經過天瀬的路。出發前可先比對「經天瀬」與「直接到大山ダム」兩條路的時間，若經天瀬多出 15 分鐘以上，改停國道 212 沿線其他超商。
-    </div>
-    <div class="box">
-      <strong>☔ 雨天／提早到日田</strong>：雨天照走，撐傘、穿防滑鞋，青の洞門與一目八景可縮短停留。提早結束就從大山ダム先去 <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E7%94%B0%20%E3%80%92877-0074%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%BA%84%E6%89%8B661-1" target="_blank" rel="noopener">📍 イオンタウン日田</a>(10:00–20:00，大型 Daiso、ABC-Mart、星巴克、AEON 超市 The Big、藥妝)，逛完開 5 分鐘到 Route Inn check-in。
-    </div>
-    <div class="box-warn">
-      <strong>⚠ 山路駕駛</strong>：全天開車約 3 小時 20 分，多為山路彎道，十月可能起霧。下午那段最長，同行若有人帶國際駕照可換手；Day 1 晚上司機喝酒適量。
-    </div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY 3 · 2026/10/19 (週一) · 吊橋 + 由布院散策</div>
-    <div class="day-title">日田 → 九重夢大吊橋 → 由布院</div>
-    <div class="day-route">日田 → 九重夢大吊橋(60min) → 峠の茶屋(5–10min) → 由布院(60min)</div>
-  </div>
-  <div class="day-body">
-    <table>
-      <tr><th style="width:18%">時間</th><th>行程</th></tr>
-      <tr><td>08:00–09:00</td><td>飯店早餐、退房(出發前加滿油，山區加油站少)</td></tr>
-      <tr><td>09:00–10:00</td><td>日田 → 九重夢大吊橋(大分道 日田 IC → 九重 IC → 縣道 40 號)</td></tr>
-      <tr><td>10:00–11:30</td><td><strong>九重夢大吊橋</strong>(週一平日，人潮少)</td></tr>
-      <tr><td>11:30–11:45</td><td>吊橋 → 峠の茶屋(往九醉溪方向)</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>11:45–13:00</strong></td><td><strong>午餐：峠の茶屋</strong>(炭火烤雞定食)</td></tr>
-      <tr><td>13:00–14:00</td><td>九醉溪 → 國道 210 號 → 水分峠 → 由布院</td></tr>
-      <tr><td><strong>14:00–16:30</strong></td><td><strong>湯之坪街道散策 + 採買</strong>(多數店家 17:00–17:30 打烊)</td></tr>
-      <tr><td>16:30–</td><td>金鱗湖豐國 Check-in(15:00 起)、泡湯</td></tr>
-      <tr><td>18:30–</td><td>由布院晚餐(<strong>當天討論、隨機應變</strong>)</td></tr>
-    </table>
-    <div class="box-info">
-      <strong>🌉 九重夢大吊橋</strong>：高 173m、長 390m，日本最高的人行吊橋，可俯瞰九醉溪谷與震動瀑布。門票大人 500 日圓，營業 8:30–17:00，兩端皆有大型停車場。橋上風大偏冷，強風時可能限制入橋；怕高的同行者先講。
-    </div>
-    <div class="box">
-      <strong>🍗 峠の茶屋</strong>：九重町田野 975-2，營業 10:30–14:30，週一有營業。老夫婦經營、炭火烤雞，店小，5 人建議 11:45 前進店。炭火煙味重，外套可先留車上。<strong>客滿備案</strong>：隔壁約 300m 的桂茶屋(8:00–17:00，雞天、山女魚鹽烤)，不用改路線。
-    </div>
-    <div class="box-warn">
-      <strong>⚠ 由布院停車</strong>：14:00 到由布院時旅館還不能入住，事先問金鱗湖豐國能否先停車、寄放行李，再步行逛湯之坪街道。九醉溪為彎道山路，駕駛放慢。
-    </div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY 4 · 2026/10/20 (週二) · ★ 賞楓 + 主購物日</div>
-    <div class="day-title">金鱗湖晨霧 → 別府纜車 → 大分採買</div>
-    <div class="day-route">由布院 → 別府纜車(25min) → 大分市區(45min)</div>
-  </div>
-  <div class="day-body">
-    <table>
-      <tr><th style="width:18%">時間</th><th>行程</th></tr>
-      <tr><td>07:00–08:00</td><td>金鱗湖晨霧散步(旅館就在湖邊)</td></tr>
-      <tr><td>08:00–09:00</td><td>回旅館早餐、退房</td></tr>
-      <tr><td>09:00–09:25</td><td>由布院 → 別府纜車(九州橫斷道路)</td></tr>
-      <tr><td>09:25–11:45</td><td><strong>別府纜車(鶴見岳)上下山 + 山上賞楓散步</strong></td></tr>
-      <tr><td>11:45–12:30</td><td>別府 → 大分市區，直接停<strong>トラストパーク大分駅前</strong>(停到 Day 5 早上)</td></tr>
-      <tr><td>12:30–13:30</td><td>步行到大分站前午餐(<strong>當天隨機應變</strong>，可參考第 5 節必吃：豐後茶屋とり天、だんご汁)</td></tr>
-      <tr><td>13:30–17:30</td><td><strong>大分市區主購物 4 小時</strong>(全程步行、不移車)</td></tr>
-      <tr><td>17:30–18:15</td><td>步行回東橫 INN Check-in、整理戰利品(行李可分批從車上拿)</td></tr>
-      <tr><td>18:15–18:30</td><td>步行穿過大分站南北通道到站南(約 7–10 分)</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>18:30–</strong></td><td><strong>晚餐：銀乃しゃり 大分駅南店</strong>(包廂燒肉，✅ 已訂)</td></tr>
-    </table>
-    <div class="box-info">
-      <strong>🔄 參考：Day 4 下午與 Day 5 上午可對調</strong><br>
-      想讓皮克敏組慢慢逛、Day 5 不用趕，可以把兩段對調，<strong>晚餐 18:30 銀乃しゃり不變</strong>：
-      <table style="margin-top:8px;">
-        <tr><th style="width:22%">對調後</th><th>行程</th></tr>
-        <tr><td>Day 4 12:30–17:00</td><td>別府纜車後直接去 Park Place：午餐 + 任天堂專區 + AEON(約 4.5 小時)</td></tr>
-        <tr><td>Day 4 17:00</td><td><strong>準時離開 Park Place</strong> → 17:30 停トラストパーク → Check-in → 18:15 走路去吃燒肉</td></tr>
-        <tr><td>Day 5 10:00–12:45</td><td>退房後步行逛大分站周邊與商店街(參考第 5 節逛街攻略)、午餐</td></tr>
-        <tr><td>Day 5 12:45–13:00</td><td>トラストパーク取車 → 出發往機場(約 60 分)</td></tr>
-        <tr><td>Day 5 14:00 / 14:30</td><td>アポロステーション加油 → Budget 還車(不變)</td></tr>
-      </table>
-      <span class="addr">對調的好處：Park Place 逛到不用看時間，Day 5 少一段趕路；代價是 Day 4 傍晚要準時離開 Park Place。</span>
-    </div>
-    <div class="box-info">
-      <strong>🚠 別府纜車(鶴見岳)</strong>：約 10 分鐘上到標高 1,300m。鶴見岳紅葉 10 月中旬起從山頂往下轉色，是本趟賞楓重點。山上步道走一圈約 40 分–1 小時，天晴可眺望別府灣。營業 9:00 起，來回票大人約 1,800 日圓(以現場為準)。
-    </div>
-    <div class="box-warn">
-      <strong>⚠ 保暖</strong>：山上站比別府市街低約 10 度，10 月下旬可能 5 度以下，務必帶厚外套。
-    </div>
-    <div class="box-warn">
-      <strong>🅿 大分停車</strong>：東橫 INN 大分駅前的停車場放不下 Alphard，改停隔壁的<strong>トラストパーク大分駅前</strong>(金池町 2-2-1，投幣式收費)。到場先看看板上的<strong>最大料金是否含過夜</strong>，並確認限高。
-    </div>
-    <p style="font-size:13px;color:var(--text-mute);">📌 今天是週二，百貨、商場照常營業；商店街部分個人小店可能週二公休。</p>
-    <div class="box-info">
-      <strong>🥩 晚餐 ✅ 已訂｜銀乃しゃり 大分駅南店</strong>(牛舌與橫膈膜包廂燒肉，亞李蘭集團)<br>
-      10/20(二) <strong>18:30</strong>｜5 位｜包廂桌席・禁菸｜只訂座位，現場點菜<br>
-      預約編號 <strong>SE3068292</strong>(Hot Pepper)｜預約名 姜(キョウ)様<br>
-      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97" target="_blank" rel="noopener">📍 東大道 1-3-1 アクロスプラザ大分駅南</a>｜<a class="tellink" href="tel:+81975296679">📞 +81 97-529-6679</a>｜<a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2-2-5&destination=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97&travelmode=walking" target="_blank" rel="noopener">🚶 從東橫 INN 步行導航</a><br>
-      <span class="addr">推薦：牛舌、橫膈膜(ハラミ)、生牛肉(ユッケ)、燻製牛舌沙拉。平板點餐、桌上可能沒呼叫鈴；包廂開爐偏熱，外套可留飯店。</span>
-    </div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY 5 · 2026/10/21 (週三) · ⭐ 皮克敏聖地</div>
-    <div class="day-title">Park Place 任天堂專區 + AEON 購物 → 機場</div>
-    <div class="day-route">大分市區 → Park Place(30min) → 加油站(約 60min) → Budget 還車 → 接駁車到機場</div>
-  </div>
-  <div class="day-body">
-    <table>
-      <tr><th style="width:18%">時間</th><th>行程</th></tr>
-      <tr><td>08:00–10:00</td><td>飯店早餐、悠閒整裝、10:00 退房</td></tr>
-      <tr><td>10:00–10:30</td><td>トラストパーク取車 → Park Place 大分</td></tr>
-      <tr style="background:var(--recommend)"><td><strong>10:30–11:45</strong></td><td><strong>🎮 任天堂專區 + 採買(皮克敏周邊)</strong></td></tr>
-      <tr><td>11:45–12:15</td><td>Park Place 美食街午餐(<strong>當天隨意挑</strong>，趕在 12:00 尖峰前入座)</td></tr>
-      <tr><td>12:15–13:00</td><td>AEON 永旺逛街(伴手禮、藥妝、雜貨補貨)</td></tr>
-      <tr style="background:var(--warn-light)"><td><strong>13:00</strong></td><td><strong>準時離開 Park Place</strong></td></tr>
-      <tr><td>14:00</td><td>抵達<strong>アポロステーション 大分空港前</strong>加滿油(Budget 隔壁)</td></tr>
-      <tr style="background:var(--warn-light)"><td><strong>14:30 前</strong></td><td><strong>Budget 營業所還車</strong></td></tr>
-      <tr><td>15:00 前</td><td>搭接駁車抵達機場航廈</td></tr>
-      <tr><td>15:00–16:00</td><td>報到 → 出境 → 退稅</td></tr>
-      <tr><td>16:30</td><td>IT751 起飛、17:55 抵達桃園</td></tr>
-    </table>
-    <p style="font-size:13px;color:var(--text-mute);">🔄 參考：本日上午可與 Day 4 下午對調(改逛大分市區、13:00 前離開大分)，見 Day 4 說明。</p>
-    <div class="box-warn">
-      <strong>⚠ 還車時間</strong>：預約還車時點為 <strong>14:00</strong>(預約號 00010486642)，本日安排 14:30 前還車，<strong>需在 Day 1 取車時向 Budget 櫃台確認可延後、是否加費</strong>。若只能 14:00 還車：12:30 離開 Park Place、13:30 加油、14:00 還車。Park Place → 加油站是全程最需要準時的一段，出發前用 Google Map 看即時車程。
-    </div>
-    <div class="box-info">
-      <strong>📍 Park Place 大分</strong>：大分市公園通り西 2 丁目 1 番，營業 10:00–21:00，停車免費。<strong>AEON 2F「Kids Republic」內的任天堂專區(ニンテンドーコーナー)</strong>：大分縣內唯一常設點，有 Switch 2 試玩、瑪利歐 / 星之卡比 / 皮克敏等周邊。同棟 AEON 可一站買齊伴手禮，館內有美食街。
-    </div>
-  </div>
-</div>
+  <p class="aside-note rv"><i class="ph ph-arrows-left-right"></i>參考：Day 4 下午(大分市區逛街)與 Day 5 上午(Park Place)可對調，見 Day 4 說明。</p>
 </section>
 
-<section id="s4">
-<h2>4. 住宿總表</h2>
-<div class="box-info">
-分房模式：四晚皆為 <strong>2/2/1</strong>(夫妻 A、夫妻 B 各一間，女兒一間)。四晚<strong>皆附早餐</strong>，晚餐自理。
-</div>
-<table>
-  <tr><th style="width:7%">晚</th><th style="width:11%">日期</th><th>旅館</th><th style="width:20%">分房配置</th><th style="width:12%">早餐</th><th style="width:11%">狀態</th></tr>
-  <tr><td>1</td><td>10/17 六</td><td><strong>Toyoko Inn 大分中津駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">中津站步行 1 分鐘</span></td><td>雙床房 ×2 + 單人房 ×1<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
-  <tr><td>2</td><td>10/18 日</td><td><strong>Hotel Route-Inn 日田駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">日田站旁、免費停車、館內大浴場</span></td><td>3 間房<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
-  <tr><td>3</td><td>10/19 一</td><td><strong>金鱗湖豐國度假村</strong><br><span style="font-size:12px;color:var(--text-mute);">湯布院川上、金鱗湖畔</span></td><td>雙人房 ×3<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
-  <tr><td>4</td><td>10/20 二</td><td><strong>Toyoko Inn 大分駅前</strong><br><span style="font-size:12px;color:var(--text-mute);">大分市金池町、近 JR 大分站</span></td><td>雙床房 ×2 + 單人房 ×1<br>(2/2/1)</td><td>✅ 含早餐</td><td>✅ 已訂</td></tr>
-</table>
+<!-- 3 逐日行程 -->
+<section class="sec wrap" id="s3">
+  <div class="sec-head rv"><span class="n">3</span><h2>逐日行程</h2><p>左邊是每天的站牌：今天在哪、昨天從哪來、明天往哪去。旅途中打開，今天那一站會自動標出來。</p></div>
 
+  <!-- DAY 1 -->
+  <article class="day" id="d1">
+    <aside class="day-aside">
+      <header class="sign" data-day="1">
+        <div class="sign-top">
+          <div class="badge"><span>DAY</span><b>1</b></div>
+          <div class="sign-name"><h3>中津<span class="stamp">今天</span></h3><span class="kana ja">なかつ</span></div>
+        </div>
+        <div class="sign-bar"><span><i class="ph ph-arrow-left"></i>大分空港</span><span>耶馬溪<i class="ph ph-arrow-right"></i></span></div>
+        <div class="sign-foot"><span class="date">2026/10/17 週六</span><span class="theme">抵達中津 · 居酒屋之夜</span></div>
+      </header>
+      <figure class="day-photo" style="margin:0"><img src="img/karaage.jpg" width="1000" height="666" alt="竹篩上一盒盒的中津唐揚" loading="lazy"></figure>
+      <p class="photo-credit">照片：Mti · <a href="https://commons.wikimedia.org/wiki/File:Nakatsu_Karaage.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></p>
+      <p class="day-route"><i class="ph ph-path"></i><span>Budget 營業所 → 中津市(約 60 分鐘 / 50 km)</span></p>
+      <div class="stay-line"><i class="ph ph-bed"></i><span><b>今晚住 東橫 INN 大分中津駅前</b>中津站步行 1 分鐘</span></div>
+    </aside>
+    <div class="day-body">
+      <ol class="tl rv">
+        <li><span class="t">15:00</span><span class="e">抵達大分機場、領行李 → 航廈內 <strong>Budget 櫃台</strong>報到 → 搭接駁車到營業所取車(實際約 16:00 上路)</span></li>
+        <li><span class="t">16:00-17:00</span><span class="e">Budget 營業所 → 中津市(東九州道)</span></li>
+        <li><span class="t">17:00-18:00</span><span class="e">停車(飯店露天車位，沒有就停<strong>中津駅南口駐車場</strong>) → 東橫 INN Check-in</span></li>
+        <li class="key"><span class="t">18:00/18:30<br>-20:00</span><span class="e"><strong>晚餐</strong>：口袋名單五選一，當天看心情決定(見下方)</span></li>
+        <li><span class="t">20:00-22:00</span><span class="e">站前商店街續攤喝一杯(自由)</span></li>
+        <li><span class="t">22:00</span><span class="e">步行回飯店</span></li>
+      </ol>
+
+      <div class="callouts">
+        <div class="call warn rv"><span class="ic"><i class="ph-fill ph-warning"></i></span><div><h4>取車時必辦</h4><p>向 Budget 櫃台確認 Day 5 還車可否從預約的 14:00 延到 <strong>14:30</strong>、是否加費(詳見第 8 節)。</p></div></div>
+        <div class="call park rv"><span class="ic">P</span><div><h4>中津停車</h4><p>東橫 INN 的停車場限高 1.8m、先到先停，Alphard 可能停不進去。沒有露天車位就停 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%8D%97%E5%8F%A3%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0058%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0219-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>中津駅南口駐車場</a>(島田 219-2，離飯店約 80m)。</p><p>收費：20 分內免費、每 60 分 200 日圓、<strong>24 小時內最多 600 日圓(不重複累計)</strong>，停過夜約 600 日圓。停車場 <a class="tel" href="tel:+81979250582">+81 979-25-0582</a>；管理公司 JR 九州レンタカー＆パーキング <a class="tel" href="tel:+81975008880">+81 97-500-8880</a>(9:00-18:00)。</p></div></div>
+      </div>
+
+      <h4 class="picks-h rv"><i class="ph ph-fork-knife"></i>晚餐口袋名單</h4>
+      <p class="picks-sub">依離東橫 INN 由近到遠，10/17 週六皆營業。</p>
+      <div class="picks">
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">文楽</h5><p class="kind">居酒屋(串炸、牛腸鍋)</p></div><span class="score"><i class="ph-fill ph-star"></i>4.4</span></div>
+          <dl><dt>步行</dt><dd>約 3 分</dd><dt>週六</dt><dd class="num">17:30-22:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979244755">+81 979-24-4755</a></dd></dl>
+          <p class="note">二樓可接團體；桌位可抽菸</p>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%87%E6%A5%BD%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA6-13" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&amp;destination=%E6%96%87%E6%A5%BD%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA6-13&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>步行導航</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">焼肉 平安</h5><p class="kind">燒肉(中津最老字號)</p></div><span class="score"><i class="ph-fill ph-star"></i>4.0</span></div>
+          <dl><dt>步行</dt><dd>約 4-5 分</dd><dt>週六</dt><dd class="num">11:00-22:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979234089">+81 979-23-4089</a></dd></dl>
+          <p class="note">厚切鹽牛舌、內臟</p>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%BC%E8%82%89%20%E5%B9%B3%E5%AE%89%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA4-8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&amp;destination=%E7%84%BC%E8%82%89%20%E5%B9%B3%E5%AE%89%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA4-8&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>步行導航</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">博多うどんうちだ屋 中津店</h5><p class="kind">烏龍麵、豬排丼</p></div><span class="score"><i class="ph-fill ph-star"></i>3.6</span></div>
+          <dl><dt>步行</dt><dd>約 6 分</dd><dt>週六</dt><dd class="num">11:00-23:30</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979238311">+81 979-23-8311</a></dd></dl>
+          <p class="note">免訂位，適合備案、宵夜</p>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%9A%E5%A4%9A%E3%81%86%E3%81%A9%E3%82%93%E3%81%86%E3%81%A1%E3%81%A0%E5%B1%8B%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA3-12" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&amp;destination=%E5%8D%9A%E5%A4%9A%E3%81%86%E3%81%A9%E3%82%93%E3%81%86%E3%81%A1%E3%81%A0%E5%B1%8B%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA3-12&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>步行導航</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">錦雲豚専門店 ふくとん</h5><p class="kind">炸豬排(耶馬溪錦雲豚)</p></div><span class="score"><i class="ph-fill ph-star"></i>4.2</span></div>
+          <dl><dt>步行</dt><dd>約 7-8 分</dd><dt>週六</dt><dd class="num">17:00-20:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979232922">+81 979-23-2922</a></dd></dl>
+          <p class="note"><span class="tag off">20:00 打烊</span>Tabelog 可預約</p>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%8C%A6%E9%9B%B2%E8%B1%9A%E5%B0%82%E9%96%80%E5%BA%97%20%E3%81%B5%E3%81%8F%E3%81%A8%E3%82%93%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0578-4" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&amp;destination=%E9%8C%A6%E9%9B%B2%E8%B1%9A%E5%B0%82%E9%96%80%E5%BA%97%20%E3%81%B5%E3%81%8F%E3%81%A8%E3%82%93%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0578-4&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>步行導航</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">焼肉一善 中津店</h5><p class="kind">燒肉</p></div><span class="score"><i class="ph-fill ph-star"></i>4.5</span></div>
+          <dl><dt>步行</dt><dd>約 7-8 分</dd><dt>週六</dt><dd class="num">17:00-23:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979270233">+81 979-27-0233</a></dd></dl>
+          <p class="note">入口在 2F、像後門</p>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%BC%E8%82%89%E4%B8%80%E5%96%84%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0555-3" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11&amp;destination=%E7%84%BC%E8%82%89%E4%B8%80%E5%96%84%20%E4%B8%AD%E6%B4%A5%E5%BA%97%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0555-3&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>步行導航</a></div>
+        </article>
+      </div>
+      <p class="aside-note"><i class="ph ph-lightbulb"></i>想喝酒聊天選文楽，想吃肉選平安，兩家都在步行 5 分鐘內。5 人週六晚上建議先電話訂位。</p>
+    </div>
+  </article>
+
+  <!-- DAY 2 -->
+  <article class="day" id="d2">
+    <aside class="day-aside">
+      <header class="sign" data-day="2">
+        <div class="sign-top">
+          <div class="badge"><span>DAY</span><b>2</b></div>
+          <div class="sign-name"><h3>耶馬溪<span class="stamp">今天</span></h3><span class="kana ja">やばけい</span></div>
+        </div>
+        <div class="sign-bar"><span><i class="ph ph-arrow-left"></i>中津</span><span>九重・由布院<i class="ph ph-arrow-right"></i></span></div>
+        <div class="sign-foot"><span class="date">2026/10/18 週日</span><span class="theme">耶馬溪 + 進擊巨人</span></div>
+      </header>
+      <figure class="day-photo" style="margin:0"><img src="img/aonodomon.jpg" width="1000" height="669" alt="青の洞門的隧道口，旁邊是山國川與競秀峰岩壁" loading="lazy"></figure>
+      <p class="photo-credit">照片：Underbar dk · <a href="https://commons.wikimedia.org/wiki/File:Aonod%C5%8Dmon.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p class="day-route"><i class="ph ph-path"></i><span>中津 → 青の洞門 → 一目八景 → 大山ダム → 日田。開車合計約 3 小時 20 分，多為山路；16:00 前後到日田，天黑前收工。</span></p>
+      <div class="stay-line"><i class="ph ph-bed"></i><span><b>今晚住 Route Inn 日田駅前</b>日田站旁、免費停車、館內大浴場</span></div>
+    </aside>
+    <div class="day-body">
+      <ol class="tl rv">
+        <li><span class="t">09:30</span><span class="e">退房、取車(早餐依個人需求，退房前自理)</span></li>
+        <li><span class="t">09:30-10:00</span><span class="e">中津 → <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%20%E8%87%A8%E6%99%82%E9%A7%90%E8%BB%8A%E5%A0%B4%20PK-02%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>青の洞門 臨時駐車場(PK-02)</a><span class="dur"><i class="ph ph-car-profile"></i>約 25-30 分</span></span></li>
+        <li class="key"><span class="t">10:00-11:15</span><span class="e"><strong>青の洞門周邊散策</strong>：青の禅海橋 → 對岸眺望競秀峰 → 禅海和尚像 → 禅海和尚の手掘り洞窟 → 青の洞門、耶馬溪新三景之碑<span class="dur"><i class="ph ph-person-simple-walk"></i>約 75 分</span></span></li>
+        <li><span class="t">11:15-11:25</span><span class="e"><a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%BA%97%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A81866-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>ローソン 本耶馬溪町店</a> 買水、補給<span class="dur"><i class="ph ph-clock"></i>10 分</span></span></li>
+        <li><span class="t">11:25-11:50</span><span class="e">→ 午餐<span class="dur"><i class="ph ph-car-profile"></i>15-25 分</span></span></li>
+        <li class="key"><span class="t">11:40-12:50</span><span class="e"><strong>午餐三選一</strong>(見下方說明)<span class="dur"><i class="ph ph-clock"></i>50-70 分</span></span></li>
+        <li><span class="t">12:50-13:10</span><span class="e">→ <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>バス専用駐車場(深耶馬 3102-2)</a><span class="dur"><i class="ph ph-car-profile"></i>10-30 分</span></span></li>
+        <li class="key"><span class="t">13:10-14:00</span><span class="e"><strong>散步到一目八景展望台</strong><span class="dur"><i class="ph ph-person-simple-walk"></i>約 50 分</span></span></li>
+        <li><span class="t">14:00-14:50</span><span class="e">深耶馬溪 → <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%97%A5%E7%94%B0%E5%A4%A9%E7%80%AC%E7%94%BA%E5%BA%97%20%E3%80%92879-4123%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A9%E7%80%AC%E7%94%BA%E5%A5%B3%E5%AD%90%E7%95%911790-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>ローソン 日田天瀬町店</a><span class="dur"><i class="ph ph-car-profile"></i>約 45-50 分</span></span></li>
+        <li><span class="t">14:50-15:05</span><span class="e">買水、上廁所、司機休息<span class="dur"><i class="ph ph-clock"></i>15 分</span></span></li>
+        <li><span class="t">15:05-15:20</span><span class="e">→ <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0201%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A7%E5%B1%B1%E7%94%BA%E8%A5%BF%E5%A4%A7%E5%B1%B12008-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>大山ダム銅像下方停車場</a><span class="dur"><i class="ph ph-car-profile"></i>約 15 分</span></span></li>
+        <li class="key"><span class="t">15:20-15:35</span><span class="e"><strong>進撃の巨人 大山ダム銅像 拍照打卡</strong><span class="dur"><i class="ph ph-camera"></i>約 15 分</span></span></li>
+        <li><span class="t">15:35-15:55</span><span class="e">→ Route Inn 日田駅前 第 1 停車場<span class="dur"><i class="ph ph-car-profile"></i>約 20 分</span></span></li>
+        <li><span class="t">16:00</span><span class="e"><strong>Check-in</strong></span></li>
+        <li><span class="t">18:00-</span><span class="e">日田晚餐(<strong>車上討論、隨機應變</strong>)</span></li>
+        <li><span class="t">晚餐後</span><span class="e"><a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%A9%E3%83%83%E3%82%B0%E3%82%B9%E3%83%88%E3%82%A2%E3%83%A2%E3%83%AA%20%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%E5%BA%97%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA14-14-8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>ドラッグストアモリ 日田駅前店</a> 買藥妝(營業到 24:00，走路可到)；想再逛可步行到 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%82%AA%E3%83%B3%E6%97%A5%E7%94%B0%E5%BA%97%20%E3%80%92877-0024%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%8D%97%E5%85%83%E7%94%BA14-22" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>イオン日田店</a>(到 22:00)</span></li>
+      </ol>
+
+      <div class="callouts">
+        <div class="call park rv"><span class="ic">P</span><div><h4>青の洞門停車順序</h4><p>① <strong>臨時駐車場 PK-02</strong>(對岸，免費；可能只在楓葉季等活動期間開放) → ② 沒開就停 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>青の洞門公共停車場</a>(免費、有廁所、限高 3.6m，走過禅海橋接上原路線) → ローソン 本耶馬溪町店<strong>只在離開時補給停約 10 分</strong>，不當長時間停車場。</p><p class="sub">萬一兩個停車場都滿、只能停超商：先進店消費，並問店員「<span class="ja">車を1時間ほど停めてもいいですか？</span>」，照店門口告示辦理。</p></div></div>
+        <div class="call info rv"><span class="ic"><i class="ph ph-mountains"></i></span><div><h4>青の洞門一帶</h4><p>約 250 年前禪海和尚為了旅人安全，用鑿子和槌子花 30 年挖成的隧道，隧道內還留有部分手掘鑿痕，附近河川公園有禪海手持鑿槌的雕像。從<strong>青の禅海橋</strong>(人行橋)走到對岸，可以看到競秀峰全景。手掘洞窟分南北兩處：北側留有禪海最早開的採光窗；南側曾因 2024 年 11 月落石封閉，以現場告示為準。</p></div></div>
+        <div class="call warn rv"><span class="ic"><i class="ph-fill ph-warning"></i></span><div><h4>青の洞門 2026 現況</h4><p>2024 年 11 月岩盤崩落後封閉，2026 年 4 月起<strong>步行已解禁、車輛仍禁止通行</strong>。狀態可能變動，出發前再查中津市公告。</p></div></div>
+      </div>
+
+      <h4 class="picks-h rv"><i class="ph ph-fork-knife"></i>午餐三選一</h4>
+      <p class="picks-sub">10/18 週日都有營業。</p>
+      <div class="picks">
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">天雲龍</h5><p class="kind">耶馬溪野味料理(野豬、鹿)</p></div><span class="score"><i class="ph-fill ph-star"></i>4.3</span></div>
+          <p class="note"><span class="tag">順路</span>1977 年創業，窗邊座位看得到耶馬溪水壩與山國川；野豬熔岩燒定食約 3,850 日圓。</p>
+          <dl><dt>營業</dt><dd class="num">11:00-17:00(週四休)</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979542552">+81 979-54-2552</a></dd></dl>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E9%9B%B2%E9%BE%8D%20%E3%80%92871-0405%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%9F%BF%E5%9D%82745-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">手打ちそば 筍</h5><p class="kind">手打蕎麥麵</p></div><span class="score"><i class="ph-fill ph-star"></i>3.9</span></div>
+          <p class="note"><span class="tag off">偏離路線</span>國道 212 旁，用在地蕎麥，黑豚豬排丼也受好評，停車場大。去一目八景要折返約 10 分。</p>
+          <dl><dt>營業</dt><dd class="num">11:00-14:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+819047756093">+81 90-4775-6093</a></dd></dl>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%89%8B%E6%89%93%E3%81%A1%E3%81%9D%E3%81%B0%20%E7%AD%8D%20%E3%80%92871-0431%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%A4%A7%E5%B3%B6174-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a></div>
+        </article>
+        <article class="pick rv">
+          <div class="pick-top"><div><h5 class="ja">ほのぼの茶屋</h5><p class="kind">鄉土定食</p></div><span class="score"><i class="ph-fill ph-star"></i>4.3</span></div>
+          <p class="note"><span class="tag">最順路</span>在地阿姨經營，只有一種套餐、約 700 日圓，份量大；忙時出菜慢。</p>
+          <dl><dt>營業</dt><dd class="num">11:00-14:00</dd><dt>電話</dt><dd><a class="tel" href="tel:+81979552214">+81 979-55-2214</a></dd></dl>
+          <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BB%E3%81%AE%E3%81%BC%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92871-0421%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%B1%B1%E7%A7%BB3802" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a></div>
+        </article>
+      </div>
+      <p class="aside-note"><i class="ph ph-clock"></i><span>決定時機：逛青の洞門時看時間，<strong>11:00 前逛完 → 天雲龍</strong>(需要慢慢吃，想吃可先打電話訂窗邊座位)；<strong>拖到 11:15 以後 → ほのぼの茶屋</strong>。</span></p>
+
+      <div class="callouts">
+        <div class="call park rv"><span class="ic">P</span><div><h4>一目八景停車</h4><p>導航設 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>バス専用駐車場 3102-2</a>(有門牌，定位準)，到了實際停隔壁的 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B7%B1%E8%80%B6%E9%A6%AC%E6%B8%93%E5%85%AC%E5%85%B1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>深耶馬渓公共駐車場</a>，步行約 5 分到展望台。バス専用為巴士專用，以現場告示為準。</p></div></div>
+        <div class="call info rv"><span class="ic"><i class="ph ph-camera"></i></span><div><h4>進撃の巨人 大山ダム銅像</h4><p>艾連、米卡莎、阿爾敏少年時期的銅像，抬頭望著水壩牆面，重現第 1 集開頭的場景。<strong>導航設下方停車場</strong>(免費、約 30 台)，走約 3 分到銅像；上方管理所停車場走不下去。<strong>銅像旁沒有廁所</strong>，在天瀬那家ローソン先上。</p></div></div>
+        <div class="call warn rv"><span class="ic"><i class="ph ph-compass"></i></span><div><h4>導航提醒</h4><p>一目八景出發時，<strong>先把目的地設成ローソン 日田天瀬町店</strong>，到了再改設大山ダム停車場，否則 Google Map 可能選不經過天瀬的路。出發前可先比對「經天瀬」與「直接到大山ダム」兩條路的時間，若經天瀬多出 15 分鐘以上，改停國道 212 沿線其他超商。</p></div></div>
+        <div class="call tip rv"><span class="ic"><i class="ph ph-umbrella"></i></span><div><h4>雨天／提早到日田</h4><p>雨天照走，撐傘、穿防滑鞋，青の洞門與一目八景可縮短停留。提早結束就從大山ダム先去 <a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E7%94%B0%20%E3%80%92877-0074%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%BA%84%E6%89%8B661-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>イオンタウン日田</a>(10:00-20:00，大型 Daiso、ABC-Mart、星巴克、AEON 超市 The Big、藥妝)，逛完開 5 分鐘到 Route Inn check-in。</p></div></div>
+        <div class="call warn rv"><span class="ic"><i class="ph ph-steering-wheel"></i></span><div><h4>山路駕駛</h4><p>全天開車約 3 小時 20 分，多為山路彎道，十月可能起霧。下午那段最長，同行若有人帶國際駕照可換手；Day 1 晚上司機喝酒適量。</p></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 3 -->
+  <article class="day" id="d3">
+    <aside class="day-aside">
+      <header class="sign" data-day="3">
+        <div class="sign-top">
+          <div class="badge"><span>DAY</span><b>3</b></div>
+          <div class="sign-name"><h3>九重・由布院<span class="stamp">今天</span></h3><span class="kana ja">ここのえ・ゆふいん</span></div>
+        </div>
+        <div class="sign-bar"><span><i class="ph ph-arrow-left"></i>耶馬溪</span><span>別府・大分<i class="ph ph-arrow-right"></i></span></div>
+        <div class="sign-foot"><span class="date">2026/10/19 週一</span><span class="theme">吊橋 + 由布院散策</span></div>
+      </header>
+      <figure class="day-photo" style="margin:0"><img src="img/yume.jpg" width="1000" height="666" alt="九重夢大吊橋的主塔與鋼索，背景是藍天白雲" loading="lazy"></figure>
+      <p class="photo-credit">照片：TANAKA Juuyoh (田中十洋) · <a href="https://commons.wikimedia.org/wiki/File:Kokonoe-Yume-Otsurihashi-1.jpg" target="_blank" rel="noopener">CC BY 2.0</a></p>
+      <p class="day-route"><i class="ph ph-path"></i><span>日田 → 九重夢大吊橋(60min) → 峠の茶屋(5-10min) → 由布院(60min)</span></p>
+      <div class="stay-line"><i class="ph ph-bed"></i><span><b>今晚住 金鱗湖豐國度假村</b>湯布院川上、金鱗湖畔</span></div>
+    </aside>
+    <div class="day-body">
+      <ol class="tl rv">
+        <li><span class="t">08:00-09:00</span><span class="e">飯店早餐、退房(出發前加滿油，山區加油站少)</span></li>
+        <li><span class="t">09:00-10:00</span><span class="e">日田 → 九重夢大吊橋(大分道 日田 IC → 九重 IC → 縣道 40 號)</span></li>
+        <li><span class="t">10:00-11:30</span><span class="e"><strong>九重夢大吊橋</strong>(週一平日，人潮少)</span></li>
+        <li><span class="t">11:30-11:45</span><span class="e">吊橋 → 峠の茶屋(往九醉溪方向)</span></li>
+        <li class="key"><span class="t">11:45-13:00</span><span class="e"><strong>午餐：峠の茶屋</strong>(炭火烤雞定食)</span></li>
+        <li><span class="t">13:00-14:00</span><span class="e">九醉溪 → 國道 210 號 → 水分峠 → 由布院</span></li>
+        <li class="key"><span class="t">14:00-16:30</span><span class="e"><strong>湯之坪街道散策 + 採買</strong>(多數店家 17:00-17:30 打烊)</span></li>
+        <li><span class="t">16:30-</span><span class="e">金鱗湖豐國 Check-in(15:00 起)、泡湯</span></li>
+        <li><span class="t">18:30-</span><span class="e">由布院晚餐(<strong>當天討論、隨機應變</strong>)</span></li>
+      </ol>
+      <div class="callouts">
+        <div class="call info rv"><span class="ic"><i class="ph ph-mountains"></i></span><div><h4>九重夢大吊橋</h4><p>高 173m、長 390m，日本最高的人行吊橋，可俯瞰九醉溪谷與震動瀑布。門票大人 500 日圓，營業 8:30-17:00(7-10 月延長到 18:00)，兩端皆有大型停車場。橋上風大偏冷，強風時可能限制入橋；怕高的同行者先講。</p></div></div>
+        <div class="call tip rv"><span class="ic"><i class="ph ph-cooking-pot"></i></span><div><h4>峠の茶屋</h4><p>九重町田野 975-2，營業 10:30-14:30，週一有營業。老夫婦經營、炭火烤雞，店小，5 人建議 11:45 前進店。炭火煙味重，外套可先留車上。<strong>客滿備案</strong>：隔壁約 300m 的桂茶屋(8:00-17:00，雞天、山女魚鹽烤)，不用改路線。</p></div></div>
+        <div class="call park rv"><span class="ic">P</span><div><h4>由布院停車</h4><p>14:00 到由布院時旅館還不能入住，事先問金鱗湖豐國能否先停車、寄放行李，再步行逛湯之坪街道。九醉溪為彎道山路，駕駛放慢。</p></div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 4 -->
+  <article class="day" id="d4">
+    <aside class="day-aside">
+      <header class="sign" data-day="4">
+        <div class="sign-top">
+          <div class="badge"><span>DAY</span><b>4</b></div>
+          <div class="sign-name"><h3>別府・大分<span class="stamp">今天</span></h3><span class="kana ja">べっぷ・おおいた</span></div>
+        </div>
+        <div class="sign-bar"><span><i class="ph ph-arrow-left"></i>九重・由布院</span><span>大分空港<i class="ph ph-arrow-right"></i></span></div>
+        <div class="sign-foot"><span class="date">2026/10/20 週二</span><span class="theme">賞楓 + 主購物日</span></div>
+      </header>
+      <figure class="day-photo" style="margin:0"><img src="img/tsurumi.jpg" width="1000" height="666" alt="從鶴見岳山上望向由布岳的稜線" loading="lazy"></figure>
+      <p class="photo-credit">照片：Σ64 · <a href="https://commons.wikimedia.org/wiki/File:Mt.Tsurumidake_01.jpg" target="_blank" rel="noopener">CC BY 3.0</a></p>
+      <p class="day-route"><i class="ph ph-path"></i><span>由布院 → 別府纜車(25min) → 大分市區(45min)</span></p>
+      <div class="stay-line"><i class="ph ph-bed"></i><span><b>今晚住 東橫 INN 大分駅前</b>車停トラストパーク大分駅前</span></div>
+    </aside>
+    <div class="day-body">
+      <ol class="tl rv">
+        <li><span class="t">07:00-08:00</span><span class="e">金鱗湖晨霧散步(旅館就在湖邊)</span></li>
+        <li><span class="t">08:00-09:00</span><span class="e">回旅館早餐、退房</span></li>
+        <li><span class="t">09:00-09:25</span><span class="e">由布院 → 別府纜車(九州橫斷道路)</span></li>
+        <li class="key"><span class="t">09:25-11:45</span><span class="e"><strong>別府纜車(鶴見岳)上下山 + 山上賞楓散步</strong></span></li>
+        <li><span class="t">11:45-12:30</span><span class="e">別府 → 大分市區，直接停<strong>トラストパーク大分駅前</strong>(停到 Day 5 早上)</span></li>
+        <li><span class="t">12:30-13:30</span><span class="e">步行到大分站前午餐(<strong>當天隨機應變</strong>，可參考第 5 節必吃：豐後茶屋とり天、だんご汁)</span></li>
+        <li class="key"><span class="t">13:30-17:30</span><span class="e"><strong>大分市區主購物 4 小時</strong>(全程步行、不移車)</span></li>
+        <li><span class="t">17:30-18:15</span><span class="e">步行回東橫 INN Check-in、整理戰利品(行李可分批從車上拿)</span></li>
+        <li><span class="t">18:15-18:30</span><span class="e">步行穿過大分站南北通道到站南(約 7-10 分)</span></li>
+        <li class="key"><span class="t">18:30-</span><span class="e"><strong>晚餐：銀乃しゃり 大分駅南店</strong>(包廂燒肉，已訂)</span></li>
+      </ol>
+
+      <section class="ticket rv" aria-label="晚餐訂位">
+        <div class="ticket-head"><i class="ph ph-fork-knife"></i><b class="ja">銀乃しゃり 大分駅南店</b><span class="ok">已訂</span></div>
+        <div class="ticket-body">
+          <p class="rec">牛舌與橫膈膜包廂燒肉，亞李蘭集團。只訂座位，現場點菜。</p>
+          <div class="ticket-grid">
+            <div><span>日期</span><b class="big">10/20 二</b></div>
+            <div><span>時間</span><b class="big">18:30</b></div>
+            <div><span>人數</span><b class="big">5 位</b></div>
+            <div><span>座位</span><b>包廂桌席・禁菸</b></div>
+            <div><span>預約編號(Hot Pepper)</span><b class="num" style="font-size:20px">SE3068292</b></div>
+            <div><span>預約名</span><b>姜(キョウ)様</b></div>
+          </div>
+          <p class="rec"><i class="ph ph-map-pin"></i> 東大道 1-3-1 アクロスプラザ大分駅南 · <a class="tel" href="tel:+81975296679">+81 97-529-6679</a></p>
+          <div class="btns"><a class="btn btn-sm btn-solid" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2-2-5&amp;destination=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97&amp;travelmode=walking" target="_blank" rel="noopener"><i class="ph ph-person-simple-walk"></i>從東橫 INN 步行導航</a><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a></div>
+          <p class="rec">推薦：牛舌、橫膈膜(ハラミ)、生牛肉(ユッケ)、燻製牛舌沙拉。平板點餐、桌上可能沒呼叫鈴；包廂開爐偏熱，外套可留飯店。</p>
+        </div>
+      </section>
+
+      <div class="callouts">
+        <div class="call info rv"><span class="ic"><i class="ph ph-arrows-left-right"></i></span><div><h4>參考：Day 4 下午與 Day 5 上午可對調</h4><p>想讓皮克敏組慢慢逛、Day 5 不用趕，可以把兩段對調，<strong>晚餐 18:30 銀乃しゃり不變</strong>：</p>
+          <table class="mini">
+            <tr><th>對調後</th><th>行程</th></tr>
+            <tr><td>Day 4 12:30-17:00</td><td>別府纜車後直接去 Park Place：午餐 + 任天堂專區 + AEON(約 4.5 小時)</td></tr>
+            <tr><td>Day 4 17:00</td><td><strong>準時離開 Park Place</strong> → 17:30 停トラストパーク → Check-in → 18:15 走路去吃燒肉</td></tr>
+            <tr><td>Day 5 10:00-12:45</td><td>退房後步行逛大分站周邊與商店街(參考第 5 節逛街攻略)、午餐</td></tr>
+            <tr><td>Day 5 12:45-13:00</td><td>トラストパーク取車 → 出發往機場(約 60 分)</td></tr>
+            <tr><td>Day 5 14:00 / 14:30</td><td>アポロステーション加油 → Budget 還車(不變)</td></tr>
+          </table>
+          <p class="sub">對調的好處：Park Place 逛到不用看時間，Day 5 少一段趕路；代價是 Day 4 傍晚要準時離開 Park Place。</p></div></div>
+        <div class="call info rv"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>別府纜車(鶴見岳)</h4><p>約 10 分鐘上到標高 1,300m。鶴見岳紅葉 10 月中旬起從山頂往下轉色，是本趟賞楓重點。山上步道走一圈約 40 分-1 小時，天晴可眺望別府灣。營業 9:00 起，來回票大人約 1,800 日圓(以現場為準)。</p></div></div>
+        <div class="call warn rv"><span class="ic"><i class="ph ph-thermometer-cold"></i></span><div><h4>保暖</h4><p>山上站比別府市街低約 10 度，10 月下旬可能 5 度以下，務必帶厚外套。</p></div></div>
+        <div class="call park rv"><span class="ic">P</span><div><h4>大分停車</h4><p>東橫 INN 大分駅前的停車場放不下 Alphard，改停隔壁的<strong>トラストパーク大分駅前</strong>(金池町 2-2-1，投幣式收費)。到場先看看板上的<strong>最大料金是否含過夜</strong>，並確認限高。</p></div></div>
+      </div>
+      <p class="aside-note"><i class="ph ph-storefront"></i>今天是週二，百貨、商場照常營業；商店街部分個人小店可能週二公休。</p>
+    </div>
+  </article>
+
+  <!-- DAY 5 -->
+  <article class="day" id="d5">
+    <aside class="day-aside">
+      <header class="sign" data-day="5">
+        <div class="sign-top">
+          <div class="badge"><span>DAY</span><b>5</b></div>
+          <div class="sign-name"><h3>大分空港<span class="stamp">今天</span></h3><span class="kana ja">おおいたくうこう</span></div>
+        </div>
+        <div class="sign-bar"><span><i class="ph ph-arrow-left"></i>別府・大分</span><span>桃園<i class="ph ph-arrow-right"></i></span></div>
+        <div class="sign-foot"><span class="date">2026/10/21 週三</span><span class="theme">皮克敏聖地 · 回程</span></div>
+      </header>
+      <figure class="day-photo" style="margin:0"><img src="img/parkplace.jpg" width="1000" height="750" alt="Park Place 大分的戶外廣場與商場建築" loading="lazy"></figure>
+      <p class="photo-credit">照片：Tabitan · <a href="https://commons.wikimedia.org/wiki/File:Parkplaceoita_2022-05.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+      <p class="day-route"><i class="ph ph-path"></i><span>大分市區 → Park Place(30min) → 加油站(約 60min) → Budget 還車 → 接駁車到機場</span></p>
+      <div class="stay-line"><i class="ph ph-airplane-takeoff"></i><span><b>IT751 16:30 起飛</b>17:55 抵達桃園</span></div>
+    </aside>
+    <div class="day-body">
+      <ol class="tl rv">
+        <li><span class="t">08:00-10:00</span><span class="e">飯店早餐、悠閒整裝、10:00 退房</span></li>
+        <li><span class="t">10:00-10:30</span><span class="e">トラストパーク取車 → Park Place 大分</span></li>
+        <li class="key"><span class="t">10:30-11:45</span><span class="e"><strong>任天堂專區 + 採買(皮克敏周邊)</strong></span></li>
+        <li><span class="t">11:45-12:15</span><span class="e">Park Place 美食街午餐(<strong>當天隨意挑</strong>，趕在 12:00 尖峰前入座)</span></li>
+        <li><span class="t">12:15-13:00</span><span class="e">AEON 永旺逛街(伴手禮、藥妝、雜貨補貨)</span></li>
+        <li class="must"><span class="t">13:00</span><span class="e"><strong>準時離開 Park Place</strong></span></li>
+        <li><span class="t">14:00</span><span class="e">抵達<strong>アポロステーション 大分空港前</strong>加滿油(Budget 隔壁)</span></li>
+        <li class="must"><span class="t">14:30 前</span><span class="e"><strong>Budget 營業所還車</strong></span></li>
+        <li><span class="t">15:00 前</span><span class="e">搭接駁車抵達機場航廈</span></li>
+        <li><span class="t">15:00-16:00</span><span class="e">報到 → 出境 → 退稅</span></li>
+        <li><span class="t">16:30</span><span class="e">IT751 起飛、17:55 抵達桃園</span></li>
+      </ol>
+      <p class="aside-note"><i class="ph ph-arrows-left-right"></i>參考：本日上午可與 Day 4 下午對調(改逛大分市區、13:00 前離開大分)，見 Day 4 說明。</p>
+      <div class="callouts">
+        <div class="call warn rv"><span class="ic"><i class="ph-fill ph-warning"></i></span><div><h4>還車時間</h4><p>預約還車時點為 <strong>14:00</strong>(預約號 00010486642)，本日安排 14:30 前還車，<strong>需在 Day 1 取車時向 Budget 櫃台確認可延後、是否加費</strong>。若只能 14:00 還車：12:30 離開 Park Place、13:30 加油、14:00 還車。Park Place → 加油站是全程最需要準時的一段，出發前用 Google Map 看即時車程。</p></div></div>
+        <div class="call info rv"><span class="ic"><i class="ph ph-map-pin"></i></span><div><h4>Park Place 大分</h4><p>大分市公園通り西 2 丁目 1 番，營業 10:00-21:00，停車免費。<strong>AEON 2F「Kids Republic」內的任天堂專區(ニンテンドーコーナー)</strong>：大分縣內唯一常設點，有 Switch 2 試玩、瑪利歐 / 星之卡比 / 皮克敏等周邊。同棟 AEON 可一站買齊伴手禮，館內有美食街。</p></div></div>
+      </div>
+    </div>
+  </article>
 </section>
 
-<section id="s5">
-<h2>5. 實用資訊</h2>
-
-<h3>大分市區逛街攻略(Day 4 下午)</h3>
-<p style="font-size:13px;color:var(--text-mute);">車停トラストパーク大分駅前，全程步行。大分站一區買伴手禮、吃美食；站北拱廊商店街逛在地小店。</p>
-<table>
-  <tr><th style="width:30%">區域</th><th>特色</th></tr>
-  <tr><td>アミュプラザおおいた(大分站)</td><td>和車站共構的大型商場，時尚、美食、雜貨齊全；多數店家 20:00 打烊</td></tr>
-  <tr><td>豊後にわさき市場(大分站 1F)</td><td>伴手禮、銘菓、超市、藥妝一站買齊；9:30–21:00，餐飲到 23:00</td></tr>
-  <tr><td>セントポルタ中央町</td><td>從站前往北延伸的拱廊，大分縣人潮最多的商店街</td></tr>
-  <tr><td>ガレリア竹町</td><td>大分市最古老的商店街，有開闔式圓頂廣場；晚上有烤雞串、居酒屋</td></tr>
-  <tr><td>府内五番街／トキハ本店</td><td>緊鄰百貨的中心商店街，在地選品</td></tr>
-</table>
-<h4>必買</h4>
-<table>
-  <tr><th style="width:30%">品項</th><th>說明</th></tr>
-  <tr><td>謎のとり天せんべい</td><td>把大分名物「雞天」做成仙貝，蒜香醬油味</td></tr>
-  <tr><td>菊家 蜂蜜布丁</td><td>曾連續 3 年獲世界品質評鑑最高金獎</td></tr>
-  <tr><td>酥炸雞皮</td><td>鹽味、醬油、臭橙(かぼす)、柚子胡椒四種口味，下酒首選</td></tr>
-  <tr><td>別府地獄咖哩</td><td>辣味零食，配啤酒</td></tr>
-  <tr><td>臼杵煎餅、湯之花入浴劑</td><td>大分經典伴手禮</td></tr>
-  <tr><td>麥燒酎、日本酒、柚子胡椒</td><td>にわさき市場選擇最多</td></tr>
-</table>
-<h4>必吃</h4>
-<table>
-  <tr><th style="width:30%">品項</th><th>哪裡吃</th></tr>
-  <tr><td>とり天(雞天)</td><td>にわさき市場內的豐後茶屋</td></tr>
-  <tr><td>だんご汁</td><td>大分鄉土麵疙瘩湯，にわさき市場餐飲店</td></tr>
-  <tr><td>豐後牛</td><td>站內熟食店的豐後牛可樂餅</td></tr>
-</table>
-
-<h3>租車重點</h3>
-<ul>
-  <li><strong>Budget 大分空港店</strong>，車型 <strong>Toyota Alphard</strong>(WB 豪華旅行車，預約號 00010486642)。取還車流程見第 8 節</li>
-  <li>必備：日本駕照譯本 + 台灣駕照 + 護照 + 信用卡；ETC 卡</li>
-  <li>建議加購全險(CDW + NOC)；還車前在 Budget 隔壁的アポロステーション加滿，保留收據</li>
-  <li><strong>大車提醒</strong>：車長約 5m。由布院街區巷弄較窄，停車多留意；青の洞門停車場限高 3.6m 可停；日田 Route Inn 第 1 停車場、Park Place 停車場都寬敞；<strong>大分東橫 INN 停車場放不下</strong>，改停トラストパーク大分駅前</li>
-</ul>
-
-<h3>季節與星期注意(10 月下旬)</h3>
-<ul>
-  <li>平地氣溫約 10–18 度，日夜溫差大，洋蔥式穿搭</li>
-  <li><strong>別府纜車山上約 5 度以下、金鱗湖清晨 7 度以下、九重夢大吊橋風大</strong>，帶厚外套 + 圍巾</li>
-  <li>Day 2–3 山區路段可能起霧，市區先加滿油</li>
-  <li>10/19、10/20 為<strong>週一、週二平日</strong>，景點人潮少；部分個人商店週二公休</li>
-</ul>
-
-<h3>退稅</h3>
-<ul>
-  <li>單筆滿 5,500 日圓(含稅)可退稅，需護照本人</li>
-  <li>2026 新制：退稅商品於離境時在機場海關核驗，預留 30 分鐘</li>
-</ul>
-
-<h3>緊急聯絡 & App</h3>
-<table>
-  <tr><th style="width:35%">項目</th><th>內容</th></tr>
-  <tr><td>警察 / 救護車</td><td>110 / 119</td></tr>
-  <tr><td>台北駐福岡辦事處</td><td>+81 92-734-2810(急難 +81 90-1922-9740)</td></tr>
-  <tr><td>外交部緊急聯絡中心</td><td>+886 800-085-095</td></tr>
-  <tr><td>JAF 道路救援</td><td>#8139</td></tr>
-  <tr><td>必備 App</td><td>Google Maps、Yahoo! カーナビ、NAVITIME、食べログ、LINE</td></tr>
-</table>
+<!-- 4 住宿 -->
+<section class="sec wrap" id="s4">
+  <div class="sec-head rv"><span class="n">4</span><h2>住宿總表</h2><p>分房模式：四晚皆為 <strong>2/2/1</strong>(夫妻 A、夫妻 B 各一間，女兒一間)。四晚<strong>皆附早餐</strong>，晚餐自理。</p></div>
+  <div class="stays">
+    <article class="stay rv"><div class="night"><b>1</b><span>10/17 六</span></div><h4>Toyoko Inn 大分中津駅前</h4><p class="where">中津站步行 1 分鐘</p><p class="where">雙床房 ×2 + 單人房 ×1(2/2/1)</p><ul><li class="ok">含早餐</li><li class="ok">已訂</li></ul></article>
+    <article class="stay rv"><div class="night"><b>2</b><span>10/18 日</span></div><h4>Hotel Route-Inn 日田駅前</h4><p class="where">日田站旁、免費停車、館內大浴場</p><p class="where">3 間房(2/2/1)</p><ul><li class="ok">含早餐</li><li class="ok">已訂</li></ul></article>
+    <article class="stay rv"><div class="night"><b>3</b><span>10/19 一</span></div><h4>金鱗湖豐國度假村</h4><p class="where">湯布院川上、金鱗湖畔</p><p class="where">雙人房 ×3(2/2/1)</p><ul><li class="ok">含早餐</li><li class="ok">已訂</li></ul></article>
+    <article class="stay rv"><div class="night"><b>4</b><span>10/20 二</span></div><h4>Toyoko Inn 大分駅前</h4><p class="where">大分市金池町、近 JR 大分站</p><p class="where">雙床房 ×2 + 單人房 ×1(2/2/1)</p><ul><li class="ok">含早餐</li><li class="ok">已訂</li></ul></article>
+  </div>
 </section>
 
-<section id="s6">
-<h2>6. 導航地址速查表 🚗</h2>
-<div class="box-info">
-給主要司機：<strong>點「📍 名稱」直接開 Google Map</strong>，再按「路線」即可導航；<strong>點「📞 電話」直接撥號</strong>。地址文字也可長按複製。
-</div>
-<h3>住宿與停車</h3>
-<table><tr><th style="width:15%">日期</th><th style="width:40%">點名稱開 Google Map / 地址</th><th style="width:20%">電話</th><th>備註</th></tr><tr><td>Day1 中津</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11" target="_blank" rel="noopener">📍 東横INN大分中津駅前</a><br><span class="addr">大分県中津市豊田町10-11</span></td><td><a class="tellink" href="tel:+81979251045">📞 +81 979-25-1045</a></td><td>停車場限高 1.8m</td></tr><tr><td>Day1 停車<br><span class="addr">飯店沒車位時</span></td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%8D%97%E5%8F%A3%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0058%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0219-2" target="_blank" rel="noopener">📍 中津駅南口駐車場</a><br><span class="addr">〒871-0058 大分県中津市島田219-2</span></td><td><a class="tellink" href="tel:+81979250582">📞 +81 979-25-0582</a><br><span class="addr">管理公司 <a class="tellink" href="tel:+81975008880">+81 97-500-8880</a></span></td><td>24h 內最多 600 日圓；離飯店約 80m</td></tr><tr><td>Day2 日田<br><span class="addr">導航到停車場</span></td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%AB%E3%83%BC%E3%83%88%E3%82%A4%E3%83%B3%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%20%E7%AC%AC1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA21-21" target="_blank" rel="noopener">📍 ホテルルートイン日田駅前 第1駐車場</a><br><span class="addr">〒877-0013 大分県日田市元町21-21</span></td><td><a class="tellink" href="tel:+815058477411">📞 +81 50-5847-7411</a></td><td>飯店本體在元町 21-14</td></tr><tr><td>Day3 由布院</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E9%B1%97%E6%B9%96%E8%B1%8A%E5%9B%BD%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%94%B1%E5%B8%83%E5%B8%82%E6%B9%AF%E5%B8%83%E9%99%A2%E7%94%BA%E5%B7%9D%E4%B8%8A1561" target="_blank" rel="noopener">📍 金鱗湖豊国リゾート</a><br><span class="addr">大分県由布市湯布院町川上1561</span></td><td>—</td><td>14:00 先問能否停車寄放行李</td></tr><tr><td>Day4 大分</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2-2-5" target="_blank" rel="noopener">📍 東横INN大分駅前</a><br><span class="addr">大分県大分市金池町2-2-5</span></td><td><a class="tellink" href="tel:+81975341045">📞 +81 97-534-1045</a></td><td>飯店停車場放不下 Alphard</td></tr><tr><td>Day4 停車</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%A9%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%82%AF%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E3%80%92870-0026%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2%E4%B8%81%E7%9B%AE2-1" target="_blank" rel="noopener">📍 トラストパーク大分駅前</a><br><span class="addr">〒870-0026 大分県大分市金池町2丁目2-1</span></td><td>—</td><td>投幣式；停到 Day5 早上，確認最大料金</td></tr></table>
-<h3>Day 2 耶馬溪・大山ダム・日田</h3>
-<table><tr><th style="width:15%">日期</th><th style="width:40%">點名稱開 Google Map / 地址</th><th style="width:20%">電話</th><th>備註</th></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%20%E8%87%A8%E6%99%82%E9%A7%90%E8%BB%8A%E5%A0%B4%20PK-02%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener">📍 青の洞門 臨時駐車場 PK-02</a><br><span class="addr">〒871-0202 大分県中津市本耶馬渓町曽木</span></td><td><a class="tellink" href="tel:+81979522211">📞 +81 979-52-2211</a></td><td>首選停車(活動期間才開)</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener">📍 青の洞門駐車場</a><br><span class="addr">〒871-0202 大分県中津市本耶馬渓町曽木</span></td><td>—</td><td>PK-02 沒開時停這裡，有廁所</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%BA%97%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A81866-1" target="_blank" rel="noopener">📍 ローソン 本耶馬溪町店</a><br><span class="addr">〒871-0202 大分県中津市本耶馬渓町曽木1866-1</span></td><td><a class="tellink" href="tel:+81979523570">📞 +81 979-52-3570</a></td><td>離開時補給，停約 10 分</td></tr><tr><td>Day2 午餐</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E9%9B%B2%E9%BE%8D%20%E3%80%92871-0405%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%9F%BF%E5%9D%82745-1" target="_blank" rel="noopener">📍 天雲龍</a><br><span class="addr">〒871-0405 大分県中津市耶馬溪町大字柿坂745-1</span></td><td><a class="tellink" href="tel:+81979542552">📞 +81 979-54-2552</a></td><td>野味料理，11:00–17:00</td></tr><tr><td>Day2 午餐</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%89%8B%E6%89%93%E3%81%A1%E3%81%9D%E3%81%B0%20%E7%AD%8D%20%E3%80%92871-0431%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%A4%A7%E5%B3%B6174-1" target="_blank" rel="noopener">📍 手打ちそば 筍</a><br><span class="addr">〒871-0431 大分県中津市耶馬溪町大字大島174-1</span></td><td><a class="tellink" href="tel:+819047756093">📞 +81 90-4775-6093</a></td><td>手打蕎麥，11:00–14:00(偏離路線)</td></tr><tr><td>Day2 午餐</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%81%BB%E3%81%AE%E3%81%BC%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92871-0421%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%B1%B1%E7%A7%BB3802" target="_blank" rel="noopener">📍 ほのぼの茶屋</a><br><span class="addr">〒871-0421 大分県中津市耶馬溪町大字山移3802</span></td><td><a class="tellink" href="tel:+81979552214">📞 +81 979-55-2214</a></td><td>700 日圓定食，11:00–14:00</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener">📍 バス専用駐車場</a><br><span class="addr">〒871-0422 大分県中津市耶馬溪町大字深耶馬3102-2</span></td><td><a class="tellink" href="tel:+81979543111">📞 +81 979-54-3111</a></td><td>一目八景導航目標</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%B7%B1%E8%80%B6%E9%A6%AC%E6%B8%93%E5%85%AC%E5%85%B1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC" target="_blank" rel="noopener">📍 深耶馬渓公共駐車場</a><br><span class="addr">〒871-0422 大分県中津市耶馬溪町大字深耶馬</span></td><td>—</td><td>實際停這裡，步行約 5 分</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%97%A5%E7%94%B0%E5%A4%A9%E7%80%AC%E7%94%BA%E5%BA%97%20%E3%80%92879-4123%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A9%E7%80%AC%E7%94%BA%E5%A5%B3%E5%AD%90%E7%95%911790-1" target="_blank" rel="noopener">📍 ローソン 日田天瀬町店</a><br><span class="addr">〒879-4123 大分県日田市天瀬町女子畑1790-1</span></td><td><a class="tellink" href="tel:+81973578035">📞 +81 973-57-8035</a></td><td>買水、上廁所(先設這裡再設大山ダム)</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0201%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A7%E5%B1%B1%E7%94%BA%E8%A5%BF%E5%A4%A7%E5%B1%B12008-1" target="_blank" rel="noopener">📍 進撃の巨人 大山ダム銅像 駐車場</a><br><span class="addr">〒877-0201 大分県日田市大山町西大山2008-1</span></td><td><a class="tellink" href="tel:+81973522445">📞 +81 973-52-2445</a></td><td>停下方停車場，打卡 15 分</td></tr><tr><td>Day2 雨備</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E7%94%B0%20%E3%80%92877-0074%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%BA%84%E6%89%8B661-1" target="_blank" rel="noopener">📍 イオンタウン日田</a><br><span class="addr">〒877-0074 大分県日田市庄手661-1</span></td><td><a class="tellink" href="tel:+81973285015">📞 +81 973-28-5015</a></td><td>提早到日田時去逛，10:00–20:00</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E6%97%A5%E7%94%B0%E5%BA%97%20%E3%80%92877-0024%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%8D%97%E5%85%83%E7%94%BA14-22" target="_blank" rel="noopener">📍 イオン日田店</a><br><span class="addr">〒877-0024 大分県日田市南元町14-22</span></td><td><a class="tellink" href="tel:+81973246131">📞 +81 973-24-6131</a></td><td>晚上步行可到，9:00–22:00</td></tr><tr><td>Day2</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%89%E3%83%A9%E3%83%83%E3%82%B0%E3%82%B9%E3%83%88%E3%82%A2%E3%83%A2%E3%83%AA%20%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%E5%BA%97%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA14-14-8" target="_blank" rel="noopener">📍 ドラッグストアモリ 日田駅前店</a><br><span class="addr">〒877-0013 大分県日田市元町14-14-8</span></td><td><a class="tellink" href="tel:+81973285581">📞 +81 973-28-5581</a></td><td>藥妝，營業到 24:00</td></tr></table>
-<h3>Day 3–5 景點、加油與還車</h3>
-<table><tr><th style="width:15%">日期</th><th style="width:40%">點名稱開 Google Map / 地址</th><th style="width:20%">電話</th><th>備註</th></tr><tr><td>Day3</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E9%87%8D%E2%80%9C%E5%A4%A2%E2%80%9D%E5%A4%A7%E5%90%8A%E6%A9%8B%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92879-4911%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E1208" target="_blank" rel="noopener">📍 九重“夢”大吊橋 駐車場</a><br><span class="addr">〒879-4911 大分県玖珠郡九重町田野1208</span></td><td><a class="tellink" href="tel:+81973733800">📞 +81 973-73-3800</a></td><td>8:30–17:00</td></tr><tr><td>Day3</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E5%B3%A0%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92879-4911%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E975-2" target="_blank" rel="noopener">📍 峠の茶屋</a><br><span class="addr">〒879-4911 大分県玖珠郡九重町田野975-2</span></td><td><a class="tellink" href="tel:+81973792707">📞 +81 973-79-2707</a></td><td>午餐 10:30–14:30</td></tr><tr><td>Day3</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E6%A1%82%E8%8C%B6%E5%B1%8B%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E953" target="_blank" rel="noopener">📍 桂茶屋</a><br><span class="addr">大分県玖珠郡九重町田野953</span></td><td><a class="tellink" href="tel:+81973793744">📞 +81 973-79-3744</a></td><td>備案，8:00–17:00</td></tr><tr><td>Day3–4</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E9%B1%97%E6%B9%96%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%94%B1%E5%B8%83%E5%B8%82%E6%B9%AF%E5%B8%83%E9%99%A2%E7%94%BA%E5%B7%9D%E4%B8%8A1561-1" target="_blank" rel="noopener">📍 金鱗湖</a><br><span class="addr">大分県由布市湯布院町川上1561-1</span></td><td>—</td><td>Day4 晨霧散步</td></tr><tr><td>Day4</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E5%88%A5%E5%BA%9C%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92874-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%88%A5%E5%BA%9C%E5%B8%82%E5%8D%97%E7%AB%8B%E7%9F%B3%E5%AD%97%E5%AF%92%E5%8E%9F10-7" target="_blank" rel="noopener">📍 別府ロープウェイ 駐車場</a><br><span class="addr">〒874-0823 大分県別府市南立石字寒原10-7</span></td><td><a class="tellink" href="tel:+81977222278">📞 +81 977-22-2278</a></td><td>鶴見岳賞楓</td></tr><tr><td>Day4 晚餐</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97" target="_blank" rel="noopener">📍 銀乃しゃり 大分駅南店</a><br><span class="addr">〒870-0823 大分県大分市東大道1丁目3-1 アクロスプラザ大分駅南</span></td><td><a class="tellink" href="tel:+81975296679">📞 +81 97-529-6679</a></td><td>18:30 包廂(已訂 SE3068292)；從東橫 INN 步行約 7–10 分</td></tr><tr><td>Day5</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E5%A4%A7%E5%88%86%20%E3%80%92870-0174%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E5%85%AC%E5%9C%92%E9%80%9A%E3%82%8A%E8%A5%BF2%E4%B8%81%E7%9B%AE1%E7%95%AA" target="_blank" rel="noopener">📍 パークプレイス大分</a><br><span class="addr">〒870-0174 大分県大分市公園通り西2丁目1番</span></td><td><a class="tellink" href="tel:+81975207777">📞 +81 97-520-7777</a></td><td>2F 任天堂專區 + AEON；13:00 離開</td></tr><tr><td>Day5</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%9D%E3%83%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%89%8D%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F750-1" target="_blank" rel="noopener">📍 アポロステーション 大分空港前</a><br><span class="addr">〒873-0231 大分県国東市安岐町下原750-1</span></td><td>—</td><td>14:00 加滿油(Budget 隔壁)</td></tr><tr><td>Day5</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%BA%97%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F751-1" target="_blank" rel="noopener">📍 バジェット・レンタカー 大分空港店</a><br><span class="addr">〒873-0231 大分県国東市安岐町下原751-1</span></td><td><a class="tellink" href="tel:+81978671943">📞 +81 978-67-1943</a></td><td>14:30 前還車</td></tr></table>
+<!-- 5 實用資訊 -->
+<section class="sec wrap" id="s5">
+  <div class="sec-head rv"><span class="n">5</span><h2>實用資訊</h2></div>
+  <div class="prac">
+    <div class="panel w7 rv">
+      <h3><i class="ph ph-shopping-bag"></i>大分市區逛街攻略(Day 4 下午)</h3>
+      <p>車停トラストパーク大分駅前，全程步行。大分站一區買伴手禮、吃美食；站北拱廊商店街逛在地小店。</p>
+      <dl class="kv" style="margin-top:10px">
+        <div><dt class="ja">アミュプラザおおいた(大分站)</dt><dd>和車站共構的大型商場，時尚、美食、雜貨齊全；多數店家 20:00 打烊</dd></div>
+        <div><dt class="ja">豊後にわさき市場(大分站 1F)</dt><dd>伴手禮、銘菓、超市、藥妝一站買齊；9:30-21:00，餐飲到 23:00</dd></div>
+        <div><dt class="ja">セントポルタ中央町</dt><dd>從站前往北延伸的拱廊，大分縣人潮最多的商店街</dd></div>
+        <div><dt class="ja">ガレリア竹町</dt><dd>大分市最古老的商店街，有開闔式圓頂廣場；晚上有烤雞串、居酒屋</dd></div>
+        <div><dt class="ja">府内五番街／トキハ本店</dt><dd>緊鄰百貨的中心商店街，在地選品</dd></div>
+      </dl>
+    </div>
+    <div class="panel w5 rv">
+      <h3><i class="ph ph-cooking-pot"></i>必吃</h3>
+      <dl class="kv">
+        <div><dt>とり天(雞天)</dt><dd>にわさき市場內的豐後茶屋</dd></div>
+        <div><dt>だんご汁</dt><dd>大分鄉土麵疙瘩湯，にわさき市場餐飲店</dd></div>
+        <div><dt>豐後牛</dt><dd>站內熟食店的豐後牛可樂餅</dd></div>
+      </dl>
+      <h4>必買</h4>
+      <dl class="kv">
+        <div><dt class="ja">謎のとり天せんべい</dt><dd>把大分名物「雞天」做成仙貝，蒜香醬油味</dd></div>
+        <div><dt>菊家 蜂蜜布丁</dt><dd>曾連續 3 年獲世界品質評鑑最高金獎</dd></div>
+        <div><dt>酥炸雞皮</dt><dd>鹽味、醬油、臭橙(かぼす)、柚子胡椒四種口味，下酒首選</dd></div>
+        <div><dt>別府地獄咖哩</dt><dd>辣味零食，配啤酒</dd></div>
+        <div><dt>臼杵煎餅、湯之花入浴劑</dt><dd>大分經典伴手禮</dd></div>
+        <div><dt>麥燒酎、日本酒、柚子胡椒</dt><dd>にわさき市場選擇最多</dd></div>
+      </dl>
+    </div>
+    <div class="panel w7 rv">
+      <h3><i class="ph ph-car-profile"></i>租車重點</h3>
+      <ul class="plain">
+        <li><strong>Budget 大分空港店</strong>，車型 <strong>Toyota Alphard</strong>(WB 豪華旅行車，預約號 00010486642)。取還車流程見第 8 節</li>
+        <li>必備：日本駕照譯本 + 台灣駕照 + 護照 + 信用卡；ETC 卡</li>
+        <li>建議加購全險(CDW + NOC)；還車前在 Budget 隔壁的アポロステーション加滿，保留收據</li>
+        <li><strong>大車提醒</strong>：車長約 5m。由布院街區巷弄較窄，停車多留意；青の洞門停車場限高 3.6m 可停；日田 Route Inn 第 1 停車場、Park Place 停車場都寬敞；<strong>大分東橫 INN 停車場放不下</strong>，改停トラストパーク大分駅前</li>
+      </ul>
+    </div>
+    <div class="panel w5 rv">
+      <h3><i class="ph ph-thermometer-cold"></i>季節與星期注意(10 月下旬)</h3>
+      <ul class="plain">
+        <li>平地氣溫約 10-18 度，日夜溫差大，洋蔥式穿搭</li>
+        <li><strong>別府纜車山上約 5 度以下、金鱗湖清晨 7 度以下、九重夢大吊橋風大</strong>，帶厚外套 + 圍巾</li>
+        <li>Day 2-3 山區路段可能起霧，市區先加滿油</li>
+        <li>10/19、10/20 為<strong>週一、週二平日</strong>，景點人潮少；部分個人商店週二公休</li>
+      </ul>
+      <h4>退稅</h4>
+      <ul class="plain">
+        <li>單筆滿 5,500 日圓(含稅)可退稅，需護照本人</li>
+        <li>2026 新制：退稅商品於離境時在機場海關核驗，預留 30 分鐘</li>
+      </ul>
+    </div>
+    <div class="panel tint rv" style="grid-column:1/-1">
+      <h3><i class="ph ph-first-aid"></i>緊急聯絡 &amp; App</h3>
+      <div class="emerg">
+        <div><span>警察 / 救護車</span><b>110 / 119</b></div>
+        <div><span>台北駐福岡辦事處</span><b>+81 92-734-2810</b><small>急難 +81 90-1922-9740</small></div>
+        <div><span>外交部緊急聯絡中心</span><b>+886 800-085-095</b></div>
+        <div><span>JAF 道路救援</span><b>#8139</b></div>
+        <div><span>必備 App</span><small style="font-size:14px;color:var(--ink)">Google Maps、Yahoo! カーナビ、NAVITIME、食べログ、LINE</small></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="s7">
-<h2>7. 參考遊記連結 📖</h2>
-<div class="box-info">
-每天重點景點的遊記與官方資訊，出發前可先看照片、抓現場感。文章發表時間不一，<strong>營業時間、票價以現場及官方公告為準</strong>。
-</div>
+<!-- 6 導航 -->
+<section class="sec wrap" id="s6">
+  <div class="sec-head rv"><span class="n">6</span><h2>導航地址速查表</h2><p>給主要司機：<strong>按「地圖」直接開 Google Map</strong>，再按「路線」即可導航；<strong>按電話直接撥號</strong>；「複製」會把日文名稱和地址複製起來，貼進車上導航。</p></div>
 
-<h3>Day 1 · 中津唐揚</h3>
-<ul class="links">
-  <li><a href="https://www.kkgo.info/morikara/" target="_blank" rel="noopener">過期牛奶｜元祖中津炸雞「森山」</a><br><span class="src">名店實吃、外帶組合份量參考</span></li>
-  <li><a href="https://kywu.pixnet.net/blog/posts/2035361754" target="_blank" rel="noopener">嬉遊記｜炸雞聖地 中津·耶馬溪·宇佐</a><br><span class="src">中津炸雞文化與多家店整理</span></li>
-  <li><a href="https://oita-tourism.com/zh-TW/stories/detail_84.html" target="_blank" rel="noopener">Visit Oita 官方｜大分美食特輯</a><br><span class="src">大分縣官方觀光網，含中津炸雞介紹</span></li>
-</ul>
+  <div class="places-group">
+    <h3 class="rv"><i class="ph ph-bed"></i>住宿與停車</h3>
+    <div class="places">
+      <article class="place rv"><div class="place-top"><span class="when">DAY 1</span><span class="role">中津</span></div><h4 class="ja">東横INN大分中津駅前</h4><p class="addr">大分県中津市豊田町10-11</p><p class="note">停車場限高 1.8m</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA10-11" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979251045"><i class="ph ph-phone"></i>+81 979-25-1045</a><button class="btn btn-sm copy" type="button" data-copy="東横INN大分中津駅前 大分県中津市豊田町10-11"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 1</span><span class="role">停車・飯店沒車位時</span></div><h4 class="ja">中津駅南口駐車場</h4><p class="addr">〒871-0058 大分県中津市島田219-2</p><p class="note">24h 內最多 600 日圓；離飯店約 80m。管理公司 <a class="tel" href="tel:+81975008880">+81 97-500-8880</a></p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%AD%E6%B4%A5%E9%A7%85%E5%8D%97%E5%8F%A3%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0058%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E5%B3%B6%E7%94%B0219-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979250582"><i class="ph ph-phone"></i>+81 979-25-0582</a><button class="btn btn-sm copy" type="button" data-copy="中津駅南口駐車場 〒871-0058 大分県中津市島田219-2"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">日田・導航到停車場</span></div><h4 class="ja">ホテルルートイン日田駅前 第1駐車場</h4><p class="addr">〒877-0013 大分県日田市元町21-21</p><p class="note">飯店本體在元町 21-14</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%AB%E3%83%BC%E3%83%88%E3%82%A4%E3%83%B3%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%20%E7%AC%AC1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA21-21" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+815058477411"><i class="ph ph-phone"></i>+81 50-5847-7411</a><button class="btn btn-sm copy" type="button" data-copy="ホテルルートイン日田駅前 第1駐車場 〒877-0013 大分県日田市元町21-21"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 3</span><span class="role">由布院</span></div><h4 class="ja">金鱗湖豊国リゾート</h4><p class="addr">大分県由布市湯布院町川上1561</p><p class="note">14:00 先問能否停車寄放行李</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E9%B1%97%E6%B9%96%E8%B1%8A%E5%9B%BD%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%94%B1%E5%B8%83%E5%B8%82%E6%B9%AF%E5%B8%83%E9%99%A2%E7%94%BA%E5%B7%9D%E4%B8%8A1561" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="金鱗湖豊国リゾート 大分県由布市湯布院町川上1561"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 4</span><span class="role">大分</span></div><h4 class="ja">東横INN大分駅前</h4><p class="addr">大分県大分市金池町2-2-5</p><p class="note">飯店停車場放不下 Alphard</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E6%A8%AAINN%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2-2-5" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81975341045"><i class="ph ph-phone"></i>+81 97-534-1045</a><button class="btn btn-sm copy" type="button" data-copy="東横INN大分駅前 大分県大分市金池町2-2-5"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 4</span><span class="role">停車</span></div><h4 class="ja">トラストパーク大分駅前</h4><p class="addr">〒870-0026 大分県大分市金池町2丁目2-1</p><p class="note">投幣式；停到 Day5 早上，確認最大料金</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%88%E3%83%A9%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%82%AF%E5%A4%A7%E5%88%86%E9%A7%85%E5%89%8D%20%E3%80%92870-0026%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E9%87%91%E6%B1%A0%E7%94%BA2%E4%B8%81%E7%9B%AE2-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="トラストパーク大分駅前 〒870-0026 大分県大分市金池町2丁目2-1"><i class="ph ph-copy"></i>複製</button></div></article>
+    </div>
+  </div>
 
-<h3>Day 2 · 耶馬溪、進撃の巨人 大山ダム</h3>
-<ul class="links">
-  <li><a href="https://watabi.org/articles/yabakei-guide" target="_blank" rel="noopener">和旅誌 WaTabi｜耶馬溪攻略 2026</a><br><span class="src">青の洞門步行解禁、車輛仍禁的最新現況，停車場與一目八景資訊</span></li>
-  <li><a href="https://blog.xinmedia.com/article/161640" target="_blank" rel="noopener">欣傳媒｜耶馬溪 青之洞門、競秀峰、一目八景</a><br><span class="src">自駕賞楓遊記，兩區重點走法</span></li>
-  <li><a href="https://fukuhatu.sub.jp/aonodoumon_south/" target="_blank" rel="noopener">競秀峰と青の洞門(日文)</a><br><span class="src">青の禅海橋、南北兩處手掘洞門的位置與實景</span></li>
-  <li><a href="https://www.ehime-odekakejyouhou.com/2024/02/25/ooyadamadamu/" target="_blank" rel="noopener">進撃の巨人 大山ダム銅像 實訪(日文)</a><br><span class="src">停車場、步行時間、廁所位置</span></li>
-</ul>
+  <div class="places-group">
+    <h3 class="rv"><i class="ph ph-mountains"></i>Day 2 耶馬溪・大山ダム・日田</h3>
+    <div class="places">
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">首選停車</span></div><h4 class="ja">青の洞門 臨時駐車場 PK-02</h4><p class="addr">〒871-0202 大分県中津市本耶馬渓町曽木</p><p class="note">首選停車(活動期間才開)</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%20%E8%87%A8%E6%99%82%E9%A7%90%E8%BB%8A%E5%A0%B4%20PK-02%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979522211"><i class="ph ph-phone"></i>+81 979-52-2211</a><button class="btn btn-sm copy" type="button" data-copy="青の洞門 臨時駐車場 PK-02 〒871-0202 大分県中津市本耶馬渓町曽木"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">備用停車</span></div><h4 class="ja">青の洞門駐車場</h4><p class="addr">〒871-0202 大分県中津市本耶馬渓町曽木</p><p class="note">PK-02 沒開時停這裡，有廁所</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="青の洞門駐車場 〒871-0202 大分県中津市本耶馬渓町曽木"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">補給</span></div><h4 class="ja">ローソン 本耶馬溪町店</h4><p class="addr">〒871-0202 大分県中津市本耶馬渓町曽木1866-1</p><p class="note">離開時補給，停約 10 分</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%BA%97%20%E3%80%92871-0202%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E6%9C%AC%E8%80%B6%E9%A6%AC%E6%B8%93%E7%94%BA%E6%9B%BD%E6%9C%A81866-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979523570"><i class="ph ph-phone"></i>+81 979-52-3570</a><button class="btn btn-sm copy" type="button" data-copy="ローソン 本耶馬溪町店 〒871-0202 大分県中津市本耶馬渓町曽木1866-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">午餐</span></div><h4 class="ja">天雲龍</h4><p class="addr">〒871-0405 大分県中津市耶馬溪町大字柿坂745-1</p><p class="note">野味料理，11:00-17:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E9%9B%B2%E9%BE%8D%20%E3%80%92871-0405%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%9F%BF%E5%9D%82745-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979542552"><i class="ph ph-phone"></i>+81 979-54-2552</a><button class="btn btn-sm copy" type="button" data-copy="天雲龍 〒871-0405 大分県中津市耶馬溪町大字柿坂745-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">午餐</span></div><h4 class="ja">手打ちそば 筍</h4><p class="addr">〒871-0431 大分県中津市耶馬溪町大字大島174-1</p><p class="note">手打蕎麥，11:00-14:00(偏離路線)</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%89%8B%E6%89%93%E3%81%A1%E3%81%9D%E3%81%B0%20%E7%AD%8D%20%E3%80%92871-0431%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%A4%A7%E5%B3%B6174-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+819047756093"><i class="ph ph-phone"></i>+81 90-4775-6093</a><button class="btn btn-sm copy" type="button" data-copy="手打ちそば 筍 〒871-0431 大分県中津市耶馬溪町大字大島174-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">午餐</span></div><h4 class="ja">ほのぼの茶屋</h4><p class="addr">〒871-0421 大分県中津市耶馬溪町大字山移3802</p><p class="note">700 日圓定食，11:00-14:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BB%E3%81%AE%E3%81%BC%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92871-0421%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E5%B1%B1%E7%A7%BB3802" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979552214"><i class="ph ph-phone"></i>+81 979-55-2214</a><button class="btn btn-sm copy" type="button" data-copy="ほのぼの茶屋 〒871-0421 大分県中津市耶馬溪町大字山移3802"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">一目八景導航目標</span></div><h4 class="ja">バス専用駐車場</h4><p class="addr">〒871-0422 大分県中津市耶馬溪町大字深耶馬3102-2</p><p class="note">一目八景導航目標</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%82%B9%E5%B0%82%E7%94%A8%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC3102-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81979543111"><i class="ph ph-phone"></i>+81 979-54-3111</a><button class="btn btn-sm copy" type="button" data-copy="バス専用駐車場 〒871-0422 大分県中津市耶馬溪町大字深耶馬3102-2"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">實際停車</span></div><h4 class="ja">深耶馬渓公共駐車場</h4><p class="addr">〒871-0422 大分県中津市耶馬溪町大字深耶馬</p><p class="note">實際停這裡，步行約 5 分</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B7%B1%E8%80%B6%E9%A6%AC%E6%B8%93%E5%85%AC%E5%85%B1%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92871-0422%20%E5%A4%A7%E5%88%86%E7%9C%8C%E4%B8%AD%E6%B4%A5%E5%B8%82%E8%80%B6%E9%A6%AC%E6%BA%AA%E7%94%BA%E5%A4%A7%E5%AD%97%E6%B7%B1%E8%80%B6%E9%A6%AC" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="深耶馬渓公共駐車場 〒871-0422 大分県中津市耶馬溪町大字深耶馬"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">補給・先設這裡</span></div><h4 class="ja">ローソン 日田天瀬町店</h4><p class="addr">〒879-4123 大分県日田市天瀬町女子畑1790-1</p><p class="note">買水、上廁所(先設這裡再設大山ダム)</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E6%97%A5%E7%94%B0%E5%A4%A9%E7%80%AC%E7%94%BA%E5%BA%97%20%E3%80%92879-4123%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A9%E7%80%AC%E7%94%BA%E5%A5%B3%E5%AD%90%E7%95%911790-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973578035"><i class="ph ph-phone"></i>+81 973-57-8035</a><button class="btn btn-sm copy" type="button" data-copy="ローソン 日田天瀬町店 〒879-4123 大分県日田市天瀬町女子畑1790-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">打卡</span></div><h4 class="ja">進撃の巨人 大山ダム銅像 駐車場</h4><p class="addr">〒877-0201 大分県日田市大山町西大山2008-1</p><p class="note">停下方停車場，打卡 15 分</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92877-0201%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%A4%A7%E5%B1%B1%E7%94%BA%E8%A5%BF%E5%A4%A7%E5%B1%B12008-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973522445"><i class="ph ph-phone"></i>+81 973-52-2445</a><button class="btn btn-sm copy" type="button" data-copy="進撃の巨人 大山ダム銅像 駐車場 〒877-0201 大分県日田市大山町西大山2008-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">雨備</span></div><h4 class="ja">イオンタウン日田</h4><p class="addr">〒877-0074 大分県日田市庄手661-1</p><p class="note">提早到日田時去逛，10:00-20:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E7%94%B0%20%E3%80%92877-0074%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%BA%84%E6%89%8B661-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973285015"><i class="ph ph-phone"></i>+81 973-28-5015</a><button class="btn btn-sm copy" type="button" data-copy="イオンタウン日田 〒877-0074 大分県日田市庄手661-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">晚上逛街</span></div><h4 class="ja">イオン日田店</h4><p class="addr">〒877-0024 大分県日田市南元町14-22</p><p class="note">晚上步行可到，9:00-22:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%82%AA%E3%83%B3%E6%97%A5%E7%94%B0%E5%BA%97%20%E3%80%92877-0024%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%8D%97%E5%85%83%E7%94%BA14-22" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973246131"><i class="ph ph-phone"></i>+81 973-24-6131</a><button class="btn btn-sm copy" type="button" data-copy="イオン日田店 〒877-0024 大分県日田市南元町14-22"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 2</span><span class="role">藥妝</span></div><h4 class="ja">ドラッグストアモリ 日田駅前店</h4><p class="addr">〒877-0013 大分県日田市元町14-14-8</p><p class="note">藥妝，營業到 24:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%A9%E3%83%83%E3%82%B0%E3%82%B9%E3%83%88%E3%82%A2%E3%83%A2%E3%83%AA%20%E6%97%A5%E7%94%B0%E9%A7%85%E5%89%8D%E5%BA%97%20%E3%80%92877-0013%20%E5%A4%A7%E5%88%86%E7%9C%8C%E6%97%A5%E7%94%B0%E5%B8%82%E5%85%83%E7%94%BA14-14-8" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973285581"><i class="ph ph-phone"></i>+81 973-28-5581</a><button class="btn btn-sm copy" type="button" data-copy="ドラッグストアモリ 日田駅前店 〒877-0013 大分県日田市元町14-14-8"><i class="ph ph-copy"></i>複製</button></div></article>
+    </div>
+  </div>
 
-<h3>Day 3 · 九重夢大吊橋、九醉溪、由布院</h3>
-<ul class="links">
-  <li><a href="https://watabi.org/articles/kokonoe-yume-bridge-guide" target="_blank" rel="noopener">和旅誌 WaTabi｜九重夢大吊橋攻略</a><br><span class="src">門票、強風入場限制等實用資訊</span></li>
-  <li><a href="https://16vlog.com/nine-drunk.html" target="_blank" rel="noopener">1620 夫妻生活｜九醉溪 + 九重夢大吊橋自駕</a><br><span class="src">和本趟同路線，含桂茶屋一帶實景</span></li>
-  <li><a href="https://twoslowbyron.com/yufuin/" target="_blank" rel="noopener">由布院一日遊 2026｜湯之坪街道散策地圖</a><br><span class="src">自駕停車後的逛街動線、吉卜力 / Snoopy 等店家</span></li>
-  <li><a href="https://twopigsfun.com/lake-kinrin/" target="_blank" rel="noopener">兩豬小妹｜湯之坪街道散步路線＋金鱗湖</a><br><span class="src">街道店家與湖畔一路逛</span></li>
-</ul>
-
-<h3>Day 4 · 金鱗湖晨霧、別府纜車</h3>
-<ul class="links">
-  <li><a href="https://boo2k.com/archives/81921" target="_blank" rel="noopener">小布少爺｜金鱗湖晨霧拍攝時間</a><br><span class="src">清晨與白天的湖景對照</span></li>
-  <li><a href="https://boo2k.com/beppu-ropeway/" target="_blank" rel="noopener">小布少爺｜別府纜車 鶴見岳展望台</a><br><span class="src">山頂步道、七福神、觀景點實拍</span></li>
-  <li><a href="https://journey.tw/beppu-ropeway/" target="_blank" rel="noopener">Journey｜別府鶴見岳空中纜車</a><br><span class="src">營運時間、票價、沿途風景</span></li>
-  <li><a href="https://oita-tourism.com/zh-TW/attractions/detail_1015.html" target="_blank" rel="noopener">Visit Oita 官方｜別府空中纜車</a><br><span class="src">官方景點介紹</span></li>
-</ul>
-
-<h3>Day 5 · Park Place 任天堂專區</h3>
-<ul class="links">
-  <li><a href="https://shop.parkplace-oita.com/information/detail/479" target="_blank" rel="noopener">Park Place 大分 官方｜ニンテンドーコーナー</a><br><span class="src">官方公告：位置在 AEON 2F Kids Republic 內(日文)</span></li>
-  <li><a href="https://ooita.goguynet.jp/2025/09/21/nintendo/" target="_blank" rel="noopener">號外NET 大分市｜任天堂專區實地報導</a><br><span class="src">現場照片、Switch 2 試玩區(日文)</span></li>
-</ul>
+  <div class="places-group">
+    <h3 class="rv"><i class="ph ph-signpost"></i>Day 3-5 景點、加油與還車</h3>
+    <div class="places">
+      <article class="place rv"><div class="place-top"><span class="when">DAY 3</span><span class="role">景點</span></div><h4 class="ja">九重“夢”大吊橋 駐車場</h4><p class="addr">〒879-4911 大分県玖珠郡九重町田野1208</p><p class="note">8:30-17:00(7-10 月到 18:00)</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B9%9D%E9%87%8D%E2%80%9C%E5%A4%A2%E2%80%9D%E5%A4%A7%E5%90%8A%E6%A9%8B%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92879-4911%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E1208" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973733800"><i class="ph ph-phone"></i>+81 973-73-3800</a><button class="btn btn-sm copy" type="button" data-copy="九重“夢”大吊橋 駐車場 〒879-4911 大分県玖珠郡九重町田野1208"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 3</span><span class="role">午餐</span></div><h4 class="ja">峠の茶屋</h4><p class="addr">〒879-4911 大分県玖珠郡九重町田野975-2</p><p class="note">午餐 10:30-14:30</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B3%A0%E3%81%AE%E8%8C%B6%E5%B1%8B%20%E3%80%92879-4911%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E975-2" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973792707"><i class="ph ph-phone"></i>+81 973-79-2707</a><button class="btn btn-sm copy" type="button" data-copy="峠の茶屋 〒879-4911 大分県玖珠郡九重町田野975-2"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 3</span><span class="role">午餐備案</span></div><h4 class="ja">桂茶屋</h4><p class="addr">大分県玖珠郡九重町田野953</p><p class="note">備案，8:00-17:00</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A1%82%E8%8C%B6%E5%B1%8B%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%8E%96%E7%8F%A0%E9%83%A1%E4%B9%9D%E9%87%8D%E7%94%BA%E7%94%B0%E9%87%8E953" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81973793744"><i class="ph ph-phone"></i>+81 973-79-3744</a><button class="btn btn-sm copy" type="button" data-copy="桂茶屋 大分県玖珠郡九重町田野953"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 3-4</span><span class="role">景點</span></div><h4 class="ja">金鱗湖</h4><p class="addr">大分県由布市湯布院町川上1561-1</p><p class="note">Day4 晨霧散步</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E9%B1%97%E6%B9%96%20%E5%A4%A7%E5%88%86%E7%9C%8C%E7%94%B1%E5%B8%83%E5%B8%82%E6%B9%AF%E5%B8%83%E9%99%A2%E7%94%BA%E5%B7%9D%E4%B8%8A1561-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="金鱗湖 大分県由布市湯布院町川上1561-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 4</span><span class="role">景點</span></div><h4 class="ja">別府ロープウェイ 駐車場</h4><p class="addr">〒874-0823 大分県別府市南立石字寒原10-7</p><p class="note">鶴見岳賞楓</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%88%A5%E5%BA%9C%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E3%80%92874-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%88%A5%E5%BA%9C%E5%B8%82%E5%8D%97%E7%AB%8B%E7%9F%B3%E5%AD%97%E5%AF%92%E5%8E%9F10-7" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81977222278"><i class="ph ph-phone"></i>+81 977-22-2278</a><button class="btn btn-sm copy" type="button" data-copy="別府ロープウェイ 駐車場 〒874-0823 大分県別府市南立石字寒原10-7"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 4</span><span class="role">晚餐</span></div><h4 class="ja">銀乃しゃり 大分駅南店</h4><p class="addr">〒870-0823 大分県大分市東大道1丁目3-1 アクロスプラザ大分駅南</p><p class="note">18:30 包廂(已訂 SE3068292)；從東橫 INN 步行約 7-10 分</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%9B%E3%82%BF%E3%83%B3%E3%81%A8%E3%83%8F%E3%83%A9%E3%83%9F%E3%81%AE%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89%E5%B0%82%E9%96%80%E5%BA%97%20%E9%8A%80%E4%B9%83%E3%81%97%E3%82%83%E3%82%8A%20%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97%E5%BA%97%20%E3%80%92870-0823%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E6%9D%B1%E5%A4%A7%E9%81%931%E4%B8%81%E7%9B%AE3-1%20%E3%82%A2%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6%E5%A4%A7%E5%88%86%E9%A7%85%E5%8D%97" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81975296679"><i class="ph ph-phone"></i>+81 97-529-6679</a><button class="btn btn-sm copy" type="button" data-copy="銀乃しゃり 大分駅南店 〒870-0823 大分県大分市東大道1丁目3-1 アクロスプラザ大分駅南"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 5</span><span class="role">購物</span></div><h4 class="ja">パークプレイス大分</h4><p class="addr">〒870-0174 大分県大分市公園通り西2丁目1番</p><p class="note">2F 任天堂專區 + AEON；13:00 離開</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%91%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E5%A4%A7%E5%88%86%20%E3%80%92870-0174%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%A4%A7%E5%88%86%E5%B8%82%E5%85%AC%E5%9C%92%E9%80%9A%E3%82%8A%E8%A5%BF2%E4%B8%81%E7%9B%AE1%E7%95%AA" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81975207777"><i class="ph ph-phone"></i>+81 97-520-7777</a><button class="btn btn-sm copy" type="button" data-copy="パークプレイス大分 〒870-0174 大分県大分市公園通り西2丁目1番"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 5</span><span class="role">加油</span></div><h4 class="ja">アポロステーション 大分空港前</h4><p class="addr">〒873-0231 大分県国東市安岐町下原750-1</p><p class="note">14:00 加滿油(Budget 隔壁)</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A2%E3%83%9D%E3%83%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%89%8D%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F750-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><button class="btn btn-sm copy" type="button" data-copy="アポロステーション 大分空港前 〒873-0231 大分県国東市安岐町下原750-1"><i class="ph ph-copy"></i>複製</button></div></article>
+      <article class="place rv"><div class="place-top"><span class="when">DAY 5</span><span class="role">還車</span></div><h4 class="ja">バジェット・レンタカー 大分空港店</h4><p class="addr">〒873-0231 大分県国東市安岐町下原751-1</p><p class="note">14:30 前還車</p><div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%BA%97%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F751-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>地圖</a><a class="btn btn-sm" href="tel:+81978671943"><i class="ph ph-phone"></i>+81 978-67-1943</a><button class="btn btn-sm copy" type="button" data-copy="バジェット・レンタカー 大分空港店 〒873-0231 大分県国東市安岐町下原751-1"><i class="ph ph-copy"></i>複製</button></div></article>
+    </div>
+  </div>
 </section>
 
-<section id="s8">
-<h2>8. 取車與還車流程 🚙</h2>
-<div class="box-info">
-租車公司：<strong>Budget 大分空港店</strong>｜車型 Toyota Alphard(WB 豪華旅行車)｜預約號 <strong>00010486642</strong><br>
-預約時段：取車 10/17(六) 15:00、還車 10/21(三) 14:00
-</div>
-
-<h3>營業所資訊</h3>
-<table>
-  <tr><th style="width:25%">項目</th><th>內容</th></tr>
-  <tr><td>地址</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%83%90%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%BA%97%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F751-1" target="_blank" rel="noopener">📍 大分縣國東市安岐町下原 751-1</a></td></tr>
-  <tr><td>電話</td><td><a class="tellink" href="tel:+81978671943">📞 +81 978-67-1943</a>(日本國內撥 0978-67-1943；國內客服 0570-054-317)</td></tr>
-  <tr><td>營業時間</td><td>08:00–19:00(櫃台諮詢 08:00–20:00)</td></tr>
-</table>
-
-<h3>取車(Day 1 · 10/17 六)</h3>
-<table>
-  <tr><th style="width:18%">步驟</th><th>說明</th></tr>
-  <tr><td>① 報到</td><td>落地領完行李後，到<strong>航廈內 Budget 櫃台</strong>報到、辦簡單手續</td></tr>
-  <tr><td>② 接駁</td><td>工作人員安排接駁車，載到附近營業所</td></tr>
-  <tr><td>③ 領車</td><td>核對證件、車況與 ETC 卡，實際上路約 16:00</td></tr>
-</table>
-<div class="box-warn">
-<strong>⚠ 取車時必辦</strong>：確認還車可否從預約的 <strong>14:00 延到 14:30</strong>、是否加費。若不行，Day 5 改為 12:30 離開 Park Place、13:30 加油、14:00 還車。
-</div>
-
-<h3>還車(Day 5 · 10/21 三)</h3>
-<table>
-  <tr><th style="width:18%">時間</th><th>說明</th></tr>
-  <tr><td>13:00</td><td>準時離開 Park Place(車程約 60 分)</td></tr>
-  <tr><td>14:00</td><td><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%9D%E3%83%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%89%8D%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F750-1" target="_blank" rel="noopener">📍 アポロステーション 大分空港前</a>加滿油(Budget 隔壁)</td></tr>
-  <tr><td>14:30 前</td><td>開進隔壁 Budget 營業所還車、辦手續</td></tr>
-  <tr><td>15:00 前</td><td>門市人員以接駁車送回機場航廈</td></tr>
-</table>
-<div class="box">
-<strong>⛽ 加油小抄</strong>：跟店員說「<strong>レギュラー、満タンでお願いします</strong>」(一般汽油，加滿)。<strong>收據留著</strong>，還車時可能會被要求出示。
-</div>
-
-<h3>參考資料</h3>
-<ul class="links">
-  <li><a href="https://www.budgetrentacar.co.jp/zh/shop/oita/0022/" target="_blank" rel="noopener">Budget 官方｜大分空港店</a></li>
-  <li><a href="https://travel.rakuten.com/cars/default/zh-tw/shop/7038/" target="_blank" rel="noopener">樂天旅遊｜Budget 大分空港店</a></li>
-  <li><a href="https://www.web-rentacar.com/tw/show-shop-detail/?brdcode=0009&amp;shpcode=BJ12" target="_blank" rel="noopener">Web-Rentacar｜Budget 大分空港店</a></li>
-</ul>
+<!-- 7 遊記 -->
+<section class="sec wrap" id="s7">
+  <div class="sec-head rv"><span class="n">7</span><h2>參考遊記連結</h2><p>每天重點景點的遊記與官方資訊，出發前可先看照片、抓現場感。文章發表時間不一，<strong>營業時間、票價以現場及官方公告為準</strong>。每個景點的介紹與看點，另外整理在<a href="spots.html" style="color:var(--accent);font-weight:700">景點手冊</a>。</p></div>
+  <div class="reads">
+    <div class="read-day rv"><h3><span class="num">D1</span>中津唐揚</h3><ul>
+      <li><a href="https://www.kkgo.info/morikara/" target="_blank" rel="noopener"><b>過期牛奶｜元祖中津炸雞「森山」</b><span>名店實吃、外帶組合份量參考</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://kywu.pixnet.net/blog/posts/2035361754" target="_blank" rel="noopener"><b>嬉遊記｜炸雞聖地 中津·耶馬溪·宇佐</b><span>中津炸雞文化與多家店整理</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://oita-tourism.com/zh-TW/stories/detail_84.html" target="_blank" rel="noopener"><b>Visit Oita 官方｜大分美食特輯</b><span>大分縣官方觀光網，含中津炸雞介紹</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul></div>
+    <div class="read-day rv"><h3><span class="num">D2</span>耶馬溪、進撃の巨人 大山ダム</h3><ul>
+      <li><a href="https://watabi.org/articles/yabakei-guide" target="_blank" rel="noopener"><b>和旅誌 WaTabi｜耶馬溪攻略 2026</b><span>青の洞門步行解禁、車輛仍禁的最新現況，停車場與一目八景資訊</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://blog.xinmedia.com/article/161640" target="_blank" rel="noopener"><b>欣傳媒｜耶馬溪 青之洞門、競秀峰、一目八景</b><span>自駕賞楓遊記，兩區重點走法</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://fukuhatu.sub.jp/aonodoumon_south/" target="_blank" rel="noopener"><b>競秀峰と青の洞門(日文)</b><span>青の禅海橋、南北兩處手掘洞門的位置與實景</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://www.ehime-odekakejyouhou.com/2024/02/25/ooyadamadamu/" target="_blank" rel="noopener"><b>進撃の巨人 大山ダム銅像 實訪(日文)</b><span>停車場、步行時間、廁所位置</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul></div>
+    <div class="read-day rv"><h3><span class="num">D3</span>九重夢大吊橋、九醉溪、由布院</h3><ul>
+      <li><a href="https://watabi.org/articles/kokonoe-yume-bridge-guide" target="_blank" rel="noopener"><b>和旅誌 WaTabi｜九重夢大吊橋攻略</b><span>門票、強風入場限制等實用資訊</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://16vlog.com/nine-drunk.html" target="_blank" rel="noopener"><b>1620 夫妻生活｜九醉溪 + 九重夢大吊橋自駕</b><span>和本趟同路線，含桂茶屋一帶實景</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://twoslowbyron.com/yufuin/" target="_blank" rel="noopener"><b>由布院一日遊 2026｜湯之坪街道散策地圖</b><span>自駕停車後的逛街動線、吉卜力 / Snoopy 等店家</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://twopigsfun.com/lake-kinrin/" target="_blank" rel="noopener"><b>兩豬小妹｜湯之坪街道散步路線＋金鱗湖</b><span>街道店家與湖畔一路逛</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul></div>
+    <div class="read-day rv"><h3><span class="num">D4</span>金鱗湖晨霧、別府纜車</h3><ul>
+      <li><a href="https://boo2k.com/archives/81921" target="_blank" rel="noopener"><b>小布少爺｜金鱗湖晨霧拍攝時間</b><span>清晨與白天的湖景對照</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://boo2k.com/beppu-ropeway/" target="_blank" rel="noopener"><b>小布少爺｜別府纜車 鶴見岳展望台</b><span>山頂步道、七福神、觀景點實拍</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://journey.tw/beppu-ropeway/" target="_blank" rel="noopener"><b>Journey｜別府鶴見岳空中纜車</b><span>營運時間、票價、沿途風景</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://oita-tourism.com/zh-TW/attractions/detail_1015.html" target="_blank" rel="noopener"><b>Visit Oita 官方｜別府空中纜車</b><span>官方景點介紹</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul></div>
+    <div class="read-day rv"><h3><span class="num">D5</span>Park Place 任天堂專區</h3><ul>
+      <li><a href="https://shop.parkplace-oita.com/information/detail/479" target="_blank" rel="noopener"><b>Park Place 大分 官方｜ニンテンドーコーナー</b><span>官方公告：位置在 AEON 2F Kids Republic 內(日文)</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="https://ooita.goguynet.jp/2025/09/21/nintendo/" target="_blank" rel="noopener"><b>號外NET 大分市｜任天堂專區實地報導</b><span>現場照片、Switch 2 試玩區(日文)</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul></div>
+  </div>
 </section>
 
+<!-- 8 取還車 -->
+<section class="sec wrap" id="s8">
+  <div class="sec-head rv"><span class="n">8</span><h2>取車與還車流程</h2><p>租車公司：<strong>Budget 大分空港店</strong>｜車型 Toyota Alphard(WB 豪華旅行車)｜預約號 <strong class="num">00010486642</strong>。預約時段：取車 10/17(六) 15:00、還車 10/21(三) 14:00。</p></div>
 
+  <div class="prac">
+    <div class="panel w5 rv">
+      <h3><i class="ph ph-storefront"></i>營業所資訊</h3>
+      <dl class="kv">
+        <div><dt>地址</dt><dd><a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%BA%97%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F751-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>大分縣國東市安岐町下原 751-1</a></dd></div>
+        <div><dt>電話</dt><dd><a class="tel" href="tel:+81978671943">+81 978-67-1943</a>(日本國內撥 0978-67-1943；國內客服 0570-054-317)</dd></div>
+        <div><dt>營業時間</dt><dd>08:00-19:00(櫃台諮詢 08:00-20:00)</dd></div>
+      </dl>
+    </div>
+    <div class="w7 rv" style="display:grid;gap:12px;align-content:start">
+      <h3 style="font-size:18px;font-weight:900;display:flex;gap:8px;align-items:center"><i class="ph ph-key" style="color:var(--accent);font-size:22px"></i>取車(Day 1 · 10/17 六)</h3>
+      <ol class="steps">
+        <li><span class="k">01</span><b>報到</b><p>落地領完行李後，到<strong>航廈內 Budget 櫃台</strong>報到、辦簡單手續</p></li>
+        <li><span class="k">02</span><b>接駁</b><p>工作人員安排接駁車，載到附近營業所</p></li>
+        <li><span class="k">03</span><b>領車</b><p>核對證件、車況與 ETC 卡，實際上路約 16:00</p></li>
+      </ol>
+      <div class="call warn"><span class="ic"><i class="ph-fill ph-warning"></i></span><div><h4>取車時必辦</h4><p>確認還車可否從預約的 <strong>14:00 延到 14:30</strong>、是否加費。若不行，Day 5 改為 12:30 離開 Park Place、13:30 加油、14:00 還車。</p></div></div>
+    </div>
+    <div class="w7 rv" style="display:grid;gap:12px;align-content:start">
+      <h3 style="font-size:18px;font-weight:900;display:flex;gap:8px;align-items:center"><i class="ph ph-flag" style="color:var(--accent);font-size:22px"></i>還車(Day 5 · 10/21 三)</h3>
+      <ol class="tl">
+        <li><span class="t">13:00</span><span class="e">準時離開 Park Place(車程約 60 分)</span></li>
+        <li><span class="t">14:00</span><span class="e"><a class="pin" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A2%E3%83%9D%E3%83%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%20%E5%A4%A7%E5%88%86%E7%A9%BA%E6%B8%AF%E5%89%8D%20%E3%80%92873-0231%20%E5%A4%A7%E5%88%86%E7%9C%8C%E5%9B%BD%E6%9D%B1%E5%B8%82%E5%AE%89%E5%B2%90%E7%94%BA%E4%B8%8B%E5%8E%9F750-1" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>アポロステーション 大分空港前</a>加滿油(Budget 隔壁)</span></li>
+        <li class="must"><span class="t">14:30 前</span><span class="e">開進隔壁 Budget 營業所還車、辦手續</span></li>
+        <li><span class="t">15:00 前</span><span class="e">門市人員以接駁車送回機場航廈</span></li>
+      </ol>
+    </div>
+    <div class="panel tip-panel w5 rv" style="background:var(--tip-wash);border-color:transparent">
+      <h3 style="color:var(--tip)"><i class="ph ph-gas-pump" style="color:var(--tip)"></i>加油小抄</h3>
+      <p style="color:var(--ink-2)">跟店員說(一般汽油，加滿)：</p>
+      <p class="phrase ja">レギュラー、満タンで<br>お願いします</p>
+      <p style="color:var(--ink-2)"><strong>收據留著</strong>，還車時可能會被要求出示。</p>
+    </div>
+    <div class="panel w12 rv" style="grid-column:1/-1">
+      <h3><i class="ph ph-book-open"></i>參考資料</h3>
+      <div class="read-day" style="border:0;padding:0"><ul>
+        <li><a href="https://www.budgetrentacar.co.jp/zh/shop/oita/0022/" target="_blank" rel="noopener"><b>Budget 官方｜大分空港店</b><i class="ph ph-arrow-up-right"></i></a></li>
+        <li><a href="https://travel.rakuten.com/cars/default/zh-tw/shop/7038/" target="_blank" rel="noopener"><b>樂天旅遊｜Budget 大分空港店</b><i class="ph ph-arrow-up-right"></i></a></li>
+        <li><a href="https://www.web-rentacar.com/tw/show-shop-detail/?brdcode=0009&amp;shpcode=BJ12" target="_blank" rel="noopener"><b>Web-Rentacar｜Budget 大分空港店</b><i class="ph ph-arrow-up-right"></i></a></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
 
-<footer>
-<p>九州大分五天四夜自駕行程手冊（最終定案版 V3）· 5 人團 · 2026.10.17(六)–10.21(三)</p>
-<p>實際開放時間、票價與道路狀況請以各官方公告為準。</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p><strong style="color:var(--ink)">九州大分五天四夜自駕行程手冊（最終定案版 V3）</strong> · 5 人團 · 2026.10.17(六)-10.21(三)</p>
+      <p>實際開放時間、票價與道路狀況請以各官方公告為準。</p>
+    </div>
+    <div class="credits">
+      <h4>照片來源(Wikimedia Commons)</h4>
+      <p>金鱗湖晨霧：Tzu-hsun, Hsu, <a href="https://commons.wikimedia.org/wiki/File:Lake_Kinrin_with_Morning_fog.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 中津唐揚：Mti, <a href="https://commons.wikimedia.org/wiki/File:Nakatsu_Karaage.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a> ／ 青の洞門：Underbar dk, <a href="https://commons.wikimedia.org/wiki/File:Aonod%C5%8Dmon.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 九重夢大吊橋：TANAKA Juuyoh (田中十洋), <a href="https://commons.wikimedia.org/wiki/File:Kokonoe-Yume-Otsurihashi-1.jpg" target="_blank" rel="noopener">CC BY 2.0</a> ／ 鶴見岳：Σ64, <a href="https://commons.wikimedia.org/wiki/File:Mt.Tsurumidake_01.jpg" target="_blank" rel="noopener">CC BY 3.0</a> ／ Park Place 大分：Tabitan, <a href="https://commons.wikimedia.org/wiki/File:Parkplaceoita_2022-05.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a>。照片經裁切與壓縮。</p>
+    </div>
+  </div>
 </footer>
 
-</div>
+<script src="site.js?v=1791076782"></script>
 </body>
 </html>

@@ -4,166 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>大分自駕景點手冊</title>
+<meta name="description" content="九州大分自駕每日重點景點：來歷、看點、10 月下旬會看到的景色與賞楓預期、現場小提醒。">
+<meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1318" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<style>
-/* Layout: 單欄閱讀，手機優先；上方日期籤固定，每個景點一張資料卡，依行程順序排列 */
-:root {
-  --paper: #F3F4F1;
-  --sheet: #FFFFFF;
-  --ink: #1E2B33;
-  --ink-soft: #55636B;
-  --rule: #D5DAD6;
-  --indigo: #24506B;
-  --indigo-wash: #E4ECF0;
-  --maple: #B4462E;
-  --maple-wash: #F6E6E0;
-  --moss: #4C6A4A;
-  --moss-wash: #E5ECE2;
-  --font-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
-  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #12181C; --sheet: #1A2227; --ink: #E3E8EA; --ink-soft: #9DABB2; --rule: #2F3B42;
-    --indigo: #8DB8D2; --indigo-wash: #1F3340; --maple: #E58A72; --maple-wash: #3A2420;
-    --moss: #9CC197; --moss-wash: #223024; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #12181C; --sheet: #1A2227; --ink: #E3E8EA; --ink-soft: #9DABB2; --rule: #2F3B42;
-  --indigo: #8DB8D2; --indigo-wash: #1F3340; --maple: #E58A72; --maple-wash: #3A2420;
-  --moss: #9CC197; --moss-wash: #223024; color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.75; }
-.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 0 48px; }
-a { color: var(--indigo); }
-a:focus-visible, .daynav a:focus-visible { outline: 2px solid var(--maple); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.35; margin: 0; }
-
-/* 封面 */
-.cover { padding-block: 40px 28px; border-bottom: 1px solid var(--rule); }
-.cover .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--maple); font-weight: 700; }
-.cover h1 { font-size: clamp(28px, 7vw, 40px); font-weight: 800; margin-top: 6px; }
-.cover p { color: var(--ink-soft); margin: 10px 0 0; max-width: 62ch; }
-.cover .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-size: 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-
-/* 日期籤 */
-.daynav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); margin-inline: -16px; padding: 10px 16px; overflow-x: auto; white-space: nowrap; }
-.daynav ol { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; }
-.daynav a { display: inline-block; text-decoration: none; font-size: 14px; padding: 4px 12px; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink); background: var(--sheet); font-variant-numeric: tabular-nums; }
-.daynav a b { color: var(--maple); font-weight: 700; margin-right: 4px; }
-
-/* 賞楓預期 */
-.foliage { margin-top: 32px; }
-.foliage h2, .day h2 { font-size: 22px; }
-.foliage > p { color: var(--ink-soft); font-size: 15px; margin: 6px 0 14px; }
-.chart { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 14px 8px; overflow-x: auto; }
-.chart-inner { min-width: 300px; }
-.crow { display: grid; grid-template-columns: minmax(84px, 116px) 1fr; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
-.crow .name { font-weight: 500; }
-.crow .name small { display: block; color: var(--ink-soft); font-size: 12px; font-weight: 400; font-variant-numeric: tabular-nums; }
-.track { position: relative; height: 22px; background: linear-gradient(to right, var(--rule) 1px, transparent 1px) 0 0 / calc(100% / 61 * 7) 100%; border-radius: 3px; }
-.track::before { content: ""; position: absolute; inset: 10px 0 auto; height: 2px; background: var(--rule); }
-.peak { position: absolute; top: 4px; height: 14px; background: var(--maple-wash); border: 1px solid var(--maple); border-radius: 3px; }
-.visit { position: absolute; top: -2px; width: 4px; height: 26px; margin-left: -2px; background: var(--indigo); border-radius: 2px; }
-.axis { display: grid; grid-template-columns: minmax(84px, 116px) 1fr; gap: 10px; font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.axis .ticks { position: relative; height: 18px; }
-.axis .ticks span { position: absolute; transform: translateX(-50%); }
-.axis .ticks span:first-child { transform: none; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-soft); margin-top: 10px; }
-.legend i { display: inline-block; vertical-align: -2px; margin-right: 6px; }
-.legend .lp { width: 18px; height: 12px; background: var(--maple-wash); border: 1px solid var(--maple); border-radius: 2px; }
-.legend .lv { width: 4px; height: 14px; background: var(--indigo); border-radius: 2px; }
-
-/* 每日 */
-.day { margin-top: 44px; }
-.day-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
-.day-head .d { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--maple); font-variant-numeric: tabular-nums; }
-.day-head .route { width: 100%; font-size: 14px; color: var(--ink-soft); }
-
-/* 景點卡 */
-.spot { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 20px 18px; margin-top: 16px; display: grid; gap: 14px; }
-.spot header { display: grid; gap: 2px; }
-.spot .when { font-size: 13px; color: var(--indigo); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
-.spot h3 { font-size: 21px; font-weight: 800; }
-.spot .jp { font-size: 14px; color: var(--ink-soft); }
-.spot .lead { margin: 0; }
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 0; }
-.facts div { background: var(--sheet); padding: 8px 10px; min-width: 0; }
-.facts dt { font-size: 12px; color: var(--ink-soft); letter-spacing: .06em; }
-.facts dd { margin: 0; font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
-.spot h4 { margin: 0 0 4px; font-size: 14px; letter-spacing: .08em; color: var(--moss); }
-.spot ul { margin: 0; padding-left: 1.2em; }
-.spot li + li { margin-top: 4px; }
-.note { border-radius: 4px; padding: 10px 12px; font-size: 15px; }
-.note.oct { background: var(--maple-wash); }
-.note.tip { background: var(--moss-wash); }
-.note strong { color: var(--ink); }
-.note.oct strong { color: var(--maple); }
-.note.tip strong { color: var(--moss); }
-.foot { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ink-soft); border-top: 1px dashed var(--rule); padding-top: 10px; }
-.foot a { word-break: break-all; }
-.foot .map { font-weight: 700; }
-
-.closing { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-soft); }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="preload" as="image" href="img/kyoshuho.jpg">
+<link rel="stylesheet" href="site.css?v=1791076782">
 </head>
 <body>
-<div class="wrap">
 
-<header class="cover">
-  <div class="eyebrow">OITA ROAD TRIP · 景點手冊</div>
-  <h1>大分自駕景點手冊</h1>
-  <p>行程手冊說「幾點去哪裡」，這本說「到了看什麼」。每個重點景點整理了來歷、看點、10 月下旬實際會看到的景色，以及現場小提醒，照行程順序排列。</p>
-  <div class="meta"><span>2026.10.17（六）→ 10.21（三）</span><span>5 人 · 7 人座自駕</span><span>資料查證：2026 年 10 月</span><a href="./">← 回行程手冊</a></div>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="#top" aria-label="回到頁首"><i>分</i><span>景點手冊</span></a>
+    <nav class="daytabs" aria-label="跳到">
+      <a href="#foliage"><b>楓</b>賞楓預期</a>
+      <a href="#d1"><b>D1</b>中津</a>
+      <a href="#d2"><b>D2</b>耶馬溪</a>
+      <a href="#d3"><b>D3</b>九重·由布院</a>
+      <a href="#d4"><b>D4</b>別府</a>
+      <a href="#d5"><b>D5</b>Park Place</a>
+    </nav>
+    <a class="toplink" href="./"><i class="ph ph-signpost"></i><span>行程手冊</span></a>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 
-<nav class="daynav" aria-label="日期">
-  <ol>
-    <li><a href="#foliage"><b>楓</b>賞楓預期</a></li>
-    <li><a href="#d1"><b>D1</b>10/17 中津</a></li>
-    <li><a href="#d2"><b>D2</b>10/18 耶馬溪</a></li>
-    <li><a href="#d3"><b>D3</b>10/19 九重·由布院</a></li>
-    <li><a href="#d4"><b>D4</b>10/20 別府·大分</a></li>
-    <li><a href="#d5"><b>D5</b>10/21 Park Place</a></li>
-  </ol>
-</nav>
+<main id="top">
 
-<section class="foliage" id="foliage">
-  <h2>先打預防針：這趟的楓葉會紅到哪裡</h2>
-  <p>大分的楓葉多半在 11 月才到最紅。我們 10/18–10/20 經過的楓葉名所，大部分還在轉色前或剛開始；最有機會看到紅葉的是<strong>鶴見岳山頂</strong>和<strong>九重夢大吊橋</strong>。下圖是各地例年最紅的時段，藍線是我們抵達的日子。</p>
-  <div class="chart" role="img" aria-label="各景點例年紅葉最佳期與本次抵達日比較：耶馬溪兩處 11 月中旬到 12 月上旬；九重夢大吊橋與鶴見岳 10 月下旬到 11 月中旬；九醉溪 11 月上旬到中旬；抵達日為 10 月 18 到 20 日">
-    <div class="chart-inner">
-      <div class="crow"><div class="name">青の洞門・競秀峰<small>10/18 抵達</small></div><div class="track"><span class="peak" style="left:52.5%;width:45.9%"></span><span class="visit" style="left:13.1%"></span></div></div>
-      <div class="crow"><div class="name">一目八景<small>10/18 抵達</small></div><div class="track"><span class="peak" style="left:52.5%;width:45.9%"></span><span class="visit" style="left:13.1%"></span></div></div>
-      <div class="crow"><div class="name">九重夢大吊橋<small>10/19 抵達</small></div><div class="track"><span class="peak" style="left:18%;width:49.2%"></span><span class="visit" style="left:14.8%"></span></div></div>
-      <div class="crow"><div class="name">九醉溪<small>10/19 抵達</small></div><div class="track"><span class="peak" style="left:36.1%;width:31.1%"></span><span class="visit" style="left:14.8%"></span></div></div>
-      <div class="crow"><div class="name">鶴見岳（別府纜車）<small>10/20 抵達</small></div><div class="track"><span class="peak" style="left:18%;width:49.2%"></span><span class="visit" style="left:16.4%"></span></div></div>
-      <div class="axis"><div></div><div class="ticks"><span style="left:0">10/10</span><span style="left:36.1%">11/1</span><span style="left:85.2%">12/1</span></div></div>
+<section class="hero">
+  <img src="img/kyoshuho.jpg" width="1600" height="1232" alt="夕陽照在耶馬溪競秀峰的岩壁上" fetchpriority="high">
+  <div class="wrap hero-in">
+    <h1><small>大分自駕 · 景點手冊</small>到了那裡<br>要看什麼</h1>
+    <p class="lede">10 個重點景點的來歷、看點、10 月下旬實際會看到的景色，和現場小提醒，照行程順序排列。</p>
+    <div class="hero-row">
+      <span class="chip-count" id="countdown" hidden></span>
+      <a class="btn btn-solid" href="#foliage"><i class="ph ph-leaf"></i>先看賞楓預期</a>
+      <a class="btn btn-ghost" href="./" style="color:#F4F6F7;border-color:rgb(255 255 255 / .45)"><i class="ph ph-signpost"></i>回行程手冊</a>
     </div>
   </div>
-  <div class="legend"><span><i class="lp"></i>例年最紅的時段（以各地觀光資料為準，每年會前後移動）</span><span><i class="lv"></i>我們抵達的日子</span></div>
+  <p class="credit-hero">照片：競秀峰 · STA3816 · <a href="https://commons.wikimedia.org/wiki/File:Distant_view_of_Ao-no-domon.jpg" target="_blank" rel="noopener">CC BY 3.0</a></p>
+</section>
+
+<!-- 賞楓預期 -->
+<section class="sec wrap" id="foliage">
+  <div class="sec-head rv"><span class="n"><i class="ph ph-leaf"></i></span><h2>這趟的楓葉會紅到哪裡</h2><p>大分的楓葉多半在 11 月才到最紅。我們 10/18-10/20 經過的楓葉名所，大部分還在轉色前或剛開始；最有機會看到紅葉的是<strong>鶴見岳山頂</strong>和<strong>九重夢大吊橋</strong>。</p></div>
+  <div class="fchart rv" role="img" aria-label="各景點例年紅葉最佳期與本次抵達日比較：耶馬溪兩處 11 月中旬到 12 月上旬；九重夢大吊橋與鶴見岳 10 月下旬到 11 月中旬；九醉溪 11 月上旬到中旬；抵達日為 10 月 18 到 20 日">
+    <div class="fc-axis" aria-hidden="true"><span></span><div class="fc-scale"><span style="left:0">10/10</span><span style="left:36.07%">11/1</span><span style="left:85.25%">12/1</span></div></div>
+    <div class="fc-row"><div class="fc-name">青の洞門・競秀峰<small>10/18 抵達</small></div><div class="fc-track"><span class="fc-peak" style="left:52.46%;width:45.9%"><em>11 月中旬-12 月上旬</em></span><span class="fc-visit" style="left:13.11%"></span></div></div>
+    <div class="fc-row"><div class="fc-name">一目八景<small>10/18 抵達</small></div><div class="fc-track"><span class="fc-peak" style="left:52.46%;width:45.9%"><em>11 月中旬-12 月上旬</em></span><span class="fc-visit" style="left:13.11%"></span></div></div>
+    <div class="fc-row"><div class="fc-name">九重夢大吊橋<small>10/19 抵達</small></div><div class="fc-track"><span class="fc-peak" style="left:18.03%;width:49.18%"><em>10 月下旬-11 月中旬</em></span><span class="fc-visit" style="left:14.75%"></span></div></div>
+    <div class="fc-row"><div class="fc-name">九醉溪<small>10/19 抵達</small></div><div class="fc-track"><span class="fc-peak" style="left:36.07%;width:31.15%"><em>11 月上旬-中旬</em></span><span class="fc-visit" style="left:14.75%"></span></div></div>
+    <div class="fc-row"><div class="fc-name">鶴見岳<small>10/20 抵達</small></div><div class="fc-track"><span class="fc-peak" style="left:18.03%;width:49.18%"><em>10 月下旬-11 月中旬</em></span><span class="fc-visit" style="left:16.39%"></span></div></div>
+    <div class="fc-legend"><span><i class="lp"></i>例年最紅的時段(各地觀光資料，每年會前後移動)</span><span><i class="lv"></i>我們抵達的日子</span></div>
+  </div>
 </section>
 
 <!-- DAY 1 -->
-<section class="day" id="d1">
-  <div class="day-head"><span class="d">DAY 1 · 10/17 六</span><h2>中津</h2><span class="route">大分機場取車 → 中津，晚上在站前步行吃喝</span></div>
+<section class="sec wrap spot-group" id="d1">
+  <header class="spot-day rv" data-day="1"><div class="badge"><span>DAY</span><b>1</b></div><div><h2>中津<span class="stamp">今天</span></h2><p>10/17 六 · 大分機場取車 → 中津，晚上在站前步行吃喝</p></div></header>
 
-  <article class="spot">
-    <header>
-      <span class="when">晚餐前後 · 站前步行範圍</span>
-      <h3>中津唐揚</h3>
-      <span class="jp">中津からあげ</span>
-    </header>
-    <p class="lead">中津被日本唐揚協會認定為「唐揚聖地」，市內唐揚專賣店密度極高，而且以外帶為主，是在地人的日常味道。</p>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/karaage.jpg" width="1000" height="666" alt="竹篩上一盒盒的中津唐揚" loading="lazy"><figcaption>照片：Mti · <a href="https://commons.wikimedia.org/wiki/File:Nakatsu_Karaage.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>晚餐前後 · 站前步行範圍</p>
+      <h3>中津唐揚</h3><p class="jp ja">中津からあげ</p>
+      <p class="lead">中津被日本唐揚協會認定為「唐揚聖地」，市內唐揚專賣店密度極高，而且以外帶為主，是在地人的日常味道。</p>
       <h4>來歷</h4>
       <ul>
         <li>戰後糧食短缺時期，國家鼓勵設養雞場，中津一帶養雞業因此興盛。</li>
@@ -171,311 +80,282 @@ h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 
         <li>唐揚專賣店的發源地其實是隔壁的宇佐市；中津最早的專賣店是 1970 年開的「森山」與「スーパー細川」。</li>
         <li>多數店家接單後才下鍋現炸，所以外帶文化根深柢固。</li>
       </ul>
-    </div>
-    <div class="note tip"><strong>小提醒</strong>　Day 1 晚餐口袋名單以居酒屋、燒肉為主。想吃正宗中津唐揚，可以在站前專賣店外帶一份回飯店當宵夜。</div>
-    <div class="foot">
-      <a href="https://seichi-nakatsukaraage.com/karaage/" target="_blank" rel="noopener">聖地中津からあげの会</a>
-      <a href="https://souhonke-moriyama.com/%E4%B8%AD%E6%B4%A5%E3%81%8B%E3%82%89%E3%81%82%E3%81%92%E3%81%AE%E6%AD%B4%E5%8F%B2/" target="_blank" rel="noopener">もり山｜中津からあげの歴史</a>
+      <div class="call tip"><span class="ic"><i class="ph ph-lightbulb"></i></span><div><h4>小提醒</h4><p>Day 1 晚餐口袋名單以居酒屋、燒肉為主。想吃正宗中津唐揚，可以在站前專賣店外帶一份回飯店當宵夜。</p></div></div>
+      <p class="srcs"><span>資料</span><a href="https://seichi-nakatsukaraage.com/karaage/" target="_blank" rel="noopener">聖地中津からあげの会</a><a href="https://souhonke-moriyama.com/%E4%B8%AD%E6%B4%A5%E3%81%8B%E3%82%89%E3%81%82%E3%81%92%E3%81%AE%E6%AD%B4%E5%8F%B2/" target="_blank" rel="noopener">もり山｜中津からあげの歴史</a></p>
     </div>
   </article>
 </section>
 
 <!-- DAY 2 -->
-<section class="day" id="d2">
-  <div class="day-head"><span class="d">DAY 2 · 10/18 日</span><h2>耶馬溪 · 大山ダム</h2><span class="route">中津 → 青の洞門 → 一目八景 → 大山ダム → 日田</span></div>
+<section class="sec wrap spot-group" id="d2">
+  <header class="spot-day rv" data-day="2"><div class="badge"><span>DAY</span><b>2</b></div><div><h2>耶馬溪 · 大山ダム<span class="stamp">今天</span></h2><p>10/18 日 · 中津 → 青の洞門 → 一目八景 → 大山ダム → 日田</p></div></header>
 
-  <article class="spot">
-    <header>
-      <span class="when">10:00–11:15 · 步行約 75 分</span>
-      <h3>青の洞門・競秀峰</h3>
-      <span class="jp">青の洞門・競秀峰（本耶馬溪）</span>
-    </header>
-    <p class="lead">江戶時代的禪海和尚，看到旅人在競秀峰的懸崖棧道上摔死，決心在岩壁中鑿出一條隧道。他靠托缽募款，只用鑿子和槌子挖了大約 30 年。</p>
-    <dl class="facts">
-      <div><dt>開鑿</dt><dd>1735 開工 → 1764 完成</dd></div>
-      <div><dt>全長</dt><dd>342 m（隧道 144 m）</dd></div>
-      <div><dt>停車</dt><dd>免費，普通車約 85 台</dd></div>
-      <div><dt>建議停留</dt><dd>30 分–2 小時</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/aonodomon.jpg" width="1000" height="669" alt="青の洞門的隧道口，旁邊是山國川與競秀峰岩壁" loading="lazy"><figcaption>照片：Underbar dk · <a href="https://commons.wikimedia.org/wiki/File:Aonod%C5%8Dmon.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>10:00-11:15 · 步行約 75 分</p>
+      <h3>青の洞門・競秀峰</h3><p class="jp ja">青の洞門・競秀峰(本耶馬溪)</p>
+      <p class="lead">江戶時代的禪海和尚，看到旅人在競秀峰的懸崖棧道上摔死，決心在岩壁中鑿出一條隧道。他靠托缽募款，只用鑿子和槌子挖了大約 30 年。</p>
+      <dl class="stats">
+        <div><dt>完工</dt><dd><span class="num">1764</span><small>1735 開工，挖了約 30 年</small></dd></div>
+        <div><dt>全長</dt><dd><span class="num">342 m</span><small>隧道 144 m</small></dd></div>
+        <div><dt>停車</dt><dd>免費<small>普通車約 85 台</small></dd></div>
+        <div><dt>建議停留</dt><dd><span class="num">30</span> 分-<span class="num">2</span> 小時</dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
-        <li><strong>手掘痕跡</strong>：明治 39–40 年大改修後原貌已失去不少，但隧道內一部分和採光窗還留著禪海的鑿痕。從停車場經過禪海和尚像往前走就看得到。</li>
+        <li><strong>手掘痕跡</strong>：明治 39-40 年大改修後原貌已失去不少，但隧道內一部分和採光窗還留著禪海的鑿痕。從停車場經過禪海和尚像往前走就看得到。</li>
         <li><strong>日本最早的收費道路之一</strong>：完工後向通行者收費，人 4 文、牛馬 8 文，用來回收工程費用。</li>
         <li><strong>競秀峰</strong>：隧道上方連綿的奇岩峭壁，是耶馬溪的代表景色。從對岸看最完整。</li>
         <li>菊池寬的小說《恩讐の彼方に》就是以禪海的故事為原型。</li>
       </ul>
-    </div>
-    <div class="note oct"><strong>10/18 會看到</strong>　競秀峰是紅葉名所，但耶馬溪例年 11 月中旬才最紅，這天還是以綠色山壁為主。主角是奇岩和手掘隧道。</div>
-    <div class="note tip"><strong>小提醒</strong>　2026/4/1 起<strong>只開放步行</strong>，車輛仍不能通過隧道。行人通行狀態可能再變動，出發前看一下中津耶馬溪觀光協會公告。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://nakatsuyaba.com/pages/114/" target="_blank" rel="noopener">中津耶馬渓觀光協會｜青の洞門</a>
-      <a href="https://www.jalan.net/kankou/spt_44502af2170129076/" target="_blank" rel="noopener">じゃらん｜青の洞門</a>
+      <div class="call oct"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>10/18 會看到</h4><p>競秀峰是紅葉名所，但耶馬溪例年 11 月中旬才最紅，這天還是以綠色山壁為主。主角是奇岩和手掘隧道。</p></div></div>
+      <div class="call warn"><span class="ic"><i class="ph-fill ph-warning"></i></span><div><h4>小提醒</h4><p>2026/4/1 起<strong>只開放步行</strong>，車輛仍不能通過隧道。行人通行狀態可能再變動，出發前看一下中津耶馬溪觀光協會公告。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9D%92%E3%81%AE%E6%B4%9E%E9%96%80" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://nakatsuyaba.com/pages/114/" target="_blank" rel="noopener">中津耶馬渓觀光協會｜青の洞門</a><a href="https://www.jalan.net/kankou/spt_44502af2170129076/" target="_blank" rel="noopener">じゃらん｜青の洞門</a></p>
     </div>
   </article>
 
-  <article class="spot">
-    <header>
-      <span class="when">13:10–14:00 · 散步到展望台</span>
-      <h3>一目八景</h3>
-      <span class="jp">一目八景（深耶馬溪）</span>
-    </header>
-    <p class="lead">深耶馬溪的中心景點。站在展望台上，一眼就能看到八座形狀各異的奇岩山峰，因此叫「一目八景」。</p>
-    <dl class="facts">
-      <div><dt>停車</dt><dd>深耶馬溪公共駐車場，免費 24 小時</dd></div>
-      <div><dt>車位</dt><dd>普通車 256 台</dd></div>
-      <div><dt>到展望台</dt><dd>步行約 5 分</dd></div>
-      <div><dt>紅葉最佳</dt><dd>11 月中旬–12 月上旬</dd></div>
-    </dl>
-    <div>
-      <h4>八景是哪八座</h4>
-      <p style="margin:0">群猿山、鳶ノ巣山、嘯猿山、夫婦岩、雄鹿長尾の峰、烏帽子岩、仙人岩、海望嶺。展望台上有標示牌，可以一座一座對照著找。</p>
-    </div>
-    <div>
-      <h4>看點</h4>
-      <ul>
-        <li>展望台周邊有蕎麥店、溫泉和旅館，午餐沒吃夠可以在這裡補。</li>
-        <li>河對岸有遊步道，能從不同角度看八景，時間夠可以走一段。</li>
-        <li>附近有一段約 100 m 的「ひさしもみじ」，楓樹像屋簷一樣蓋在路上，紅葉季晚上會點燈。</li>
-      </ul>
-    </div>
-    <div class="note oct"><strong>10/18 會看到</strong>　離紅葉最佳期還有將近一個月，會是新綠轉秋前的岩景。拍照重點放在岩峰輪廓。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E7%9B%AE%E5%85%AB%E6%99%AF" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://www.city-nakatsu.jp/doc/2013101800019/" target="_blank" rel="noopener">中津市｜一目八景</a>
-      <a href="https://edit.pref.oita.jp/news-columns/1585/" target="_blank" rel="noopener">大分縣｜耶馬溪紅葉</a>
+  <article class="spot spot-wide rv">
+    <figure class="spot-photo pano"><img src="img/hitome.jpg" width="2400" height="528" alt="從展望台看出去的一目八景全景，奇岩山峰連成一排" loading="lazy"><figcaption>照片：PekePON · <a href="https://commons.wikimedia.org/wiki/File:Yabakei_Hitome-Hakkei_panoramic_photography_2014.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a>(11 月中旬紅葉期拍攝)</figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>13:10-14:00 · 散步到展望台</p>
+      <h3>一目八景</h3><p class="jp ja">一目八景(深耶馬溪)</p>
+      <p class="lead">深耶馬溪的中心景點。站在展望台上，一眼就能看到八座形狀各異的奇岩山峰，因此叫「一目八景」。</p>
+      <dl class="stats">
+        <div><dt>停車</dt><dd>深耶馬溪公共駐車場<small>免費 24 小時</small></dd></div>
+        <div><dt>車位</dt><dd><span class="num">256</span><small>普通車</small></dd></div>
+        <div><dt>到展望台</dt><dd>步行約 <span class="num">5</span> 分</dd></div>
+        <div><dt>紅葉最佳</dt><dd>11 月中旬<small>到 12 月上旬</small></dd></div>
+      </dl>
+      <div class="two">
+        <div>
+          <h4>八景是哪八座</h4>
+          <ol class="eight ja"><li>群猿山</li><li>鳶ノ巣山</li><li>嘯猿山</li><li>夫婦岩</li><li>雄鹿長尾の峰</li><li>烏帽子岩</li><li>仙人岩</li><li>海望嶺</li></ol>
+          <p class="small">展望台上有標示牌，可以一座一座對照著找。</p>
+        </div>
+        <div>
+          <h4>看點</h4>
+          <ul>
+            <li>展望台周邊有蕎麥店、溫泉和旅館，午餐沒吃夠可以在這裡補。</li>
+            <li>河對岸有遊步道，能從不同角度看八景，時間夠可以走一段。</li>
+            <li>附近有一段約 100 m 的「ひさしもみじ」，楓樹像屋簷一樣蓋在路上，紅葉季晚上會點燈。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="call oct"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>10/18 會看到</h4><p>離紅葉最佳期還有將近一個月，會是新綠轉秋前的岩景，跟上面這張 11 月的照片不同。拍照重點放在岩峰輪廓。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%80%E7%9B%AE%E5%85%AB%E6%99%AF" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://www.city-nakatsu.jp/doc/2013101800019/" target="_blank" rel="noopener">中津市｜一目八景</a><a href="https://edit.pref.oita.jp/news-columns/1585/" target="_blank" rel="noopener">大分縣｜耶馬溪紅葉</a></p>
     </div>
   </article>
 
-  <article class="spot">
-    <header>
-      <span class="when">15:20–15:35 · 拍照約 15 分</span>
-      <h3>進擊的巨人 大山水壩銅像</h3>
-      <span class="jp">進撃の巨人 銅像（大山ダム）</span>
-    </header>
-    <p class="lead">日田是《進擊的巨人》作者諫山創的故鄉。大山水壩前立著艾連、米卡莎、阿爾敏少年時期的銅像，三人抬頭望向水壩，重現第 1 集巨人越過城牆的那一幕。</p>
-    <dl class="facts">
-      <div><dt>費用</dt><dd>免費，24 小時開放</dd></div>
-      <div><dt>停車</dt><dd>水壩前停車場，免費</dd></div>
-      <div><dt>廁所</dt><dd>約 1.2 km 外的西峰運動公園</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/oyama.jpg" width="1000" height="666" alt="大山水壩的混凝土壩體正面" loading="lazy"><figcaption>照片：河川一等兵 · <a href="https://commons.wikimedia.org/wiki/File:Oyama_Dam.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>15:20-15:35 · 拍照約 15 分</p>
+      <h3>進擊的巨人 大山水壩銅像</h3><p class="jp ja">進撃の巨人 銅像(大山ダム)</p>
+      <p class="lead">日田是《進擊的巨人》作者諫山創的故鄉。大山水壩前立著艾連、米卡莎、阿爾敏少年時期的銅像，三人抬頭望向水壩，重現第 1 集巨人越過城牆的那一幕。</p>
+      <dl class="stats">
+        <div><dt>費用</dt><dd>免費<small>24 小時開放</small></dd></div>
+        <div><dt>停車</dt><dd>水壩前停車場<small>免費</small></dd></div>
+        <div><dt>廁所</dt><dd>約 <span class="num">1.2</span> km 外<small>西峰運動公園</small></dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
         <li>水壩牆面被當成「瑪利亞之牆」，站在銅像後方拍，就是主角視角。</li>
         <li>下載 AR App「進撃の巨人 in HITA」，鏡頭對著水壩，會看到超大型巨人從牆頂探頭。出發前先確認 App 還能下載。</li>
         <li>沿路有指標，照著走不會迷路。</li>
       </ul>
-    </div>
-    <div class="note tip"><strong>小提醒</strong>　銅像旁沒有廁所，行程手冊安排在天瀬的ローソン先上，別跳過。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://www.ehime-odekakejyouhou.com/2024/02/25/ooyadamadamu/" target="_blank" rel="noopener">實訪：所要時間・駐車場</a>
-      <a href="https://log-oita.com/oyamadam-hita/" target="_blank" rel="noopener">ログ大分｜大山ダム</a>
+      <div class="call tip"><span class="ic"><i class="ph ph-lightbulb"></i></span><div><h4>小提醒</h4><p>銅像旁沒有廁所，行程手冊安排在天瀬的ローソン先上，別跳過。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA%20%E5%A4%A7%E5%B1%B1%E3%83%80%E3%83%A0%E9%8A%85%E5%83%8F" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://www.ehime-odekakejyouhou.com/2024/02/25/ooyadamadamu/" target="_blank" rel="noopener">實訪：所要時間・駐車場</a><a href="https://log-oita.com/oyamadam-hita/" target="_blank" rel="noopener">ログ大分｜大山ダム</a></p>
     </div>
   </article>
 </section>
 
 <!-- DAY 3 -->
-<section class="day" id="d3">
-  <div class="day-head"><span class="d">DAY 3 · 10/19 一</span><h2>九重 · 由布院</h2><span class="route">日田 → 九重夢大吊橋 → 九醉溪 → 由布院湯之坪街道</span></div>
+<section class="sec wrap spot-group" id="d3">
+  <header class="spot-day rv" data-day="3"><div class="badge"><span>DAY</span><b>3</b></div><div><h2>九重 · 由布院<span class="stamp">今天</span></h2><p>10/19 一 · 日田 → 九重夢大吊橋 → 九醉溪 → 由布院湯之坪街道</p></div></header>
 
-  <article class="spot">
-    <header>
-      <span class="when">10:00–11:30</span>
-      <h3>九重夢大吊橋</h3>
-      <span class="jp">九重“夢”大吊橋</span>
-    </header>
-    <p class="lead">日本最高的人行吊橋。橋面離谷底 173 m，走到中間往下看，腳下就是鳴子川溪谷。</p>
-    <dl class="facts">
-      <div><dt>規模</dt><dd>高 173 m · 長 390 m · 標高 777 m</dd></div>
-      <div><dt>10 月營業</dt><dd>8:30–18:00（售票到 17:30）</dd></div>
-      <div><dt>門票</dt><dd>國中以上 500 日圓</dd></div>
-      <div><dt>停車</dt><dd>免費，主停車場約 230 台</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/yume.jpg" width="1000" height="666" alt="九重夢大吊橋的主塔與鋼索，背景是藍天白雲" loading="lazy"><figcaption>照片：TANAKA Juuyoh (田中十洋) · <a href="https://commons.wikimedia.org/wiki/File:Kokonoe-Yume-Otsurihashi-1.jpg" target="_blank" rel="noopener">CC BY 2.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>10:00-11:30</p>
+      <h3>九重夢大吊橋</h3><p class="jp ja">九重“夢”大吊橋</p>
+      <p class="lead">日本最高的人行吊橋。橋面離谷底 173 m，走到中間往下看，腳下就是鳴子川溪谷。</p>
+      <dl class="stats">
+        <div><dt>高 · 長</dt><dd><span class="num">173 m · 390 m</span><small>標高 777 m</small></dd></div>
+        <div><dt>10 月營業</dt><dd><span class="num">8:30-18:00</span><small>售票到 17:30</small></dd></div>
+        <div><dt>門票</dt><dd><span class="num">¥500</span><small>國中以上</small></dd></div>
+        <div><dt>停車</dt><dd>免費<small>主停車場約 230 台</small></dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
         <li><strong>震動の滝</strong>：入選「日本瀑布百選」，有雄瀑、雌瀑兩道，從橋上就看得到。</li>
         <li>往下游看就是九醉溪的溪谷，等一下午餐就在那一帶。</li>
         <li>標高 777 m 剛好是三個 7，很多人會在橋上的標示前拍照。</li>
       </ul>
-    </div>
-    <div class="note oct"><strong>10/19 會看到</strong>　例年 10 月下旬開始轉紅，我們早了幾天，可能只看到高處零星轉色。整體仍以溪谷和瀑布為主。</div>
-    <div class="note tip"><strong>小提醒</strong>　單程走過去再走回來約 15–20 分，含拍照抓 30 分–1 小時。橋上風大，強風時可能限制上橋。7–10 月營業延長到 18:00，行程手冊寫的 17:00 是 11 月以後的時間。門票 2027 年起會調整，這趟不受影響。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E9%87%8D%E2%80%9C%E5%A4%A2%E2%80%9D%E5%A4%A7%E5%90%8A%E6%A9%8B" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://www.visit-oita.jp/spots/detail/4473" target="_blank" rel="noopener">Visit Oita｜九重夢大吊橋</a>
-      <a href="https://parkey.jp/kokonoe-yume-otsurihashi-parking/" target="_blank" rel="noopener">2026 營業時間・停車場</a>
+      <div class="call oct"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>10/19 會看到</h4><p>例年 10 月下旬開始轉紅，我們早了幾天，可能只看到高處零星轉色。整體仍以溪谷和瀑布為主。</p></div></div>
+      <div class="call tip"><span class="ic"><i class="ph ph-lightbulb"></i></span><div><h4>小提醒</h4><p>單程走過去再走回來約 15-20 分，含拍照抓 30 分-1 小時。橋上風大，強風時可能限制上橋。7-10 月營業延長到 18:00，11 月起回到 17:00。門票 2027 年起會調整，這趟不受影響。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B9%9D%E9%87%8D%E2%80%9C%E5%A4%A2%E2%80%9D%E5%A4%A7%E5%90%8A%E6%A9%8B" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://www.visit-oita.jp/spots/detail/4473" target="_blank" rel="noopener">Visit Oita｜九重夢大吊橋</a><a href="https://parkey.jp/kokonoe-yume-otsurihashi-parking/" target="_blank" rel="noopener">2026 營業時間・停車場</a></p>
     </div>
   </article>
 
-  <article class="spot">
-    <header>
-      <span class="when">11:45–14:00 · 午餐 + 開車經過</span>
-      <h3>九醉溪</h3>
-      <span class="jp">九酔渓（別名：十三曲がり）</span>
-    </header>
-    <p class="lead">玖珠川沿岸約 2 km 的斷崖溪谷，山路連續急彎，所以又叫「十三曲」。據說美到讓人連醉九次，因此得名。</p>
-    <dl class="facts">
-      <div><dt>斷崖長度</dt><dd>約 2 km</dd></div>
-      <div><dt>紅葉最佳</dt><dd>11 月上旬–中旬</dd></div>
-      <div><dt>樹種</dt><dd>冷杉、鐵杉、連香樹原生林</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/kyusuikei.jpg" width="1000" height="750" alt="九醉溪兩側長滿綠樹的深谷" loading="lazy"><figcaption>照片：大分帰省中 · <a href="https://commons.wikimedia.org/wiki/File:Oita_kyusuikei.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>11:45-14:00 · 午餐 + 開車經過</p>
+      <h3>九醉溪</h3><p class="jp ja">九酔渓(別名：十三曲がり)</p>
+      <p class="lead">玖珠川沿岸約 2 km 的斷崖溪谷，山路連續急彎，所以又叫「十三曲」。據說美到讓人連醉九次，因此得名。</p>
+      <dl class="stats">
+        <div><dt>斷崖長度</dt><dd>約 <span class="num">2</span> km</dd></div>
+        <div><dt>紅葉最佳</dt><dd>11 月上旬<small>到中旬</small></dd></div>
+        <div><dt>樹種</dt><dd>原生林<small>冷杉、鐵杉、連香樹</small></dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
         <li>峠の展望台往下看整條溪谷，是九醉溪最經典的角度。</li>
         <li>天狗の滝一帶的溪流與岩壁。</li>
-        <li>午餐的峠の茶屋（炭火烤雞）和備案桂茶屋都在這條路上。</li>
+        <li>午餐的峠の茶屋(炭火烤雞)和備案桂茶屋都在這條路上。</li>
       </ul>
-    </div>
-    <div class="note oct"><strong>10/19 會看到</strong>　例年 11 月才最紅，這天以深綠原生林為主，偶爾有早轉色的楓樹。</div>
-    <div class="note tip"><strong>小提醒</strong>　Alphard 車身長，連續急彎要放慢，在彎道內側別停車拍照。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E9%85%94%E6%B8%93" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://www.tabirai.net/sightseeing/column/0007873.aspx" target="_blank" rel="noopener">たびらい｜九酔渓</a>
-      <a href="https://koyo.walkerplus.com/detail/ar1044e154794/" target="_blank" rel="noopener">紅葉情報｜九酔渓</a>
+      <div class="call oct"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>10/19 會看到</h4><p>例年 11 月才最紅，這天以深綠原生林為主，偶爾有早轉色的楓樹，大概就像這張照片。</p></div></div>
+      <div class="call warn"><span class="ic"><i class="ph ph-steering-wheel"></i></span><div><h4>小提醒</h4><p>Alphard 車身長，連續急彎要放慢，在彎道內側別停車拍照。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B9%9D%E9%85%94%E6%B8%93" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://www.tabirai.net/sightseeing/column/0007873.aspx" target="_blank" rel="noopener">たびらい｜九酔渓</a><a href="https://koyo.walkerplus.com/detail/ar1044e154794/" target="_blank" rel="noopener">紅葉情報｜九酔渓</a></p>
     </div>
   </article>
 
-  <article class="spot">
-    <header>
-      <span class="when">14:00–16:30 · 散步採買</span>
-      <h3>湯之坪街道</h3>
-      <span class="jp">湯の坪街道</span>
-    </header>
-    <p class="lead">從 JR 由布院站一路通往金鱗湖、約 800 m 的街道，兩旁超過 70 家伴手禮店、甜點店、咖啡店和雜貨店。由布院散步的主幹道。</p>
-    <dl class="facts">
-      <div><dt>長度</dt><dd>約 800 m</dd></div>
-      <div><dt>店家數</dt><dd>70 家以上</dd></div>
-      <div><dt>打烊</dt><dd>多數 17:00–17:30</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/yunotsubo.jpg" width="1000" height="750" alt="湯之坪街道上的店家，遠方是由布岳" loading="lazy"><figcaption>照片：そらみみ · <a href="https://commons.wikimedia.org/wiki/File:Mount_Yufudake_from_Yunotsubo_Street.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>14:00-16:30 · 散步採買</p>
+      <h3>湯之坪街道</h3><p class="jp ja">湯の坪街道</p>
+      <p class="lead">從 JR 由布院站一路通往金鱗湖、約 800 m 的街道，兩旁超過 70 家伴手禮店、甜點店、咖啡店和雜貨店。由布院散步的主幹道。</p>
+      <dl class="stats">
+        <div><dt>長度</dt><dd>約 <span class="num">800</span> m</dd></div>
+        <div><dt>店家數</dt><dd><span class="num">70+</span></dd></div>
+        <div><dt>打烊</dt><dd>多數 <span class="num">17:00-17:30</span></dd></div>
+      </dl>
       <h4>邊走邊吃</h4>
-      <ul>
-        <li><strong>湯布院金賞コロッケ</strong>：金賞可樂餅，邊走邊吃的招牌。9:00–18:00。</li>
-        <li><strong>由布院ミルヒ</strong>：起司蛋糕名店。10:30–17:30。</li>
-        <li><strong>菓匠 花より</strong>：糰子口味多，御手洗、黃豆粉、芝麻、抹茶、焙茶。10:00–16:30，較早收。</li>
-        <li><strong>鞠智（ククチ）</strong>：蒙布朗銅鑼燒，號稱「賞味期限 3 分鐘」，拿到馬上吃。</li>
+      <ul class="eats">
+        <li><b class="ja">湯布院金賞コロッケ</b><span>金賞可樂餅，邊走邊吃的招牌</span><em class="num">9:00-18:00</em></li>
+        <li><b class="ja">由布院ミルヒ</b><span>起司蛋糕名店</span><em class="num">10:30-17:30</em></li>
+        <li><b class="ja">菓匠 花より</b><span>糰子口味多：御手洗、黃豆粉、芝麻、抹茶、焙茶。較早收</span><em class="num">10:00-16:30</em></li>
+        <li><b class="ja">鞠智(ククチ)</b><span>蒙布朗銅鑼燒，號稱「賞味期限 3 分鐘」，拿到馬上吃</span><em></em></li>
       </ul>
-    </div>
-    <div class="note tip"><strong>小提醒</strong>　週一平日人潮較少。花より 16:30 就收，想吃糰子先去。街道盡頭就是金鱗湖，順路先看一眼，明早再來看晨霧。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E6%B9%AF%E3%81%AE%E5%9D%AA%E8%A1%97%E9%81%93" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://yufuin-luxury-villa-zakuro.com/yuno-tsubo/" target="_blank" rel="noopener">湯の坪街道完全ガイド</a>
-      <a href="https://work-trip.jp/labo/9094/" target="_blank" rel="noopener">由布院食べ歩き 2026</a>
+      <div class="call tip"><span class="ic"><i class="ph ph-lightbulb"></i></span><div><h4>小提醒</h4><p>週一平日人潮較少。花より 16:30 就收，想吃糰子先去。街道盡頭就是金鱗湖，順路先看一眼，明早再來看晨霧。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B9%AF%E3%81%AE%E5%9D%AA%E8%A1%97%E9%81%93" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://yufuin-luxury-villa-zakuro.com/yuno-tsubo/" target="_blank" rel="noopener">湯の坪街道完全ガイド</a><a href="https://work-trip.jp/labo/9094/" target="_blank" rel="noopener">由布院食べ歩き 2026</a></p>
     </div>
   </article>
 </section>
 
 <!-- DAY 4 -->
-<section class="day" id="d4">
-  <div class="day-head"><span class="d">DAY 4 · 10/20 二</span><h2>金鱗湖 · 別府 · 大分</h2><span class="route">金鱗湖晨霧 → 別府纜車（鶴見岳）→ 大分市區購物</span></div>
+<section class="sec wrap spot-group" id="d4">
+  <header class="spot-day rv" data-day="4"><div class="badge"><span>DAY</span><b>4</b></div><div><h2>金鱗湖 · 別府<span class="stamp">今天</span></h2><p>10/20 二 · 金鱗湖晨霧 → 別府纜車(鶴見岳) → 大分市區購物</p></div></header>
 
-  <article class="spot">
-    <header>
-      <span class="when">07:00–08:00 · 旅館就在湖邊</span>
-      <h3>金鱗湖晨霧</h3>
-      <span class="jp">金鱗湖の朝霧</span>
-    </header>
-    <p class="lead">湖底同時湧出溫泉和清水，湖水一年到頭約 15 度。秋冬清晨外面氣溫低，溫差讓湖面冒出白霧，是由布院最有名的畫面。</p>
-    <dl class="facts">
-      <div><dt>晨霧季節</dt><dd>9 月下旬–3 月上旬</dd></div>
-      <div><dt>最佳時間</dt><dd>8:00 前，7:30 前人最少</dd></div>
-      <div><dt>水溫</dt><dd>全年約 15 度</dd></div>
-    </dl>
-    <div>
-      <h4>什麼天氣最容易起霧</h4>
-      <ul>
-        <li>前一天白天晴朗溫暖。</li>
-        <li>夜裡氣溫驟降。</li>
-        <li>當天早上晴、沒有風。外面越冷、跟湖水溫差越大，霧越濃。</li>
-      </ul>
-    </div>
-    <div>
-      <h4>名字由來</h4>
-      <p style="margin:0">明治時代儒學者毛利空桑看到湖中的魚鱗在夕陽下閃著金光，替這座湖取名「金鱗湖」。</p>
-    </div>
-    <div class="note oct"><strong>10/20 會看到</strong>　已進入晨霧季，但起不起霧看當天天氣。前一晚看一下氣象預報，如果是晴朗無風的冷天，就值得早起。</div>
-    <div class="note tip"><strong>小提醒</strong>　清晨約 7 度以下，穿厚外套。湖邊步道溼滑，穿止滑的鞋。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E9%B1%97%E6%B9%96" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://www.visit-oita.jp/spots/detail/4362" target="_blank" rel="noopener">Visit Oita｜金鱗湖</a>
-      <a href="https://crexgroup.com/ja/travel/travel/kinrinko-lake-guide/" target="_blank" rel="noopener">金鱗湖朝霧の時間</a>
+  <article class="spot spot-feature rv">
+    <figure class="spot-photo"><img src="img/kinrinko.jpg" width="1600" height="1200" alt="清晨的金鱗湖，湖面升起白霧" loading="lazy"><figcaption>照片：Tzu-hsun, Hsu · <a href="https://commons.wikimedia.org/wiki/File:Lake_Kinrin_with_Morning_fog.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-sun-horizon"></i>07:00-08:00 · 旅館就在湖邊</p>
+      <h3>金鱗湖晨霧</h3><p class="jp ja">金鱗湖の朝霧</p>
+      <p class="lead">湖底同時湧出溫泉和清水，湖水一年到頭約 15 度。秋冬清晨外面氣溫低，溫差讓湖面冒出白霧，是由布院最有名的畫面。</p>
+      <dl class="stats">
+        <div><dt>晨霧季節</dt><dd>9 月下旬<small>到 3 月上旬</small></dd></div>
+        <div><dt>最佳時間</dt><dd><span class="num">8:00</span> 前<small>7:30 前人最少</small></dd></div>
+        <div><dt>水溫</dt><dd>全年約 <span class="num">15</span> 度</dd></div>
+      </dl>
+      <div class="two">
+        <div>
+          <h4>什麼天氣最容易起霧</h4>
+          <ol class="checks">
+            <li>前一天白天晴朗溫暖。</li>
+            <li>夜裡氣溫驟降。</li>
+            <li>當天早上晴、沒有風。外面越冷、跟湖水溫差越大，霧越濃。</li>
+          </ol>
+        </div>
+        <div>
+          <h4>名字由來</h4>
+          <p>明治時代儒學者毛利空桑看到湖中的魚鱗在夕陽下閃著金光，替這座湖取名「金鱗湖」。</p>
+        </div>
+      </div>
+      <div class="call oct"><span class="ic"><i class="ph ph-cloud-fog"></i></span><div><h4>10/20 會看到</h4><p>已進入晨霧季，但起不起霧看當天天氣。前一晚看一下氣象預報，如果是晴朗無風的冷天，就值得早起。</p></div></div>
+      <div class="call tip"><span class="ic"><i class="ph ph-thermometer-cold"></i></span><div><h4>小提醒</h4><p>清晨約 7 度以下，穿厚外套。湖邊步道溼滑，穿止滑的鞋。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%91%E9%B1%97%E6%B9%96" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://www.visit-oita.jp/spots/detail/4362" target="_blank" rel="noopener">Visit Oita｜金鱗湖</a><a href="https://crexgroup.com/ja/travel/travel/kinrinko-lake-guide/" target="_blank" rel="noopener">金鱗湖朝霧の時間</a></p>
     </div>
   </article>
 
-  <article class="spot">
-    <header>
-      <span class="when">09:25–11:45 · 上下山 + 山頂散步</span>
-      <h3>別府纜車・鶴見岳</h3>
-      <span class="jp">別府ロープウェイ・鶴見岳</span>
-    </header>
-    <p class="lead">搭纜車約 10 分鐘，從別府市郊直上鶴見岳（標高 1,375 m）的山頂附近。這趟最有機會看到真正紅葉的地方。</p>
-    <dl class="facts">
-      <div><dt>10/20 營業</dt><dd>9:00–17:30（上山末班 17:00）</dd></div>
-      <div><dt>來回票</dt><dd>國中以上 1,800 日圓<br>70 歲以上 1,700 日圓</dd></div>
-      <div><dt>山高</dt><dd>鶴見岳 1,375 m</dd></div>
-      <div><dt>紅葉最佳</dt><dd>10 月下旬–11 月中旬</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/tsurumi.jpg" width="1000" height="666" alt="從鶴見岳山上望向由布岳的稜線" loading="lazy"><figcaption>照片：Σ64 · <a href="https://commons.wikimedia.org/wiki/File:Mt.Tsurumidake_01.jpg" target="_blank" rel="noopener">CC BY 3.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>09:25-11:45 · 上下山 + 山頂散步</p>
+      <h3>別府纜車・鶴見岳</h3><p class="jp ja">別府ロープウェイ・鶴見岳</p>
+      <p class="lead">搭纜車約 10 分鐘，從別府市郊直上鶴見岳(標高 1,375 m)的山頂附近。這趟最有機會看到真正紅葉的地方。</p>
+      <dl class="stats">
+        <div><dt>10/20 營業</dt><dd><span class="num">9:00-17:30</span><small>上山末班 17:00</small></dd></div>
+        <div><dt>來回票</dt><dd><span class="num">¥1,800</span><small>國中以上；70 歲以上 ¥1,700</small></dd></div>
+        <div><dt>山高</dt><dd><span class="num">1,375 m</span></dd></div>
+        <div><dt>紅葉最佳</dt><dd>10 月下旬<small>到 11 月中旬</small></dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
         <li><strong>山頂步道</strong>：天氣好時可以看到別府市區和別府灣、由布岳、九重連山，甚至遠方的四國和中國地方。</li>
         <li><strong>七福神巡禮</strong>：步道沿途有七福神像，一路找齊七尊，順便把山頂繞一圈。</li>
         <li>纜車車廂裡就能看到別府市區和海，上山時站在面向山下的那一側。</li>
       </ul>
-    </div>
-    <div class="note oct"><strong>10/20 會看到</strong>　紅葉從山頂往下轉色。10/20 剛好落在例年開始轉紅的時間，山頂附近有機會看到黃紅色，山腳應該還是綠的。</div>
-    <div class="note tip"><strong>小提醒</strong>　山上比市區低約 10 度，可能 5 度以下，厚外套和圍巾一定要帶。山頂雲多時看不到遠景，上山前先看纜車站的即時影像或天氣。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E5%88%A5%E5%BA%9C%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://beppu-tourism.com/spot/beppu-ropeway/" target="_blank" rel="noopener">別府市觀光｜別府ロープウェイ</a>
-      <a href="https://kyushu-love.com/beppu-ropeway-tsurumidake/" target="_blank" rel="noopener">料金・所要時間</a>
+      <div class="call oct"><span class="ic"><i class="ph ph-leaf"></i></span><div><h4>10/20 會看到</h4><p>紅葉從山頂往下轉色。10/20 剛好落在例年開始轉紅的時間，山頂附近有機會看到黃紅色，山腳應該還是綠的。</p></div></div>
+      <div class="call warn"><span class="ic"><i class="ph ph-thermometer-cold"></i></span><div><h4>小提醒</h4><p>山上比市區低約 10 度，可能 5 度以下，厚外套和圍巾一定要帶。山頂雲多時看不到遠景，上山前先看纜車站的即時影像或天氣。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%88%A5%E5%BA%9C%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://beppu-tourism.com/spot/beppu-ropeway/" target="_blank" rel="noopener">別府市觀光｜別府ロープウェイ</a><a href="https://kyushu-love.com/beppu-ropeway-tsurumidake/" target="_blank" rel="noopener">料金・所要時間</a></p>
     </div>
   </article>
 </section>
 
 <!-- DAY 5 -->
-<section class="day" id="d5">
-  <div class="day-head"><span class="d">DAY 5 · 10/21 三</span><h2>Park Place 大分</h2><span class="route">大分市區 → Park Place → 加油 → Budget 還車 → 機場</span></div>
+<section class="sec wrap spot-group" id="d5">
+  <header class="spot-day rv" data-day="5"><div class="badge"><span>DAY</span><b>5</b></div><div><h2>Park Place 大分<span class="stamp">今天</span></h2><p>10/21 三 · 大分市區 → Park Place → 加油 → Budget 還車 → 機場</p></div></header>
 
-  <article class="spot">
-    <header>
-      <span class="when">10:30–11:45 · 13:00 準時離開</span>
-      <h3>任天堂專區</h3>
-      <span class="jp">ニンテンドーコーナー（イオンパークプレイス大分店 2F）</span>
-    </header>
-    <p class="lead">2025 年 9 月開幕，大分縣第一個任天堂常設專區，位在 AEON 2 樓的兒童用品區「キッズリパブリック」裡面。</p>
-    <dl class="facts">
-      <div><dt>營業</dt><dd>10:00–21:00</dd></div>
-      <div><dt>位置</dt><dd>AEON 2F キッズリパブリック內</dd></div>
-      <div><dt>商品</dt><dd>約 800 種</dd></div>
-      <div><dt>停車</dt><dd>Park Place 停車場免費</dd></div>
-    </dl>
-    <div>
+  <article class="spot rv">
+    <figure class="spot-photo"><img src="img/parkplace.jpg" width="1000" height="750" alt="Park Place 大分的戶外廣場與商場建築" loading="lazy"><figcaption>照片：Tabitan · <a href="https://commons.wikimedia.org/wiki/File:Parkplaceoita_2022-05.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></figcaption></figure>
+    <div class="spot-body">
+      <p class="when"><i class="ph ph-clock"></i>10:30-11:45 · 13:00 準時離開</p>
+      <h3>任天堂專區</h3><p class="jp ja">ニンテンドーコーナー(イオンパークプレイス大分店 2F)</p>
+      <p class="lead">2025 年 9 月開幕，大分縣第一個任天堂常設專區，位在 AEON 2 樓的兒童用品區「キッズリパブリック」裡面。</p>
+      <dl class="stats">
+        <div><dt>營業</dt><dd><span class="num">10:00-21:00</span></dd></div>
+        <div><dt>位置</dt><dd>AEON 2F<small>キッズリパブリック內</small></dd></div>
+        <div><dt>商品</dt><dd>約 <span class="num">800</span> 種</dd></div>
+        <div><dt>停車</dt><dd>免費</dd></div>
+      </dl>
       <h4>看點</h4>
       <ul>
         <li>瑪利歐、星之卡比等角色的玩偶、周邊，還有主機和遊戲片。</li>
         <li>有 Nintendo Switch 2 試玩區。</li>
         <li>皮克敏周邊有沒有、有哪些，官方沒有列清單，以現場為準。</li>
       </ul>
-    </div>
-    <div class="note tip"><strong>小提醒</strong>　買滿 5,500 日圓（含稅）可退稅，結帳時出示護照。同棟 AEON 可以補伴手禮和藥妝，美食街 12:00 前入座比較不用等。</div>
-    <div class="foot">
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E5%A4%A7%E5%88%86" target="_blank" rel="noopener">開 Google 地圖</a>
-      <a href="https://shop.parkplace-oita.com/information/detail/479" target="_blank" rel="noopener">Park Place 官方公告</a>
-      <a href="https://www.oita-press.co.jp/1010000000/2025/09/13/JDC2025091301243" target="_blank" rel="noopener">大分合同新聞報導</a>
+      <div class="call tip"><span class="ic"><i class="ph ph-receipt"></i></span><div><h4>小提醒</h4><p>買滿 5,500 日圓(含稅)可退稅，結帳時出示護照。同棟 AEON 可以補伴手禮和藥妝，美食街 12:00 前入座比較不用等。</p></div></div>
+      <div class="btns"><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%91%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E5%A4%A7%E5%88%86" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i>開 Google 地圖</a></div>
+      <p class="srcs"><span>資料</span><a href="https://shop.parkplace-oita.com/information/detail/479" target="_blank" rel="noopener">Park Place 官方公告</a><a href="https://www.oita-press.co.jp/1010000000/2025/09/13/JDC2025091301243" target="_blank" rel="noopener">大分合同新聞報導</a></p>
     </div>
   </article>
 </section>
 
-<footer class="closing">
-  <p>配合《九州大分五天四夜自駕行程手冊 V3》使用。營業時間、票價和通行狀態可能變動，出發前與現場以官方公告為準；紅葉時期為各地例年資料，每年會前後移動。</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p>配合<a href="./" style="color:var(--accent);font-weight:700">《九州大分五天四夜自駕行程手冊 V3》</a>使用。營業時間、票價和通行狀態可能變動，出發前與現場以官方公告為準；紅葉時期為各地例年資料，每年會前後移動。資料查證：2026 年 10 月。</p>
+    </div>
+    <div class="credits">
+      <h4>照片來源(Wikimedia Commons，經裁切與壓縮)</h4>
+      <p>競秀峰：STA3816, <a href="https://commons.wikimedia.org/wiki/File:Distant_view_of_Ao-no-domon.jpg" target="_blank" rel="noopener">CC BY 3.0</a> ／ 中津唐揚：Mti, <a href="https://commons.wikimedia.org/wiki/File:Nakatsu_Karaage.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a> ／ 青の洞門：Underbar dk, <a href="https://commons.wikimedia.org/wiki/File:Aonod%C5%8Dmon.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 一目八景：PekePON, <a href="https://commons.wikimedia.org/wiki/File:Yabakei_Hitome-Hakkei_panoramic_photography_2014.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 大山ダム：河川一等兵, <a href="https://commons.wikimedia.org/wiki/File:Oyama_Dam.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 九重夢大吊橋：TANAKA Juuyoh (田中十洋), <a href="https://commons.wikimedia.org/wiki/File:Kokonoe-Yume-Otsurihashi-1.jpg" target="_blank" rel="noopener">CC BY 2.0</a> ／ 九醉溪：大分帰省中, <a href="https://commons.wikimedia.org/wiki/File:Oita_kyusuikei.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a> ／ 湯之坪街道：そらみみ, <a href="https://commons.wikimedia.org/wiki/File:Mount_Yufudake_from_Yunotsubo_Street.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 金鱗湖：Tzu-hsun, Hsu, <a href="https://commons.wikimedia.org/wiki/File:Lake_Kinrin_with_Morning_fog.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a> ／ 鶴見岳：Σ64, <a href="https://commons.wikimedia.org/wiki/File:Mt.Tsurumidake_01.jpg" target="_blank" rel="noopener">CC BY 3.0</a> ／ Park Place 大分：Tabitan, <a href="https://commons.wikimedia.org/wiki/File:Parkplaceoita_2022-05.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+    </div>
+  </div>
 </footer>
 
-</div>
+<script src="site.js?v=1791076782"></script>
 </body>
 </html>
